@@ -5,6 +5,7 @@ import {
   AiOutlineShoppingCart,
   AiOutlineEuro,
   AiOutlineDollar,
+  AiOutlineMenu,
 } from "react-icons/ai";
 import Logo from "../../utils/images/logos/japventure-logo-32.svg";
 import styles from "./index.module.scss";
@@ -15,8 +16,15 @@ export function Navbar() {
   return (
     <>
       <nav className={styles.Main}>
-        <img src={Logo} className={styles.logo} />
-        <ul className={styles.links}>
+        <NavLink
+          to="/"
+          title="Navigate to Explore tab"
+          className={styles.link}
+          end
+        >
+          <img src={Logo} className={styles.logo} />
+        </NavLink>
+        <span className={styles.links}>
           <NavLink
             to="/explore"
             title="Navigate to Explore tab"
@@ -47,16 +55,15 @@ export function Navbar() {
           >
             About Us
           </NavLink>
-        </ul>
-        <ul className={styles.tools}>
+        </span>
+        <span className={styles.tools}>
           <AiOutlineSearch />
           <AiOutlineUser />
           <AiOutlineShoppingCart />
           <span className={styles.language}>{lang.toggle ? "ITA" : "ENG"}</span>
           {currency.toggle ? <AiOutlineEuro /> : <AiOutlineDollar />}
-        </ul>
+        </span>
       </nav>
-      <hr />
     </>
   );
 }
