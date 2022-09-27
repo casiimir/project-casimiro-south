@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
 import { Footer } from "./components/footer";
 import { Navbar } from "./components/navbar";
-import "./App.module.scss";
+import styles from "./App.module.scss";
 
 function App() {
   return (
-    <div>
+    <div className={styles.Main}>
       <Navbar />
       <Outlet />
       <Footer />

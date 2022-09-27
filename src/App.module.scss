@@ -1,3 +1,7 @@
-.App {
+@import "./styles/_variables";
+
+.Main {
   text-align: center;
+  background-color: $quaternary-color;
+  min-height: 100vh;
 }

@@ -1,0 +1,12 @@
+@import "../../styles/_mixins";
+@import "../../styles/_variables";
+
+.Main {
+  @include box-model(
+    $margin: 0,
+    $border: 0,
+    $padding: 0,
+    $width: auto,
+    $height: auto
+  );
+}
