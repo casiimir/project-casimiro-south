@@ -1,7 +1,7 @@
 import styles from "./index.module.scss";
 
 
-const CardList = ({}) => {
+export const CardList = ({}) => {
   const list = [];
   for (let i = 1; i<=10; i++) {
     list.push(`https://picsum.photos/200/300?${i}`);
