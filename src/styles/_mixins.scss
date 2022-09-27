@@ -1,0 +1,98 @@
+@mixin flex-container(
+  $direction: row,
+  $justify: flex-start,
+  $align: stretch,
+  $wrap: nowrap,
+  $gap: 0px
+) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+  gap: $gap;
+}
+
+@mixin box-model(
+  $margin: 0,
+  $border: 0,
+  $padding: 0,
+  $width: auto,
+  $height: auto
+) {
+  margin: $margin;
+  border: $border;
+  padding: $padding;
+  width: $width;
+  height: $height;
+}
+
+@mixin border(
+  $border: 0,
+  $radius: 0,
+  $top-right: auto,
+  $bottom-right: auto,
+  $bottom-left: auto,
+  $top-left: auto
+) {
+  border: $border;
+  border-radius: $radius;
+  border-top-right-radius: $top-right;
+  border-bottom-right-radius: $bottom-right;
+  border-bottom-left-radius: $bottom-left;
+  border-top-left-radius: $top-left;
+}
+
+@mixin element-position(
+  $position: static,
+  $top: auto,
+  $right: auto,
+  $bottom: auto,
+  $left: auto,
+  $z-index: auto
+) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  z-index: $z-index;
+}
+
+@mixin form-text(
+  $font-size: 16px,
+  $font-style: normal,
+  $font-weight: 400,
+  $letter-spacing: normal,
+  $text-decoration: none,
+  $text-transform: none
+) {
+  font-size: $font-size;
+  font-style: $font-style;
+  font-weight: $font-weight;
+  letter-spacing: $letter-spacing;
+  text-decoration: $text-decoration;
+  text-transform: $text-transform;
+}
+
+@mixin button-element(
+  $width: auto,
+  $height: auto,
+  $padding: 0,
+  $border: 0,
+  $border-radius: 0,
+  $font-weight: bold,
+  $text-transform: uppercase,
+  $cursor: pointer,
+  $transition: all 0.35s
+) {
+  width: $width;
+  height: $height;
+  padding: $padding;
+  border: $border;
+  border-radius: $border-radius;
+  font-weight: $font-weight;
+  text-transform: $text-transform;
+  cursor: $cursor;
+  transition: $transition;
+}
