@@ -1,5 +1,5 @@
 import styles from "./index.module.scss";
-
+import MainCard from "../MainCard"
 
 export const CardList = ({}) => {
   const list = [];
@@ -11,6 +11,7 @@ export const CardList = ({}) => {
       <h1 className={styles.title}>Most rated cities</h1>
       <div className={styles.wrapper}>
         {list && list.map((card) => <img  src={card} /> )}
+        <MainCard />
       </div>
     </div>
   );
