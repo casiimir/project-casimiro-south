@@ -6,20 +6,21 @@
   @include flex-container($justify: space-between, $align: center, $gap: 10px);
   background-color: $tertiary-color;
   border-top: 2px solid $secondary-color;
+  color: $secondary-text-color;
+
   .text {
     @include box-model($width: 40%);
     text-align: start;
   }
 
   .social {
-    // display: grid;
-    // grid-template-columns: repeat(4, 1fr);
-    // gap: 25px;
     @include flex-container($wrap: wrap, $gap: 60px);
+
     svg {
       transform: scale(2);
+
       &:hover {
-        color: $secondary-text-color;
+        transform: scale(2.25);
         cursor: pointer;
       }
     }
@@ -29,6 +30,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
+    color: $primary-text-color;
 
     li {
       font-size: 0.8rem;
