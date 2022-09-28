@@ -1,0 +1,68 @@
+@import "../../styles/_variables.scss";
+@import "../../styles/_mixins.scss";
+
+* {
+  margin: 0;
+}
+
+.MainCard {
+  @include flex-container(column, center, center, nowrap, 15px);
+  @include box-model(0, 0, 15px, 220px);
+  @include border(0, 15px);
+  font-family: "Montserrat", sans-serif;
+  background-color: rgb(234, 236, 236);
+
+  .image {
+    @include flex-container(column, flex-start, center);
+
+    .imagePic {
+      @include box-model(0, 0, 0, 200px, 200px);
+      @include border(0, 15px);
+      object-fit: cover;
+    }
+
+    .imageTitle {
+      @include element-position(static, -30px);
+    }
+  }
+
+  .mapRating {
+    @include flex-container(row, center, center, nowrap, 50px);
+
+    .map {
+      @include flex-container(row, center, center, nowrap, 2px);
+    }
+
+    .stars {
+    }
+  }
+
+  .text {
+    padding: 10px;
+    font-size: 0.8rem;
+  }
+
+  .buttons {
+    @include flex-container(row, center, center, nowrap, 20px);
+    .mainButton {
+      @include button-element(auto, auto, 10px 20px, 0, 8px);
+      color: $quaternary-color;
+      background-color: $secondary-color;
+      font-size: 0.6rem;
+      font-family: "Montserrat", sans-serif;
+
+      &:hover {
+        background-color: $quaternary-color;
+        color: $secondary-color;
+      }
+    }
+
+    .viewDetails {
+      font-size: 0.6rem;
+
+      &:hover {
+        font-weight: bold;
+      }
+    }
+  }
+}
