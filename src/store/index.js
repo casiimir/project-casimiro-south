@@ -3,6 +3,7 @@ import { combineReducers, createStore } from "redux";
 const init = {
   lang: { toggle: false, value: "en-US" },
   currency: { toggle: false, value: "USD" },
+  homeData: { list: [] },
 };
 
 function langReducer(state = {}, action) {
@@ -11,7 +12,7 @@ function langReducer(state = {}, action) {
       return {
         ...state,
         toggle: !state.toggle,
-        value: state.toggle ? "it" : "en-US",
+        value: state.toggle ? "it-IT" : "en-US",
       };
     default:
       return state;
@@ -31,9 +32,22 @@ function currencyReducer(state = {}, action) {
   }
 }
 
+function homeReducer(state = {}, action) {
+  switch (action.type) {
+    case "SET_HOME_LIST":
+      return {
+        ...state,
+        list: action.payload,
+      };
+      default:
+        return state;
+  }
+}
+
 const rootReducers = combineReducers({
   lang: langReducer,
   currency: currencyReducer,
+  homeData: homeReducer,
 });
 
 const store = createStore(rootReducers, init);
