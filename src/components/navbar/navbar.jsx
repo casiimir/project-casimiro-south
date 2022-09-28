@@ -9,10 +9,20 @@ import {
 } from "react-icons/ai";
 import Logo from "../../utils/images/logos/japventure-logo-32.svg";
 import styles from "./index.module.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export function Navbar() {
   const { lang, currency } = useSelector((state) => state);
+  const dispatch = useDispatch();
+
+  const handleChangeLang = () => {
+    dispatch({ type: "CHANGE_LANG" });
+  };
+
+  const handleChangeCurr = () => {
+    dispatch({ type: "CHANGE_CURRENCY" });
+  };
+
   return (
     <>
       <nav className={styles.Main}>
@@ -57,11 +67,17 @@ export function Navbar() {
           </NavLink>
         </span>
         <span className={styles.tools}>
-          <AiOutlineSearch />
-          <AiOutlineUser />
-          <AiOutlineShoppingCart />
-          <span className={styles.language}>{lang.toggle ? "ITA" : "ENG"}</span>
-          {currency.toggle ? <AiOutlineEuro /> : <AiOutlineDollar />}
+          <span className={styles.ui}>
+            <AiOutlineSearch />
+            <AiOutlineUser />
+            <AiOutlineShoppingCart />
+          </span>
+          <span className={styles.language} onClick={handleChangeLang}>
+            {lang.toggle ? "ITA" : "ENG"}
+          </span>
+          <span className={styles.currency} onClick={handleChangeCurr}>
+            {currency.toggle ? <AiOutlineEuro /> : <AiOutlineDollar />}
+          </span>
         </span>
       </nav>
     </>

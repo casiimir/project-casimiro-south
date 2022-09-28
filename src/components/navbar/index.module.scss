@@ -11,6 +11,10 @@
     .logo {
       @include box-model($width: 250px);
       @include flex-container($align: center);
+
+      &:hover {
+        transform: scale(1.05);
+      }
     }
   }
 
@@ -26,14 +30,43 @@
       &.active {
         color: $secondary-color;
         text-decoration: underline;
+        font-weight: 500;
       }
     }
   }
 
   .tools {
     @include box-model();
-    @include flex-container($align: center, $gap: 10px);
-    & * {
+    @include flex-container($align: center, $gap: 15px);
+
+    & svg {
+      transform: scale(1.5);
+    }
+
+    .ui {
+      @include flex-container($align: center, $gap: 30px);
+
+      svg {
+        cursor: pointer;
+
+        &:hover {
+          color: $secondary-color;
+        }
+      }
+    }
+
+    .language {
+      @include box-model($padding: 0 0 0 15px);
+      cursor: pointer;
+      font-weight: 500;
+
+      &:hover {
+        color: $secondary-color;
+      }
+    }
+    .currency {
+      @include flex-container($align: center);
+      transform: scale(0.75);
       cursor: pointer;
       &:hover {
         color: $secondary-color;
