@@ -1,0 +1,73 @@
+@import '../../styles/_mixins.scss';
+@import '../../styles/_variables.scss';
+
+.Main {
+    @include flex-container ($justify: space-evenly,  $align: center);
+    @include box-model ($height: 100%);
+    padding: 30px;
+    
+
+    .left {
+        @include flex-container ($direction: column , $gap: 50px, $justify:center);
+        @include box-model ($width: 40%);
+
+        .title {
+            @include form-text ($font-size: 7.5rem, $font-weight: 700, $letter-spacing:1px, $text-transform:uppercase);
+            @include box-model ($width: 40%);
+            color: $secondary-text-color;
+            line-height: 80%;
+
+            &::before {
+                @include form-text ($font-size: 5rem, $font-weight: 500, $letter-spacing:2px);
+                content: 'exploring';
+                color: #C49A9A;
+            }
+        }
+
+        .experience {
+            @include form-text ($font-size: 4.5rem, $font-weight: 700, $letter-spacing:10px);
+            text-align: start;
+            line-height: 100%;
+            color: $primary-text-color;
+        }
+
+        .description {
+            @include form-text ($font-size: 1.7rem, $font-weight: 400);
+            color: $primary-text-color;
+            text-align: start;
+        }
+
+        .explore_btn {
+            @include button-element ($height:72px, $width: 220px, $border-radius: 10px);
+            @include form-text ($font-size: 1.2rem, $font-weight: 600, $text-transform: uppercase);
+            background-color: #B32124;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+
+            a {
+                @include box-model ($padding: 25px);
+                text-decoration: none;
+                color: $quinary-text-color;
+            }
+        }
+    }
+
+    .right {
+        @include box-model ($width: 40%);
+        
+        .carousel {
+            @include box-model ($width: 100%);
+            @include border ($radius: 50px);
+
+                img {
+                    width: 100%;
+                    height: 700px;
+                    object-fit: cover;
+                    border-radius: 50px;
+                    box-shadow: $box-shadow;    
+            }            
+        }
+    }
+}
