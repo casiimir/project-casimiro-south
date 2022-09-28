@@ -1,4 +1,6 @@
 import { memo } from "react";
+import { FiMapPin } from "react-icons/fi";
+import { AiOutlineStar } from "react-icons/ai";
 
 import styles from "./index.module.scss";
 
@@ -12,20 +14,15 @@ const MainCard = () => {
             src="https://a.travel-assets.com/findyours-php/viewfinder/images/res70/477000/477571-Osaka.jpg"
             alt="cityPic"
           />
-          <p className={styles.imageTitle}>CITY</p>
         </div>
         <div className={styles.mapRating}>
           <div className={styles.map}>
-            <p>🗺️</p>
-            <p>map</p>
+            <FiMapPin />
+            <p>CITYNAME</p>
           </div>
-          <div className={styles.stars}>⭐⭐</div>
+          <AiOutlineStar />
         </div>
-        <p className={styles.text}>
-          {" "}
-          CITY text: : Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-          Accusantium, cupiditate. Eligendi fugit dolor animi laborum?{" "}
-        </p>
+        <p className={styles.text}>ACTIVITY TITLE</p>
         <div className={styles.buttons}>
           <button className={styles.mainButton}> book now </button>
           <p className={styles.viewDetails}> view details </p>
