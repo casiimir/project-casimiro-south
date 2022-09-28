@@ -3,7 +3,7 @@ import { combineReducers, createStore } from "redux";
 const init = {
   lang: { toggle: false, value: "en-US" },
   currency: { toggle: false, value: "USD" },
-  homeData: { list: [] },
+  listsData: { home: [], expCity: [], expFD: [], expFolk: [], expNew: [] },
 };
 
 function langReducer(state = {}, action) {
@@ -12,7 +12,7 @@ function langReducer(state = {}, action) {
       return {
         ...state,
         toggle: !state.toggle,
-        value: state.toggle ? "it-IT" : "en-US",
+        value: !state.toggle ? "it-IT" : "en-US",
       };
     default:
       return state;
@@ -25,29 +25,49 @@ function currencyReducer(state = {}, action) {
       return {
         ...state,
         toggle: !state.toggle,
-        value: state.toggle ? "EUR" : "USD",
+        value: !state.toggle ? "EUR" : "USD",
       };
     default:
       return state;
   }
 }
 
-function homeReducer(state = {}, action) {
+function listsReducer(state = {}, action) {
   switch (action.type) {
     case "SET_HOME_LIST":
       return {
         ...state,
-        list: action.payload,
+        home: action.payload,
       };
-      default:
-        return state;
+    case "SET_EXP_CITY_LIST":
+      return {
+        ...state,
+        expCity: action.payload,
+      };
+    case "SET_EXP_FD_LIST":
+      return {
+        ...state,
+        expFD: action.payload,
+      };
+    case "SET_FOLK_LIST":
+      return {
+        ...state,
+        expFolk: action.payload,
+      };
+    case "SET_NEW_LIST":
+      return {
+        ...state,
+        expNew: action.payload,
+      };
+    default:
+      return state;
   }
 }
 
 const rootReducers = combineReducers({
   lang: langReducer,
   currency: currencyReducer,
-  homeData: homeReducer,
+  listsData: listsReducer,
 });
 
 const store = createStore(rootReducers, init);

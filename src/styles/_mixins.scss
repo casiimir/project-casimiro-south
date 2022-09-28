@@ -64,6 +64,7 @@
   $font-style: normal,
   $font-weight: 400,
   $letter-spacing: normal,
+  $line-height: normal,
   $text-decoration: none,
   $text-transform: none
 ) {
@@ -71,6 +72,7 @@
   font-style: $font-style;
   font-weight: $font-weight;
   letter-spacing: $letter-spacing;
+  line-height: $line-height;
   text-decoration: $text-decoration;
   text-transform: $text-transform;
 }
