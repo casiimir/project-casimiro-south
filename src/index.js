@@ -9,6 +9,8 @@ import { Details } from "./pages/details";
 import { Provider } from "react-redux";
 import store from "./store";
 
+import { Error } from "./pages/error";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const router = createBrowserRouter([
@@ -28,6 +30,7 @@ const router = createBrowserRouter([
         path: "details",
         element: <Details />,
       },
+      { path: "*", element: <Error status={404} /> },
     ],
   },
 ]);
