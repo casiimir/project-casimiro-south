@@ -5,8 +5,11 @@ import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Home } from "./pages/home";
 import { Explore } from "./pages/explore";
+import { Details } from "./pages/details";
 import { Provider } from "react-redux";
 import store from "./store";
+
+import { Error } from "./pages/error";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -23,6 +26,11 @@ const router = createBrowserRouter([
         path: "explore",
         element: <Explore />,
       },
+      {
+        path: "details",
+        element: <Details />,
+      },
+      { path: "*", element: <Error status={404} /> },
     ],
   },
 ]);

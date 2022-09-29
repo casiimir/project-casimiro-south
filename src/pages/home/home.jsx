@@ -33,20 +33,27 @@ export function Home() {
   return (
     <div className={styles.Main}>
       <section className={styles.left}>
-        <span className={styles.title}> Japan</span>
-        <span className={styles.experience}>Unforgettable experiences</span>
-        <p className={styles.description}>
-          {listsData.home[descrIndex]?.meta_description}
-        </p>
-        <button className={styles.explore_btn}>
-          <Link to="/explore" title="Navigate to Explore tab">
-            explore now
-          </Link>
-        </button>
+        <div className={styles.title_wrapper}>
+          <span className={styles.title}> Japan</span>
+          <span className={styles.experience}>{lang.toggle ? 'Esperienze indimenticabili' : 'Unforgettable experiences'}</span>
+        </div>
+        <div className={styles.desc_wrapper}>
+          <p className={styles.description}>
+            {listsData.home[descrIndex]?.meta_description}
+          </p>
+          <button className={styles.explore_btn}>
+            <Link to="/explore" title="Navigate to Explore tab">
+            {lang.toggle ? 'Esplora ora' : 'explore now'}
+            </Link>
+          </button>
+        </div>
       </section>
       <section className={styles.right}>
         <Swiper
-          style={{ borderRadius: "50px", "--swiper-pagination-color": "#fff" }}
+        // pagination={true}
+          style={{ borderRadius: "50px",
+          "--swiper-navigation-color": "ghostwhite",
+        }}
           onSlideChange={(swiper) => setDescrIndex(swiper.activeIndex)}
           initialSlide="1"
           slidesPerView={1}
@@ -60,9 +67,6 @@ export function Home() {
             disableOnInteraction: false,
           }}
           navigation={true}
-          pagination={{
-            clickable: true,
-          }}
         >
           {listsData.home?.map((el, i) => (
             <SwiperSlide key={i}>
@@ -76,3 +80,5 @@ export function Home() {
     </div>
   );
 }
+
+
