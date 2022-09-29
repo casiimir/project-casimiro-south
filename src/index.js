@@ -8,6 +8,8 @@ import { Explore } from "./pages/explore";
 import { Provider } from "react-redux";
 import store from "./store";
 
+import { Error } from "./pages/error";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const router = createBrowserRouter([
@@ -23,6 +25,7 @@ const router = createBrowserRouter([
         path: "explore",
         element: <Explore />,
       },
+      { path: "*", element: <Error status={404} /> },
     ],
   },
 ]);
