@@ -1,17 +1,15 @@
 import styles from "./index.module.scss";
-import MainCard from "../MainCard"
+import MainCard from "../MainCard";
 
 export const CardList = ({}) => {
   const list = [];
-  for (let i = 1; i<=10; i++) {
+  for (let i = 1; i <= 20; i++) {
     list.push(`https://picsum.photos/200/300?${i}`);
   }
   return (
-    <div className={styles.CardList}>
-      <h1 className={styles.title}>Most rated cities</h1>
+    <div className={styles.Main}>
       <div className={styles.wrapper}>
-        {list && list.map((card) => <img  src={card} /> )}
-        <MainCard />
+        {list && list.map((card) => <img src={card} />)}
       </div>
     </div>
   );
