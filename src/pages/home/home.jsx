@@ -35,7 +35,11 @@ export function Home() {
       <section className={styles.left}>
         <div className={styles.title_wrapper}>
           <span className={styles.title}> Japan</span>
-          <span className={styles.experience}>{lang.toggle ? 'Esperienze indimenticabili' : 'Unforgettable experiences'}</span>
+          <span className={styles.experience}>
+            {lang.toggle
+              ? "Esperienze indimenticabili"
+              : "Unforgettable experiences"}
+          </span>
         </div>
         <div className={styles.desc_wrapper}>
           <p className={styles.description}>
@@ -43,24 +47,23 @@ export function Home() {
           </p>
           <button className={styles.explore_btn}>
             <Link to="/explore" title="Navigate to Explore tab">
-            {lang.toggle ? 'Esplora ora' : 'explore now'}
+              {lang.toggle ? "Esplora ora" : "explore now"}
             </Link>
           </button>
         </div>
       </section>
       <section className={styles.right}>
         <Swiper
-        // pagination={true}
-          style={{ borderRadius: "50px",
-          "--swiper-navigation-color": "ghostwhite",
-        }}
+          style={{
+            borderRadius: "50px",
+            "--swiper-navigation-color": "ghostwhite",
+          }}
           onSlideChange={(swiper) => setDescrIndex(swiper.activeIndex)}
-          initialSlide="1"
+          initialSlide={0}
           slidesPerView={1}
           spaceBetween={50}
           grabCursor={true}
           slidesPerGroup={1}
-          loop={true}
           modules={[Autoplay, Pagination, Navigation]}
           autoplay={{
             delay: 7500,
@@ -80,5 +83,3 @@ export function Home() {
     </div>
   );
 }
-
-

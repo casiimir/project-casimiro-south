@@ -29,7 +29,7 @@ export function Navbar() {
         <nav className={styles.Main}>
           <NavLink
             to="/"
-            title="Navigate to Explore tab"
+            title="Navigate to Home tab"
             className={styles.link}
             end
           >
@@ -49,13 +49,13 @@ export function Navbar() {
             </NavLink>
             <NavLink
               to="/deals"
-              title="Navigate to Special Deals tab"
+              title="Navigate to Cities tab"
               className={({ isActive }) =>
                 isActive ? `${styles.link} ${styles.active}` : styles.link
               }
               end
             >
-              Special Deals
+              Cities
             </NavLink>
             <NavLink
               to="/about"
@@ -85,62 +85,60 @@ export function Navbar() {
       </div>
 
       <div className={styles.mobile}>
-      <img src={Logo} className={styles.logo} />
+        <NavLink
+          to="/"
+          title="Navigate to Home tab"
+          className={styles.link}
+          end
+        >
+          <img src={Logo} className={styles.logo} />
+        </NavLink>
         <div className={styles.container}>
-          <input className={styles.checkbox} type="checkbox" name="" id="" />
+          <input className={styles.checkbox} type="checkbox" />
           <div className={styles.hamburger_lines}>
             <span className={styles.line1}></span>
             <span className={styles.line2}></span>
             <span className={styles.line3}></span>
           </div>
-
           <div className={styles.menu_items}>
-            <li>
-              <NavLink
-                to="/"
-                title="Navigate to Explore tab"
-                className={styles.link}
-                end
-              >
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/explore"
-                title="Navigate to Explore tab"
-                className={({ isActive }) =>
-                  isActive ? `${styles.link} ${styles.active}` : styles.link
-                }
-                end
-              >
-                Explore
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/deals"
-                title="Navigate to Special Deals tab"
-                className={({ isActive }) =>
-                  isActive ? `${styles.link} ${styles.active}` : styles.link
-                }
-                end
-              >
-                Special Deals
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/about"
-                title="Navigate to About Us tab"
-                className={({ isActive }) =>
-                  isActive ? `${styles.link} ${styles.active}` : styles.link
-                }
-                end
-              >
-                About Us
-              </NavLink>
-            </li>
+            <NavLink
+              to="/"
+              title="Navigate to Home tab"
+              className={styles.link}
+              end
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to="/explore"
+              title="Navigate to Explore tab"
+              className={({ isActive }) =>
+                isActive ? `${styles.link} ${styles.active}` : styles.link
+              }
+              end
+            >
+              Explore
+            </NavLink>
+            <NavLink
+              to="/cities"
+              title="Navigate to Cities tab"
+              className={({ isActive }) =>
+                isActive ? `${styles.link} ${styles.active}` : styles.link
+              }
+              end
+            >
+              Cities
+            </NavLink>
+            <NavLink
+              to="/about"
+              title="Navigate to About Us tab"
+              className={({ isActive }) =>
+                isActive ? `${styles.link} ${styles.active}` : styles.link
+              }
+              end
+            >
+              About Us
+            </NavLink>
             <span className={styles.tools}>
               <span className={styles.language} onClick={handleChangeLang}>
                 {lang.toggle ? "ITA" : "ENG"}
