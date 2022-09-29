@@ -18,7 +18,7 @@ export function Error(props) {
       <div className={styles.message}>
         <h2> {lang.toggle ? 'CI DISPIACE TANTO!' : 'WE ARE SOOOO SORRY!'} </h2>
         <h3> {lang.toggle ? 'Sfortunatamente, qualcosa è andato storto!' : 'Unfortunately, something went wrong!'} </h3>
-        <marquee behavior='alternate'>{lang.toggle ? 'Stiamo provando ad risolvere il problema!' : 'We are trying to fix this.'}</marquee>
+        <marquee behavior='alternate'>{lang.toggle ? 'Stiamo provando a risolvere il problema!' : 'We are trying to fix this.'}</marquee>
       </div>
       <p>
         <a href="https://giphy.com/gifs/Fuzzballs-cute-kawaii-fuzzballs-Vh8ZgUsuFBEmquomvp">
