@@ -48,14 +48,14 @@ export function Navbar() {
               Explore
             </NavLink>
             <NavLink
-              to="/deals"
-              title="Navigate to Special Deals tab"
+              to="/cities"
+              title="Navigate to Cities tab"
               className={({ isActive }) =>
                 isActive ? `${styles.link} ${styles.active}` : styles.link
               }
               end
             >
-              Special Deals
+              Cities
             </NavLink>
             <NavLink
               to="/about"
@@ -85,7 +85,7 @@ export function Navbar() {
       </div>
 
       <div className={styles.mobile}>
-      <img src={Logo} className={styles.logo} />
+        <img src={Logo} className={styles.logo} />
         <div className={styles.container}>
           <input className={styles.checkbox} type="checkbox" name="" id="" />
           <div className={styles.hamburger_lines}>
@@ -119,14 +119,14 @@ export function Navbar() {
             </li>
             <li>
               <NavLink
-                to="/deals"
-                title="Navigate to Special Deals tab"
+                to="/cities"
+                title="Navigate to Cities tab"
                 className={({ isActive }) =>
                   isActive ? `${styles.link} ${styles.active}` : styles.link
                 }
                 end
               >
-                Special Deals
+                Cities
               </NavLink>
             </li>
             <li>

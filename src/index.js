@@ -10,6 +10,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 
 import { Error } from "./pages/error";
+import { Cities } from "./pages/cities/";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "explore",
         element: <Explore />,
+      },
+      {
+        path: "cities",
+        element: <Cities />,
       },
       {
         path: "details",
