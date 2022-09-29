@@ -48,7 +48,7 @@ export function Navbar() {
               Explore
             </NavLink>
             <NavLink
-              to="/deals"
+              to="/cities"
               title="Navigate to Cities tab"
               className={({ isActive }) =>
                 isActive ? `${styles.link} ${styles.active}` : styles.link
