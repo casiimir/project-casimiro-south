@@ -1,0 +1,47 @@
+@import "../../styles/_mixins";
+@import "../../styles/_variables";
+
+.Main {
+  @include box-model($height: calc(100vh - 170px));
+  @include flex-container(column, center, center, nowrap, 3rem);
+  @include form-text(0.7rem);
+  background-color: #ffffff;
+  color: $primary-text-color;
+
+  .message {
+    
+    h2 {
+      @include form-text(
+        $font-size: 1.5rem,
+        $font-weight: bold,
+        $letter-spacing: 0.5rem,
+        $line-height: 2rem
+      );
+    }
+
+    h3 {
+      @include form-text(
+        $font-size: 1.3rem,
+        $font-weight: bold,
+        $line-height: 2rem,
+        $letter-spacing: 0.3rem
+      );
+    }
+  }
+
+  a {
+    @include form-text(
+      $font-size: 0.7rem,
+      $font-weight: bold,
+      $letter-spacing: 0.2rem
+    );
+    margin-bottom: 1rem;
+    font-family: "Montserrat", sans-serif;
+    color: $primary-text-color;
+
+    &:hover,
+    &.active {
+      text-decoration: underline;
+    }
+  }
+}
