@@ -10,9 +10,7 @@ export function Cities() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      
-        <CardList />
-      
+      <CardList />
     </div>
   );
 }
