@@ -6,8 +6,14 @@
 }
 
 .MainCard {
-  @include flex-container(column, center, center, nowrap, 15px);
-  @include box-model(0, 0, 15px, 220px);
+  @include flex-container(column, space-between, center, nowrap, 15px);
+  @include box-model(
+    $margin: 0,
+    $border: 0,
+    $padding: 15px,
+    $width: 220px,
+    $height: 500px
+  );
   @include border(0, 15px);
   font-family: "Montserrat", sans-serif;
   background-color: rgb(234, 236, 236);
@@ -19,6 +25,7 @@
       @include box-model(0, 0, 0, 200px, 200px);
       @include border(0, 15px);
       object-fit: cover;
+      object-position: center;
     }
   }
 
@@ -29,13 +36,15 @@
       @include flex-container(row, center, center, nowrap, 2px);
     }
 
-    .stars {
+    .rating {
+      @include flex-container($align: center);
     }
   }
 
   .text {
+    height: 20%;
     padding: 10px;
-    font-size: 1rem;
+    font-size: 0.75rem;
   }
 
   .buttons {
