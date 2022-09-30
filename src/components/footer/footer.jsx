@@ -1,7 +1,7 @@
 import {
-  AiOutlineInstagram,
-  AiOutlineFacebook,
-  AiOutlineLinkedin,
+  AiFillInstagram,
+  AiFillFacebook,
+  AiFillLinkedin,
   AiOutlineTwitter,
 } from "react-icons/ai";
 
@@ -11,10 +11,10 @@ export function Footer() {
   return (
     <footer className={styles.Main}>
       <div className={styles.social}>
-        <AiOutlineFacebook />
+        <AiFillFacebook />
         <AiOutlineTwitter />
-        <AiOutlineInstagram />
-        <AiOutlineLinkedin />
+        <AiFillInstagram />
+        <AiFillLinkedin />
       </div>
       <ul className={styles.links}>
         <li>Terms of Use</li>

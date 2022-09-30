@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import Cat from "../../utils/images/cat.gif"
 import styles from "./index.module.scss";
 
 export function Error(props) {
@@ -7,14 +8,7 @@ export function Error(props) {
 
   return props.status === 404 ? (
     <div className={styles.Main}>
-      <iframe
-        src="https://giphy.com/embed/Vh8ZgUsuFBEmquomvp"
-        width="480"
-        height="480"
-        frameBorder="0"
-        className="giphy-embed"
-        allowFullScreen
-      ></iframe>
+      <img src={Cat} alt="Japanese cat" />
       <div className={styles.message}>
         <h2> {lang.toggle ? 'CI DISPIACE TANTO!' : 'WE ARE SOOOO SORRY!'} </h2>
         <h3> {lang.toggle ? 'Sfortunatamente, qualcosa è andato storto!' : 'Unfortunately, something went wrong!'} </h3>
