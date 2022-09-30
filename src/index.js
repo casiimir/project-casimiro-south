@@ -10,10 +10,10 @@ import { Provider } from "react-redux";
 import store from "./store";
 
 import { Error } from "./pages/error";
-import { Cities } from "./pages/cities/";
-import { Info }from "./components/info";
-import { Map }from "./components/map";
-
+import { Cities } from "./pages/cities";
+import { About } from "./pages/about";
+import { Info } from "./components/info";
+import { Map } from "./components/map";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -54,6 +54,14 @@ const router = createBrowserRouter([
             element: <Map />,
           },
         ],
+      },
+      {
+        path: "about",
+        element: <About />,
+      },
+      {
+        path: "about",
+        element: <About />,
       },
       { path: "*", element: <Error status={404} /> },
     ],

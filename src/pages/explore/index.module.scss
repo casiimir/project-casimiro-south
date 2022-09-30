@@ -9,12 +9,14 @@
     @include box-model($width: 100%);
 
     .mySwiper {
+      height: auto;
       width: 100%;
       border-radius: 15px;
 
-      .swiper-wrapper {
-        width: 100%;
+      & > div:first-child {
+        // width: calc(100% - 10px);
       }
+      
     }
   }
 }

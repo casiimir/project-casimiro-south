@@ -4,7 +4,7 @@ import { CardList } from "../../components/CardList";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, Navigation, Scrollbar } from "swiper";
+import { Autoplay, Pagination, Navigation, Scrollbar, FreeMode } from "swiper";
 import "swiper/scss";
 import "swiper/scss/navigation";
 import MainCard from "../../components/MainCard";
@@ -74,24 +74,18 @@ export function Explore() {
         <Swiper
           className={styles.mySwiper}
           style={{
-            //   width: "100%",
-            //   borderRadius: "15px",
             "--swiper-navigation-color": "#b32124",
           }}
           slidesPerView={"auto"}
-          // setWrapperSize={{
-          //   width: "100%",
-          // }}
+          spaceBetween={20}
           grabCursor={true}
-          modules={[Navigation, Scrollbar]}
-          navigation={true}
-          // scrollbar={{
-          //   hide: true,
-          // }}
+          modules={[Scrollbar, FreeMode]}
+          scrollbar={true}
+          freeMode={true}
         >
-          {expCity?.map((_, i) => (
-            <SwiperSlide key={i}>
-              <MainCard />
+          {expCity?.map((el, i) => (
+            <SwiperSlide style={{ width: "auto", height: "auto" }} key={i}>
+              <MainCard data={el} />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -102,24 +96,18 @@ export function Explore() {
         <Swiper
           className={styles.mySwiper}
           style={{
-            //   width: "100%",
-            //   borderRadius: "15px",
             "--swiper-navigation-color": "#b32124",
           }}
           slidesPerView={"auto"}
-          // setWrapperSize={{
-          //   width: "100%",
-          // }}
+          spaceBetween={20}
           grabCursor={true}
-          modules={[Navigation, Scrollbar]}
-          navigation={true}
-          // scrollbar={{
-          //   hide: true,
-          // }}
+          modules={[Scrollbar, FreeMode]}
+          scrollbar={true}
+          freeMode={true}
         >
-          {expFD?.map((_, i) => (
-            <SwiperSlide key={i}>
-              <MainCard />
+          {expFD?.map((el, i) => (
+            <SwiperSlide style={{ width: "auto", height: "auto" }} key={i}>
+              <MainCard data={el} />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -130,24 +118,18 @@ export function Explore() {
         <Swiper
           className={styles.mySwiper}
           style={{
-            //   width: "100%",
-            //   borderRadius: "15px",
             "--swiper-navigation-color": "#b32124",
           }}
           slidesPerView={"auto"}
-          // setWrapperSize={{
-          //   width: "100%",
-          // }}
+          spaceBetween={20}
           grabCursor={true}
-          modules={[Navigation, Scrollbar]}
-          navigation={true}
-          // scrollbar={{
-          //   hide: true,
-          // }}
+          modules={[Scrollbar, FreeMode]}
+          scrollbar={true}
+          freeMode={true}
         >
-          {expFolk?.map((_, i) => (
-            <SwiperSlide key={i}>
-              <MainCard />
+          {expFolk?.map((el, i) => (
+            <SwiperSlide style={{ width: "auto", height: "auto" }} key={i}>
+              <MainCard data={el} />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -158,24 +140,18 @@ export function Explore() {
         <Swiper
           className={styles.mySwiper}
           style={{
-            //   width: "100%",
-            //   borderRadius: "15px",
             "--swiper-navigation-color": "#b32124",
           }}
           slidesPerView={"auto"}
-          // setWrapperSize={{
-          //   width: "100%",
-          // }}
+          spaceBetween={20}
           grabCursor={true}
-          modules={[Navigation, Scrollbar]}
-          navigation={true}
-          // scrollbar={{
-          //   hide: true,
-          // }}
+          modules={[Scrollbar, FreeMode]}
+          scrollbar={true}
+          freeMode={true}
         >
-          {expNew?.map((_, i) => (
-            <SwiperSlide key={i}>
-              <MainCard />
+          {expNew?.map((el, i) => (
+            <SwiperSlide style={{ width: "auto", height: "auto" }} key={i}>
+              <MainCard data={el} />
             </SwiperSlide>
           ))}
         </Swiper>

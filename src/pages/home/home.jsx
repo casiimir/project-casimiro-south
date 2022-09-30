@@ -4,11 +4,9 @@ import styles from "./index.module.scss";
 import { ENDPOINTS } from "../../utils/api/endpoints";
 import { useDispatch, useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, Navigation } from "swiper";
+import { Autoplay, Pagination } from "swiper";
 import "swiper/scss";
-import "swiper/scss/navigation";
 import "swiper/scss/pagination";
-import "swiper/scss/scrollbar";
 
 export function Home() {
   const { listsData, lang } = useSelector((state) => state);
@@ -30,6 +28,27 @@ export function Home() {
 
   const [descrIndex, setDescrIndex] = useState(0);
 
+  const pagination = {
+    clickable: true,
+    renderBullet: function (index, className) {
+      return (
+        '<span style="background-image: url(' +
+        listsData.home[index]?.cover_image_url +
+        ') !important " class="' +
+        className +
+        '"></span>'
+      );
+    },
+  };
+
+  const handleSetCityData = (el) => {
+    dispatch({ type: "SET_CITY_ID", payload: el.id });
+    dispatch({ type: "SET_CITY_NAME", payload: el.name });
+    dispatch({ type: "SET_CITY_CONTENT", payload: el.content });
+    dispatch({ type: "SET_CITY_HEADLINE", payload: el.headline });
+    dispatch({ type: "SET_CITY_COVER_IMG", payload: el.cover_image_url });
+  };
+
   return (
     <div className={styles.Main}>
       <section className={styles.left}>
@@ -43,7 +62,10 @@ export function Home() {
         </div>
         <div className={styles.desc_wrapper}>
           <p className={styles.description}>
-            {listsData.home[descrIndex]?.meta_description}
+            {/* {listsData.home[descrIndex]?.meta_description} */}
+            {lang.toggle
+              ? "Presentazione genrica in Italiano. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores magnam non totam odio unde ipsum dolore deleniti fugit, tenetur voluptates? Sed alias vitae abaccusamus autem, laborum cum quibusdam."
+              : "Presentazione genrica in Inglese. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores magnam non totam odio unde ipsum dolore deleniti fugit, tenetur voluptates? Sed alias vitae abaccusamus autem, laborum cum quibusdam."}
           </p>
           <button className={styles.explore_btn}>
             <Link to="/explore" title="Navigate to Explore tab">
@@ -54,27 +76,29 @@ export function Home() {
       </section>
       <section className={styles.right}>
         <Swiper
-          style={{
-            borderRadius: "50px",
-            "--swiper-navigation-color": "ghostwhite",
-          }}
+          className={styles.swiper}
           onSlideChange={(swiper) => setDescrIndex(swiper.activeIndex)}
           initialSlide={0}
           slidesPerView={1}
           spaceBetween={50}
           grabCursor={true}
           slidesPerGroup={1}
-          modules={[Autoplay, Pagination, Navigation]}
+          pagination={pagination}
+          modules={[Autoplay, Pagination]}
           autoplay={{
             delay: 7500,
             disableOnInteraction: false,
+            pauseOnMouseEnter: true,
           }}
-          navigation={true}
         >
           {listsData.home?.map((el, i) => (
             <SwiperSlide key={i}>
               <div className={styles.carousel}>
-                <img src={el.cover_image_url} alt={el.title} />
+                <img
+                  src={el.cover_image_url}
+                  alt={el.title}
+                  onClick={() => handleSetCityData(el)}
+                />
               </div>
             </SwiperSlide>
           ))}
