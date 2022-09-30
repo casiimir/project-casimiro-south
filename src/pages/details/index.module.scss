@@ -7,10 +7,10 @@
   
   .content {
     @include flex-container($justify: space-between, $gap: 20px);
-    border-bottom: 1px solid $secondary-color;
+    border-bottom: 1px solid $quaternary-color;
     
     .left {
-      @include box-model($width: 60%);
+      @include box-model($width: 60%, $height: 100%);
       @include flex-container($direction: column, $justify: center, $align: flex-start);
       text-align: start;
       
@@ -42,9 +42,21 @@
         }
       }
 
-      .buttons {
+      .tabs {
         @include box-model($padding: 20px 0 0 0, $width: 100%);
+        @include flex-container();
         border-bottom: 1px solid $secondary-color;
+        
+        .inactive {
+          @include button-element($padding: 10px,
+          $border: 1px solid $secondary-color,
+          $border-radius: 8px 8px 0 0,
+          $font-weight: bold,
+          $text-transform: none);
+          background-color: $quinary-color;
+          color: $secondary-text-color;
+          text-decoration: none;
+        }
 
         .active {
           @include button-element($padding: 10px,
@@ -54,50 +66,16 @@
           $text-transform: none);
           background-color: $secondary-color;
           color: $quinary-text-color;
-        }
-
-        .inactive {
-          @include button-element($padding: 10px,
-          $border: 1px solid $secondary-color,
-          $border-radius: 8px 8px 0 0,
-          $font-weight: bold,
-          $text-transform: none);
-          background-color: $quinary-color;
-          color: $secondary-text-color;
-        }
-        
-
-      }
-
-      .info {
-        @include box-model($padding: 0 0 20px 0);
-
-        .textInfo {
-          @include box-model($padding: 20px 0);
-          text-align: justify;
-        }
-
-        .boxInfo {
-          @include form-text($font-weight: 600);
-          
-
-          span {
-            color: $secondary-text-color;
+          text-decoration: none;
           }
-          .boxInfoGrid {
-          display: grid;
-          grid: 50px 50px / repeat(2, 1fr);  
-          }
-          
-        }
-        
       }
     }
 
     .right {
+      height: calc(100vh - 70px - 45px);
+      width: 40%;
       img {
-        @include box-model($height: 80%);
-        max-width: 100%;
+        @include box-model($height: 80%, $width: 100%);
         object-fit: cover;
       };
 
@@ -111,9 +89,10 @@
   }
 
   .date {
-    @include box-model($padding: 20px 0);
+    @include box-model($padding: 25px 0);
+    @include flex-container($direction: column, $gap: 20px);
     text-align: start;
-    border-bottom: 1px solid $secondary-color;
+    border-bottom: 1px solid $quaternary-color;
 
     .datePicker {
       @include flex-container($gap: 35px);
