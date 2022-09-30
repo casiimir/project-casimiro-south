@@ -90,40 +90,15 @@
   }
 
   .mobile {
-    @include flex-container($justify: right);
-    @include box-model($width: 100%, $height: 100px);
+    @include box-model($padding: 0 50px, $width: 100%, $height: 70px);
+    @include flex-container($justify: flex-end, $align: center, $gap: 20px);
+    border-bottom: 2px solid $secondary-color;
+    background-color: $tertiary-color;
 
-    .logo {
-      @include box-model($width: 200px, $height:70px);
-      padding-right: 30px;
-    }
-
-    .menu_items {
-      @include flex-container($direction: column, $gap: 15px);
-      @include element-position(
-        $position: fixed,
-        $top: 0,
-        $left: 0,
-        $z-index: 1
-      );
-      @include box-model($width: 50%);
-      padding-top: 50px;
-      padding-bottom: 25px;
-      background-color: $tertiary-color;
-      transform: translate(-150%);
-      margin-left: -40px;
-      padding-left: 50px;
-      transition: transform 0.5s ease-in-out;
-      text-align: center;
-
-      li {
-        margin-bottom: 1.2rem;
-        font-size: 1.5rem;
-        font-weight: 500;
-      }
-
-      .tools {
-        @include flex-container($justify: center, $gap: 20px);
+    .link {
+      .logo {
+        @include box-model($width: 200px, $height: 70px);
+        padding-right: 30px;
       }
     }
 
@@ -139,7 +114,7 @@
           $right: 0,
           $z-index: 5
         );
-        @include box-model($height: 32px, $width: 32px);
+        @include box-model($height: 47px, $width: 55px);
         display: block;
         opacity: 0;
         cursor: pointer;
@@ -149,16 +124,16 @@
         list-style: none;
       }
 
-      a {
-        text-decoration: none;
-        color: $secondary-color;
-        font-weight: 500;
-        font-size: 1.2rem;
-        padding: 0.7rem;
-        &:hover {
-          font-weight: bolder;
-        }
-      }
+      // a {
+      //   text-decoration: none;
+      //   color: $secondary-color;
+      //   font-weight: 500;
+      //   font-size: 1.2rem;
+      //   padding: 0.7rem;
+      //   &:hover {
+      //     font-weight: bolder;
+      //   }
+      // }
 
       .hamburger_lines {
         @include box-model($height: 26px, $width: 32px);
@@ -191,6 +166,62 @@
         .line3 {
           transform-origin: 0% 100%;
           transition: transform 0.4s ease-in-out;
+        }
+      }
+
+      .menu_items {
+        @include flex-container($direction: column, $gap: 15px);
+        @include element-position(
+          $position: fixed,
+          $top: 0,
+          $left: 0,
+          $z-index: 1
+        );
+        @include box-model($width: 65vw, $height: 425px);
+        padding-top: 50px;
+        padding-bottom: 25px;
+        background-color: rgba($tertiary-color, 0.9);
+        transform: translate(-150%);
+        margin-left: -40px;
+        padding-left: 50px;
+        transition: transform 0.5s ease-in-out;
+        text-align: center;
+
+        .link {
+          @include box-model($padding: 0.7rem);
+          text-decoration: none;
+          color: $secondary-text-color;
+          font-weight: 600;
+
+          &:hover,
+          &.active {
+            color: $secondary-color;
+            text-decoration: underline;
+            font-weight: 800;
+          }
+        }
+
+        .tools {
+          @include box-model($padding: 30px);
+          @include flex-container($justify: space-evenly, $gap: 50px);
+
+          .language {
+            @include box-model($padding: 0 0 0 15px);
+            cursor: pointer;
+            font-weight: 500;
+
+            &:hover {
+              color: $secondary-color;
+            }
+          }
+          .currency {
+            @include flex-container($align: center);
+            cursor: pointer;
+            transform: scale(1.3);
+            &:hover {
+              color: $secondary-color;
+            }
+          }
         }
       }
 

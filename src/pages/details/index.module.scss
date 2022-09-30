@@ -1,0 +1,155 @@
+@import "../../styles/_mixins.scss";
+@import "../../styles/_variables.scss";
+
+.Main {
+  @include flex-container(column);
+  @include box-model($padding: 45px);
+  
+  .content {
+    @include flex-container($justify: space-between, $gap: 20px);
+    border-bottom: 1px solid $secondary-color;
+    
+    .left {
+      @include box-model($width: 60%);
+      @include flex-container($direction: column, $justify: center, $align: flex-start);
+      text-align: start;
+      
+      .titlePrice {
+        @include flex-container($justify: space-between);
+     
+      .title {
+        @include form-text(
+          $font-size: 4rem,
+          $font-weight: 800,
+          $letter-spacing: 1px,$line-height: 4rem
+        );
+        color: $secondary-text-color;
+        
+      }
+      .priceInfo {
+        
+        .price {
+          @include flex-container($justify: center,
+            $align: center, $gap: 8px);
+          @include form-text($font-weight: 600, $font-size: 0.9rem);
+          @include box-model($padding: 30px 0 0 0);
+          border-bottom: 1px solid $secondary-color;
+
+          span {
+            @include form-text($font-size: 1.2rem, $font-weight: 700);
+          }
+        }
+        }
+      }
+
+      .buttons {
+        @include box-model($padding: 20px 0 0 0, $width: 100%);
+        border-bottom: 1px solid $secondary-color;
+
+        .active {
+          @include button-element($padding: 10px,
+          $border: 1px solid $secondary-color,
+          $border-radius: 8px 8px 0 0,
+          $font-weight: bold,
+          $text-transform: none);
+          background-color: $secondary-color;
+          color: $quinary-text-color;
+        }
+
+        .inactive {
+          @include button-element($padding: 10px,
+          $border: 1px solid $secondary-color,
+          $border-radius: 8px 8px 0 0,
+          $font-weight: bold,
+          $text-transform: none);
+          background-color: $quinary-color;
+          color: $secondary-text-color;
+        }
+        
+
+      }
+
+      .info {
+        @include box-model($padding: 0 0 20px 0);
+
+        .textInfo {
+          @include box-model($padding: 20px 0);
+          text-align: justify;
+        }
+
+        .boxInfo {
+          @include form-text($font-weight: 600);
+          
+
+          span {
+            color: $secondary-text-color;
+          }
+          .boxInfoGrid {
+          display: grid;
+          grid: 50px 50px / repeat(2, 1fr);  
+          }
+          
+        }
+        
+      }
+    }
+
+    .right {
+      img {
+        @include box-model($height: 80%);
+        max-width: 100%;
+        object-fit: cover;
+      };
+
+      .included {
+        @include flex-container($direction: column, $justify: center, $align: flex-start, $gap: 10px);
+        @include box-model($height: 20%,
+        $padding: 10px);
+        text-align: start;
+      }
+    }
+  }
+
+  .date {
+    @include box-model($padding: 20px 0);
+    text-align: start;
+    border-bottom: 1px solid $secondary-color;
+
+    .datePicker {
+      @include flex-container($gap: 35px);
+      @include box-model($padding: 10px 0 0 10px);
+      
+
+      input {
+        @include form-text($font-size: 1.1rem);
+        @include box-model($width: 220px);
+        @include border($border: none,
+        $radius: 6px);
+        color: $primary-text-color;
+        box-shadow: $box-shadow;
+      }
+
+      button {
+        @include button-element(
+          $height: 50px,
+          $width: 220px,
+          $border-radius: 10px
+        );
+        @include form-text(
+          $font-weight: 600
+        );
+        background-color: $secondary-color;
+        color: $quinary-color;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  .suggestions {
+    @include box-model($padding: 20px 0);
+    text-align: start;
+  }
+}

@@ -6,15 +6,22 @@ export function Details() {
     <div className={styles.Main}>
       <div className={styles.content}>
         <section className={styles.left}>
-          <span className={styles.title}>
-            Kyoto Arashiyama insider walking tour
-          </span>
-          <div className={styles.priceInfo}>
-            <p className={styles.price}>
-              from: <span> €66.35</span>
-            </p>
-            <hr />
+          <div className={styles.titlePrice}>
+            <h1 className={styles.title}>
+              Kyoto Arashiyama insider walking tour
+            </h1>
+            <div className={styles.priceInfo}>
+              <p className={styles.price}>
+                from: <span> €66.35</span>
+              </p>
+            </div>
           </div>
+
+          <div className={styles.buttons}>
+            <button className={styles.active}>info</button>
+            <button className={styles.inactive}>map</button>
+          </div>
+
           <div className={styles.info}>
             <p className={styles.textInfo}>
               Saga-Toriimoto district is a national preservation district where
@@ -30,18 +37,21 @@ export function Details() {
               Kyoto-style lunch!
             </p>
             <div className={styles.boxInfo}>
-              <p className={styles.cancellation}>Free cancellation</p>
-              <p className={styles.duration}>
-                Duration:<span>4 hours</span>
-              </p>
-              <p className={styles.availability}>
-                Availability:<span>daily</span>
-              </p>
-              <p className={styles.lang}>
-                Language:<span>English,Japanese</span>
-              </p>
+              <div className={styles.boxInfoGrid}>
+                <span className={styles.cancellation}>Free cancellation</span>
+                <p className={styles.duration}>
+                  Duration: <span>4 hours</span>
+                </p>
+                <p className={styles.availability}>
+                  Availability: <span>daily</span>
+                </p>
+                <p className={styles.lang}>
+                  Language: <span>English, Japanese</span>
+                </p>
+              </div>
               <p className={styles.fee}>
                 Booking fee:
+                <br />
                 <span>
                   Good news! No extra fees are applied to this booking
                 </span>
@@ -51,7 +61,7 @@ export function Details() {
         </section>
 
         <section className={styles.right}>
-          <img src="https://picsum.photos/200/300" alt="image" />
+          <img src="https://picsum.photos/600/300" alt="image" />
           <div className={styles.included}>
             <h3>What's included</h3>
             <p>
@@ -62,18 +72,14 @@ export function Details() {
         </section>
       </div>
 
-      <hr />
-
       <div className={styles.date}>
         <h3>Availability and prices</h3>
         <p>Select a date to see the tickets available</p>
         <div className={styles.datePicker}>
-          <input type="date"></input>
+          <input type="date" name="date"></input>
           <button>Check availability</button>
         </div>
       </div>
-
-      <hr />
 
       <div className={styles.suggestions}>
         <h3>You might also like</h3>
