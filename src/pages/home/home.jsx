@@ -31,7 +31,13 @@ export function Home() {
   const pagination = {
     clickable: true,
     renderBullet: function (index, className) {
-      return '<span style="background-image: url(' + listsData.home[index]?.cover_image_url + ') !important " class="' + className + '"></span>';
+      return (
+        '<span style="background-image: url(' +
+        listsData.home[index]?.cover_image_url +
+        ') !important " class="' +
+        className +
+        '"></span>'
+      );
     },
   };
 
@@ -48,7 +54,10 @@ export function Home() {
         </div>
         <div className={styles.desc_wrapper}>
           <p className={styles.description}>
-            {listsData.home[descrIndex]?.meta_description}
+            {/* {listsData.home[descrIndex]?.meta_description} */}
+            {lang.toggle
+              ? "Presentazione genrica in Italiano. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores magnam non totam odio unde ipsum dolore deleniti fugit, tenetur voluptates? Sed alias vitae abaccusamus autem, laborum cum quibusdam."
+              : "Presentazione genrica in Inglese. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores magnam non totam odio unde ipsum dolore deleniti fugit, tenetur voluptates? Sed alias vitae abaccusamus autem, laborum cum quibusdam."}
           </p>
           <button className={styles.explore_btn}>
             <Link to="/explore" title="Navigate to Explore tab">
@@ -59,6 +68,7 @@ export function Home() {
       </section>
       <section className={styles.right}>
         <Swiper
+          className={styles.swiper}
           onSlideChange={(swiper) => setDescrIndex(swiper.activeIndex)}
           initialSlide={0}
           slidesPerView={1}
