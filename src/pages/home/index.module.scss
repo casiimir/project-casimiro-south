@@ -4,33 +4,32 @@
 .Main {
   @include flex-container($justify: space-evenly, $align: center);
   @include box-model($height: calc(100vh - 170px));
-  padding: 30px;
-
+  padding: 20px;
+  height: 100%;
   .left {
-    @include flex-container(
-      $direction: column,
-      $justify: space-evenly,
-    );
-    @include box-model($width: 40%, $height: 100%);
+    @include flex-container($direction: column, $gap: 50px);
+    @include box-model($height: 100%);
 
     .title_wrapper {
-      @include flex-container($direction: column, $gap: 30px);
+      @include flex-container($direction: column, $gap: 20px);
 
       .title {
         @include form-text(
-          $font-size: 9rem,
+          $font-size: 6rem,
           $font-weight: 700,
           $letter-spacing: 1px,
           $text-transform: uppercase
         );
-
-        @include box-model($width: 40%);
+        text-align: start;
         color: $secondary-text-color;
         line-height: 80%;
-  
+        height: auto;
+        width: 400px;
+
+
         &::before {
           @include form-text(
-            $font-size: 6rem,
+            $font-size: 4rem,
             $font-weight: 500,
             $letter-spacing: 2px
           );
@@ -40,13 +39,13 @@
       }
 
       .experience {
-        @include box-model($width: 50%);
+        @include box-model($width: 600px);
         @include form-text(
-          $font-size: 4rem,
+          $font-size: 3rem,
           $font-weight: 700,
           $letter-spacing: 15px
         );
-
+        box-sizing: border-box;
         text-align: start;
         line-height: 100%;
         color: $primary-text-color;
@@ -54,17 +53,17 @@
     }
 
     .desc_wrapper {
-      @include flex-container($direction: column, $gap:150px);
+      @include flex-container($direction: column);
 
       .description {
-        @include box-model($height: 70px);
-        @include form-text($font-size: 2rem, $font-weight: 400);
-        // overflow: scroll;
+        @include form-text($font-size: 1.5rem, $font-weight: 400);
         color: $primary-text-color;
         text-align: start;
         line-height: 1.7rem;
+        height: 200px;
+        width: 650px;
       }
-  
+
       .explore_btn {
         @include button-element(
           $height: 72px,
@@ -77,15 +76,15 @@
           $text-transform: uppercase
         );
         @include element-position($position: relative);
-        flex: 0 0 auto;
+
         background-color: #b32124;
-  
+
         &:hover {
           transform: scale(1.1);
         }
-  
+
         a {
-          @include box-model($padding: 25px);
+          @include box-model($padding: 28px);
           @include element-position(
             $position: absolute,
             $top: 0,
@@ -105,16 +104,118 @@
 
     .carousel {
       @include box-model($width: 100%);
-      // @include border($radius: 50px);
 
       img {
         width: 100%;
         min-height: 700px;
+
         object-fit: cover;
         // border-radius: 50px;
         box-shadow: $box-shadow;
       }
     }
   }
-  
+}
+
+@media only screen and (max-width: 1235px) {
+  .Main {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    gap: 70px;
+
+    .left {
+      width: 90%;
+    }
+
+    .right {
+      width: 90%;
+      min-height: 700px;
+    }
+    
+  }
+}
+
+@media only screen and (max-width: 710px) {
+
+  .left {
+    .title {
+      font-size: 4.8rem !important;
+      &::before {
+        font-size: 2.6rem !important;
+      }
+    }
+
+    .experience {
+      font-size: 2.6rem !important;
+    }
+  }
+  .description {
+    font-size: 1.35rem !important;
+    width: 570px !important;
+  }
+}
+
+@media only screen and (max-width: 655px) {
+  .left {
+    .title {
+      font-size: 4.3rem !important;
+      &::before {
+        font-size: 2.4rem !important;
+      }
+    }
+
+    .experience {
+      font-size: 2.2rem !important;
+      width: 400px !important;
+    }
+  }
+  .description {
+    font-size: 1.24rem !important;
+    width: 500px !important;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .left {
+    .title {
+      font-size: 3.8rem !important;
+      &::before {
+        font-size: 2.2rem !important;
+      }
+    }
+
+    .experience {
+      font-size: 2rem !important;
+      width: 300px !important;
+      
+    }
+  }
+  .description {
+    font-size: 1rem !important;
+    width: 420px !important;
+  }
+}
+
+@media only screen and (max-width: 478px) {
+  .left {
+    .title {
+      width: 200px !important;
+      font-size: 3.8rem !important;
+      &::before {
+        font-size: 2.2rem !important;
+      }
+    }
+
+    .experience {
+      font-size: 1.75rem !important;
+      letter-spacing: 10px !important;
+      width: 200px !important;
+      
+    }
+  }
+  .description {
+    font-size: 1rem !important;
+    width: 330px !important;
+  }
 }
