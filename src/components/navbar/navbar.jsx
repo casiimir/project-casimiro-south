@@ -25,61 +25,131 @@ export function Navbar() {
 
   return (
     <>
-      <nav className={styles.Main}>
+      <div className={styles.desktop}>
+        <nav className={styles.Main}>
+          <NavLink
+            to="/"
+            title="Navigate to Home tab"
+            className={styles.link}
+            end
+          >
+            <img src={Logo} className={styles.logo} />
+          </NavLink>
+
+          <span className={styles.links}>
+            <NavLink
+              to="/explore"
+              title="Navigate to Explore tab"
+              className={({ isActive }) =>
+                isActive ? `${styles.link} ${styles.active}` : styles.link
+              }
+              end
+            >
+              Explore
+            </NavLink>
+            <NavLink
+              to="/cities"
+              title="Navigate to Cities tab"
+              className={({ isActive }) =>
+                isActive ? `${styles.link} ${styles.active}` : styles.link
+              }
+              end
+            >
+              Cities
+            </NavLink>
+            <NavLink
+              to="/about"
+              title="Navigate to About Us tab"
+              className={({ isActive }) =>
+                isActive ? `${styles.link} ${styles.active}` : styles.link
+              }
+              end
+            >
+              About Us
+            </NavLink>
+          </span>
+          <span className={styles.tools}>
+            <span className={styles.ui}>
+              <AiOutlineSearch />
+              <AiOutlineUser />
+              <AiOutlineShoppingCart />
+            </span>
+            <span className={styles.language} onClick={handleChangeLang}>
+              {lang.toggle ? "ITA" : "ENG"}
+            </span>
+            <span className={styles.currency} onClick={handleChangeCurr}>
+              {currency.toggle ? <AiOutlineEuro /> : <AiOutlineDollar />}
+            </span>
+          </span>
+        </nav>
+      </div>
+
+      <div className={styles.mobile}>
         <NavLink
           to="/"
-          title="Navigate to Explore tab"
+          title="Navigate to Home tab"
           className={styles.link}
           end
         >
           <img src={Logo} className={styles.logo} />
         </NavLink>
-        <span className={styles.links}>
-          <NavLink
-            to="/explore"
-            title="Navigate to Explore tab"
-            className={({ isActive }) =>
-              isActive ? `${styles.link} ${styles.active}` : styles.link
-            }
-            end
-          >
-            Explore
-          </NavLink>
-          <NavLink
-            to="/deals"
-            title="Navigate to Special Deals tab"
-            className={({ isActive }) =>
-              isActive ? `${styles.link} ${styles.active}` : styles.link
-            }
-            end
-          >
-            Special Deals
-          </NavLink>
-          <NavLink
-            to="/about"
-            title="Navigate to About Us tab"
-            className={({ isActive }) =>
-              isActive ? `${styles.link} ${styles.active}` : styles.link
-            }
-            end
-          >
-            About Us
-          </NavLink>
-        </span>
-        <span className={styles.tools}>
-          <span className={styles.ui}>
-            <AiOutlineSearch />
-            <AiOutlineUser />
-            <AiOutlineShoppingCart />
-          </span>
-          <span className={styles.language} onClick={handleChangeLang}>
-            {lang.toggle ? "ITA" : "ENG"}
-          </span>
-          <span className={styles.currency} onClick={handleChangeCurr}>
-            {currency.toggle ? <AiOutlineEuro /> : <AiOutlineDollar />}
-          </span>
-        </span>
-      </nav>
+        <div className={styles.container}>
+          <input className={styles.checkbox} type="checkbox" />
+          <div className={styles.hamburger_lines}>
+            <span className={styles.line1}></span>
+            <span className={styles.line2}></span>
+            <span className={styles.line3}></span>
+          </div>
+          <div className={styles.menu_items}>
+            <NavLink
+              to="/"
+              title="Navigate to Home tab"
+              className={styles.link}
+              end
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to="/explore"
+              title="Navigate to Explore tab"
+              className={({ isActive }) =>
+                isActive ? `${styles.link} ${styles.active}` : styles.link
+              }
+              end
+            >
+              Explore
+            </NavLink>
+            <NavLink
+              to="/cities"
+              title="Navigate to Cities tab"
+              className={({ isActive }) =>
+                isActive ? `${styles.link} ${styles.active}` : styles.link
+              }
+              end
+            >
+              Cities
+            </NavLink>
+            <NavLink
+              to="/about"
+              title="Navigate to About Us tab"
+              className={({ isActive }) =>
+                isActive ? `${styles.link} ${styles.active}` : styles.link
+              }
+              end
+            >
+              About Us
+            </NavLink>
+            <span className={styles.tools}>
+              <span className={styles.language} onClick={handleChangeLang}>
+                {lang.toggle ? "ITA" : "ENG"}
+              </span>
+              <span className={styles.currency} onClick={handleChangeCurr}>
+                {currency.toggle ? <AiOutlineEuro /> : <AiOutlineDollar />}
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

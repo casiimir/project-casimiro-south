@@ -1,75 +1,246 @@
 @import "../../styles/_mixins";
 @import "../../styles/_variables";
-
-.Main {
-  @include box-model($padding: 0 50px, $width: 100%, $height: 70px);
-  @include flex-container($justify: space-between, $align: center, $gap: 20px);
-  border-bottom: 2px solid $secondary-color;
-  background-color: $tertiary-color;
-
-  .link {
-    .logo {
-      @include box-model($width: 250px);
-      @include flex-container($align: center);
-
-      &:hover {
-        transform: scale(1.05);
-      }
-    }
-  }
-
-  .links {
-    @include box-model();
+.desktop {
+  .Main {
+    @include box-model($padding: 0 50px, $width: 100%, $height: 70px);
+    @include flex-container(
+      $justify: space-between,
+      $align: center,
+      $gap: 20px
+    );
+    border-bottom: 2px solid $secondary-color;
+    background-color: $tertiary-color;
 
     .link {
-      @include box-model($padding: 0 10px);
-      text-decoration: none;
-      color: $primary-text-color;
+      .logo {
+        @include box-model($width: 250px);
+        @include flex-container($align: center);
 
-      &:hover,
-      &.active {
-        color: $secondary-color;
-        text-decoration: underline;
-        font-weight: 500;
+        &:hover {
+          transform: scale(1.05);
+        }
       }
     }
-  }
 
-  .tools {
-    @include box-model();
-    @include flex-container($align: center, $gap: 15px);
+    .links {
+      @include box-model();
 
-    & svg {
-      transform: scale(1.5);
+      .link {
+        @include box-model($padding: 0 10px);
+        text-decoration: none;
+        color: $primary-text-color;
+
+        &:hover,
+        &.active {
+          color: $secondary-color;
+          text-decoration: underline;
+          font-weight: 500;
+        }
+      }
     }
 
-    .ui {
-      @include flex-container($align: center, $gap: 30px);
+    .tools {
+      @include box-model();
+      @include flex-container($align: center, $gap: 15px);
 
-      svg {
+      & svg {
+        transform: scale(1.5);
+      }
+
+      .ui {
+        @include flex-container($align: center, $gap: 30px);
+
+        svg {
+          cursor: pointer;
+
+          &:hover {
+            color: $secondary-color;
+          }
+        }
+      }
+
+      .language {
+        @include box-model($padding: 0 0 0 15px);
         cursor: pointer;
+        font-weight: 500;
 
         &:hover {
           color: $secondary-color;
         }
       }
-    }
-
-    .language {
-      @include box-model($padding: 0 0 0 15px);
-      cursor: pointer;
-      font-weight: 500;
-
-      &:hover {
-        color: $secondary-color;
+      .currency {
+        @include flex-container($align: center);
+        transform: scale(0.75);
+        cursor: pointer;
+        &:hover {
+          color: $secondary-color;
+        }
       }
     }
-    .currency {
-      @include flex-container($align: center);
-      transform: scale(0.75);
-      cursor: pointer;
-      &:hover {
-        color: $secondary-color;
+  }
+}
+
+.mobile {
+  display: none;
+}
+
+@media only screen and (max-width: 903px) {
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    @include box-model($padding: 0 50px, $width: 100%, $height: 70px);
+    @include flex-container($justify: flex-end, $align: center, $gap: 20px);
+    border-bottom: 2px solid $secondary-color;
+    background-color: $tertiary-color;
+
+    .link {
+      .logo {
+        @include box-model($width: 200px, $height: 70px);
+        padding-right: 30px;
+      }
+    }
+
+    .container {
+      @include flex-container($justify: space-between, $align: center);
+      height: 62px;
+
+      .checkbox {
+        @include element-position(
+          $position: absolute,
+          $top: 0,
+          $left: 0,
+          $right: 0,
+          $z-index: 5
+        );
+        @include box-model($height: 47px, $width: 55px);
+        display: block;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      li {
+        list-style: none;
+      }
+
+      // a {
+      //   text-decoration: none;
+      //   color: $secondary-color;
+      //   font-weight: 500;
+      //   font-size: 1.2rem;
+      //   padding: 0.7rem;
+      //   &:hover {
+      //     font-weight: bolder;
+      //   }
+      // }
+
+      .hamburger_lines {
+        @include box-model($height: 26px, $width: 32px);
+        @include element-position(
+          $position: absolute,
+          $top: 17px,
+          $left: 20px,
+          $z-index: 2
+        );
+        @include flex-container($direction: column, $justify: space-between);
+
+        .line1,
+        .line2,
+        .line3 {
+          @include box-model($height: 4px, $width: 100%);
+          display: block;
+          border-radius: 10px;
+          background: $secondary-color;
+        }
+
+        .line1 {
+          transform-origin: 0% 0%;
+          transition: transform 0.4s ease-in-out;
+        }
+
+        .line2 {
+          transition: transform 0.2s ease-in-out;
+        }
+
+        .line3 {
+          transform-origin: 0% 100%;
+          transition: transform 0.4s ease-in-out;
+        }
+      }
+
+      .menu_items {
+        @include flex-container($direction: column, $gap: 15px);
+        @include element-position(
+          $position: fixed,
+          $top: 0,
+          $left: 0,
+          $z-index: 1
+        );
+        @include box-model($width: 65vw, $height: 425px);
+        padding-top: 50px;
+        padding-bottom: 25px;
+        background-color: rgba($tertiary-color, 0.9);
+        transform: translate(-150%);
+        margin-left: -40px;
+        padding-left: 50px;
+        transition: transform 0.5s ease-in-out;
+        text-align: center;
+
+        .link {
+          @include box-model($padding: 0.7rem);
+          text-decoration: none;
+          color: $secondary-text-color;
+          font-weight: 600;
+
+          &:hover,
+          &.active {
+            color: $secondary-color;
+            text-decoration: underline;
+            font-weight: 800;
+          }
+        }
+
+        .tools {
+          @include box-model($padding: 30px);
+          @include flex-container($justify: space-evenly, $gap: 50px);
+
+          .language {
+            @include box-model($padding: 0 0 0 15px);
+            cursor: pointer;
+            font-weight: 500;
+
+            &:hover {
+              color: $secondary-color;
+            }
+          }
+          .currency {
+            @include flex-container($align: center);
+            cursor: pointer;
+            transform: scale(1.3);
+            &:hover {
+              color: $secondary-color;
+            }
+          }
+        }
+      }
+
+      input {
+        &[type="checkbox"]:checked ~ .menu_items {
+          transform: translateX(0);
+        }
+
+        &[type="checkbox"]:checked ~ .hamburger_lines .line1 {
+          transform: rotate(45deg);
+        }
+
+        &[type="checkbox"]:checked ~ .hamburger_lines .line2 {
+          transform: scaleY(0);
+        }
+
+        &[type="checkbox"]:checked ~ .hamburger_lines .line3 {
+          transform: rotate(-45deg);
+        }
       }
     }
   }

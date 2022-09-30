@@ -1,0 +1,14 @@
+@import "../../styles/_mixins";
+@import "../../styles/_variables";
+
+.Main {
+  @include box-model($padding: 2rem);
+  .wrapper {
+    @include flex-container(
+      $wrap: wrap,
+      $justify: center,
+      $align: center,
+      $gap: 2rem
+    );
+  }
+}

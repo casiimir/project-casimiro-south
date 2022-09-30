@@ -1,0 +1,16 @@
+@import "../../styles/_mixins";
+@import "../../styles/_variables";
+
+.Main {
+  @include box-model($width: 100vw,$padding: 18rem 3rem 3rem 3rem,);
+  @include flex-container(
+    $direction: column,
+    $justify: space-between,
+    $align: center
+  );
+  min-height: 100vh;
+
+  .citiesList {
+    @include box-model();
+  }
+}
