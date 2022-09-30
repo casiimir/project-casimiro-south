@@ -45,7 +45,7 @@ export function Navbar() {
               }
               end
             >
-              Explore
+              {lang.toggle ? "Esplora" : "Explore"}
             </NavLink>
             <NavLink
               to="/cities"
@@ -55,7 +55,7 @@ export function Navbar() {
               }
               end
             >
-              Cities
+              {lang.toggle ? "Città" : "Cities"}
             </NavLink>
             <NavLink
               to="/about"
@@ -65,7 +65,7 @@ export function Navbar() {
               }
               end
             >
-              About Us
+              {lang.toggle ? "Chi Siamo" : "About Us"}
             </NavLink>
           </span>
           <span className={styles.tools}>
@@ -117,7 +117,7 @@ export function Navbar() {
               }
               end
             >
-              Explore
+              <span>{lang.toggle ? "Esplora" : "Explore"}</span>
             </NavLink>
             <NavLink
               to="/cities"
@@ -127,7 +127,7 @@ export function Navbar() {
               }
               end
             >
-              Cities
+              {lang.toggle ? "Città" : "Cities"}
             </NavLink>
             <NavLink
               to="/about"
@@ -137,7 +137,7 @@ export function Navbar() {
               }
               end
             >
-              About Us
+              {lang.toggle ? "Chi Siamo" : "About Us"}
             </NavLink>
             <span className={styles.tools}>
               <span className={styles.language} onClick={handleChangeLang}>

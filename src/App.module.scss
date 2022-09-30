@@ -3,7 +3,7 @@
 
 .Main {
   @include flex-container($direction: column, $justify: space-between);
-  @include box-model($width: 100vw);
+  @include box-model($width: 100vw, $padding: 70px 0 0 0);
   font-family: "Montserrat", sans-serif;
   text-align: center;
   background-color: $quinary-color;

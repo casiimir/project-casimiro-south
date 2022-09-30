@@ -10,7 +10,10 @@ export function Cities() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <CardList />
+      <div className={styles.CardList}>
+        <CardList />
+      </div>
     </div>
   );
 }
+
