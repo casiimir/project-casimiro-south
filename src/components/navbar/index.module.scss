@@ -3,15 +3,13 @@
 .desktop {
   .Main {
     @include box-model($padding: 0 50px, $width: 100%, $height: 70px);
-    @include element-position($position: fixed, $top: 0px);
+    @include element-position($position: fixed, $top: 0px, $z-index: 1);
     @include flex-container(
       $justify: space-between,
       $align: center,
       $gap: 20px
     );
-    // border-bottom: 2px solid $secondary-color;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
-
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
     background-color: $tertiary-color;
 
     .link {
@@ -93,9 +91,10 @@
   }
 
   .mobile {
+    @include element-position($position: fixed, $top: 0px, $z-index: 1);
     @include box-model($padding: 0 50px, $width: 100%, $height: 70px);
     @include flex-container($justify: flex-end, $align: center, $gap: 20px);
-    border-bottom: 2px solid $secondary-color;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
     background-color: $tertiary-color;
 
     .link {
@@ -144,7 +143,7 @@
           $position: absolute,
           $top: 17px,
           $left: 20px,
-          $z-index: 2
+          $z-index: 3
         );
         @include flex-container($direction: column, $justify: space-between);
 
@@ -178,7 +177,7 @@
           $position: fixed,
           $top: 0,
           $left: 0,
-          $z-index: 1
+          $z-index: 2
         );
         @include box-model($width: 65vw, $height: 425px);
         padding-top: 50px;

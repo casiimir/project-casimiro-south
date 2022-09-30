@@ -2,7 +2,7 @@
 @import "../../styles/_variables";
 
 .Main {
-  @include box-model($width: 100vw, $padding: 18rem 3rem 3rem 3rem);
+  @include box-model($width: 100vw, $padding: 3rem 3rem 3rem 3rem);
   @include flex-container(
     $direction: column,
     $justify: space-between,
@@ -10,12 +10,17 @@
   );
   min-height: 100vh;
 
-  .CardList {
-    width: 80%;
-    background-color: $quinary-color;
-    padding-top: 1rem;
-  }
-  .citiesList {
-    @include box-model();
+  .hero {
+    @include box-model($width: 100%);
+    @include flex-container($justify: space-between);
+    color: ghostwhite;
+    text-shadow: $box-shadow;
+
+    .headline {
+      font-size: 5rem;
+    }
+    .name {
+      font-size: 8rem;
+    }
   }
 }
