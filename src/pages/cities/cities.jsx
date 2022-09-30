@@ -1,5 +1,7 @@
 import { ENDPOINTS } from "../../utils/api/endpoints";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from 'react';
+import MainCard from '../../components/MainCard';
 
 import styles from "./index.module.scss";
 

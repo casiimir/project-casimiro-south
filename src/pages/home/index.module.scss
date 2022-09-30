@@ -154,6 +154,16 @@
     font-size: 1.35rem !important;
     width: 570px !important;
   }
+
+  .right {
+    min-height: 500px !important;
+    .carousel {
+
+      img {
+        min-height: 500px !important;
+      }
+    }
+  }
 }
 
 @media only screen and (max-width: 655px) {
@@ -195,6 +205,16 @@
     font-size: 1rem !important;
     width: 420px !important;
   }
+
+  .right {
+    min-height: 400px !important;
+    .carousel {
+
+      img {
+        min-height: 400px !important;
+      }
+    }
+  }
 }
 
 @media only screen and (max-width: 478px) {
@@ -217,5 +237,15 @@
   .description {
     font-size: 1rem !important;
     width: 330px !important;
+  }
+
+  .right {
+    min-height: 350px !important;
+    .carousel {
+
+      img {
+        min-height: 350px !important;
+      }
+    }
   }
 }
