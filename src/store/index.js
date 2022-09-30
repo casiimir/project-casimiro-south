@@ -3,7 +3,7 @@ import { combineReducers, createStore } from "redux";
 const init = {
   lang: { toggle: false, value: "en-US" },
   currency: { toggle: false, value: "USD" },
-  listsData: { home: [], expCity: [], expFD: [], expFolk: [], expNew: [] },
+  listsData: { home: [], expCity: [], expFD: [], expFolk: [], expNew: [] }
 };
 
 function langReducer(state = {}, action) {
@@ -67,7 +67,7 @@ function listsReducer(state = {}, action) {
 const rootReducers = combineReducers({
   lang: langReducer,
   currency: currencyReducer,
-  listsData: listsReducer,
+  listsData: listsReducer
 });
 
 const store = createStore(rootReducers, init);

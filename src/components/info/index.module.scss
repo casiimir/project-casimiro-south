@@ -1,0 +1,29 @@
+@import "../../styles/_mixins.scss";
+@import "../../styles/_variables.scss";
+
+.Main{
+  .info {
+        @include box-model($padding: 0 0 20px 0, );
+
+
+        .textInfo {
+          @include box-model($padding: 20px 0);
+          text-align: justify;
+        }
+
+        .boxInfo {
+          @include form-text($font-weight: 600);
+          
+
+          span {
+            color: $secondary-text-color;
+          }
+          .boxInfoGrid {
+          display: grid;
+          grid: 50px 50px / repeat(2, 1fr);  
+          }
+          
+        }
+        
+      }
+}
