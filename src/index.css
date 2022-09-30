@@ -38,17 +38,24 @@
 
 .swiper-button-prev,
 .swiper-button-next {
+  opacity: 1 !important;
   height: auto !important;
   top: 0 !important;
   bottom: 0 !important;
   background-color: ghostwhite !important;
+  width: 40px !important;
 }
+
 .swiper-button-prev {
   left: 0 !important;
 }
 
 .swiper-button-next {
   right: 0 !important;
+}
+
+.swiper-button-disabled {
+  opacity: 0 !important;
 }
 
 body {

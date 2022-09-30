@@ -79,13 +79,13 @@ export function Explore() {
           slidesPerView={"auto"}
           spaceBetween={20}
           grabCursor={true}
-          modules={[Navigation, FreeMode]}
-          navigation={true}
+          modules={[Scrollbar, FreeMode]}
+          scrollbar={true}
           freeMode={true}
         >
-          {expCity?.map((_, i) => (
+          {expCity?.map((el, i) => (
             <SwiperSlide style={{ width: "auto", height: "auto" }} key={i}>
-              <MainCard />
+              <MainCard data={el} />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -101,13 +101,13 @@ export function Explore() {
           slidesPerView={"auto"}
           spaceBetween={20}
           grabCursor={true}
-          modules={[Navigation, FreeMode]}
-          navigation={true}
+          modules={[Scrollbar, FreeMode]}
+          scrollbar={true}
           freeMode={true}
         >
-          {expFD?.map((_, i) => (
+          {expFD?.map((el, i) => (
             <SwiperSlide style={{ width: "auto", height: "auto" }} key={i}>
-              <MainCard />
+              <MainCard data={el} />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -123,13 +123,13 @@ export function Explore() {
           slidesPerView={"auto"}
           spaceBetween={20}
           grabCursor={true}
-          modules={[Navigation, FreeMode]}
-          navigation={true}
+          modules={[Scrollbar, FreeMode]}
+          scrollbar={true}
           freeMode={true}
         >
-          {expFolk?.map((_, i) => (
+          {expFolk?.map((el, i) => (
             <SwiperSlide style={{ width: "auto", height: "auto" }} key={i}>
-              <MainCard />
+              <MainCard data={el} />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -145,13 +145,13 @@ export function Explore() {
           slidesPerView={"auto"}
           spaceBetween={20}
           grabCursor={true}
-          modules={[Navigation, FreeMode]}
-          navigation={true}
+          modules={[Scrollbar, FreeMode]}
+          scrollbar={true}
           freeMode={true}
         >
-          {expNew?.map((_, i) => (
+          {expNew?.map((el, i) => (
             <SwiperSlide style={{ width: "auto", height: "auto" }} key={i}>
-              <MainCard />
+              <MainCard data={el} />
             </SwiperSlide>
           ))}
         </Swiper>
