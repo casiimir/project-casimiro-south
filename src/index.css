@@ -36,6 +36,21 @@
   opacity: 1 !important;
 }
 
+.swiper-button-prev,
+.swiper-button-next {
+  height: auto !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  background-color: ghostwhite !important;
+}
+.swiper-button-prev {
+  left: 0 !important;
+}
+
+.swiper-button-next {
+  right: 0 !important;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Montserrat",
     "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
