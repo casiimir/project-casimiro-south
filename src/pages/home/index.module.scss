@@ -105,13 +105,13 @@
 
     .carousel {
       @include box-model($width: 100%);
-      @include border($radius: 50px);
+      // @include border($radius: 50px);
 
       img {
         width: 100%;
         min-height: 700px;
         object-fit: cover;
-        border-radius: 50px;
+        // border-radius: 50px;
         box-shadow: $box-shadow;
       }
     }
