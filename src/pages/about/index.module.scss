@@ -2,4 +2,41 @@
 @import "../../styles/_variables";
 
 .Main {
+  @include flex-container(
+    $direction: column,
+    $justify: center,
+    $align: center,
+    $gap: 50px
+  );
+  @include box-model($width: 100%, $padding: 50px);
+
+  .description {
+    .rectangle {
+      @include box-model($width: 85px, $height: 7px);
+      background-color: $secondary-color;
+    }
+
+    .text {
+      @include flex-container();
+
+      .title {
+        width: 30%;
+        @include form-text($font-size: 1.8rem, $font-weight: bold);
+      }
+
+      .description {
+        width: 70%;
+      }
+
+      span {
+        color: $secondary-text-color;
+      }
+    }
+  }
+
+  .teamMembers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 90px;
+  }
 }
