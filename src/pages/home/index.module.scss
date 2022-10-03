@@ -184,6 +184,15 @@
     font-size: 1.24rem !important;
     width: 500px !important;
   }
+  .explore_btn {
+    @include button-element(
+          $height: 57px !important,
+          $width: 200px !important,
+        );
+        a {
+          padding: 20px !important;
+        }
+  }
 }
 
 @media only screen and (max-width: 550px) {
@@ -218,33 +227,36 @@
 }
 
 @media only screen and (max-width: 478px) {
-  .left {
-    .title {
-      width: 200px !important;
-      font-size: 3.8rem !important;
-      &::before {
-        font-size: 2.2rem !important;
+  .Main {
+    gap: 50px !important;
+    .left {
+      .title {
+        width: 200px !important;
+        font-size: 3.8rem !important;
+        &::before {
+          font-size: 2.2rem !important;
+        }
+      }
+  
+      .experience {
+        font-size: 1.75rem !important;
+        letter-spacing: 10px !important;
+        width: 200px !important;
+        
       }
     }
-
-    .experience {
-      font-size: 1.75rem !important;
-      letter-spacing: 10px !important;
-      width: 200px !important;
-      
+    .description {
+      font-size: 1rem !important;
+      width: 330px !important;
     }
-  }
-  .description {
-    font-size: 1rem !important;
-    width: 330px !important;
-  }
-
-  .right {
-    min-height: 350px !important;
-    .carousel {
-
-      img {
-        min-height: 350px !important;
+  
+    .right {
+      min-height: 350px !important;
+      .carousel {
+  
+        img {
+          min-height: 350px !important;
+        }
       }
     }
   }
