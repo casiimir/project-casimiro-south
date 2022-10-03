@@ -41,6 +41,14 @@ export function Home() {
     },
   };
 
+  const handleSetCityData = (el) => {
+    dispatch({ type: "SET_CITY_ID", payload: el.id });
+    dispatch({ type: "SET_CITY_NAME", payload: el.name });
+    dispatch({ type: "SET_CITY_CONTENT", payload: el.content });
+    dispatch({ type: "SET_CITY_HEADLINE", payload: el.headline });
+    dispatch({ type: "SET_CITY_COVER_IMG", payload: el.cover_image_url });
+  };
+
   return (
     <div className={styles.Main}>
       <section className={styles.left}>
@@ -86,7 +94,11 @@ export function Home() {
           {listsData.home?.map((el, i) => (
             <SwiperSlide key={i}>
               <div className={styles.carousel}>
-                <img src={el.cover_image_url} alt={el.title} />
+                <img
+                  src={el.cover_image_url}
+                  alt={el.title}
+                  onClick={() => handleSetCityData(el)}
+                />
               </div>
             </SwiperSlide>
           ))}
