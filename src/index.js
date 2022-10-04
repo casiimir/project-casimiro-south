@@ -17,6 +17,8 @@ import { Map } from "./components/map";
 import { Login } from "./pages/login";
 import { EmptyCart } from "./pages/emptycart";
 import { NoLoginCart } from "./pages/nologincart";
+import { ThankYou } from "./pages/thankyou/thankyou";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -70,6 +72,7 @@ const router = createBrowserRouter([
 
       { path: 'emptycart', element: <EmptyCart /> },
       { path: 'nologincart', element: <NoLoginCart /> },
+      { path: 'thankyou', element: <ThankYou /> },
     ],
   },
 ]);
