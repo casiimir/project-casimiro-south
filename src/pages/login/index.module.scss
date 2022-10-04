@@ -4,6 +4,7 @@
 .Main {
   @include flex-container();
   @include box-model($width: 100%, $height: 100%);
+  min-height: calc(100vh - 170px);
 
   .left {
     background-color: $tertiary-color;
@@ -26,13 +27,25 @@
         @include form-text($font-size: 0.9rem, $font-weight: 600);
         color: $secondary-text-color;
       }
-      input {
+      .input_box {
+        @include flex-container($justify: space-between, $align: center);
         @include box-model($padding: 0.8rem 1rem, $width: 300px);
         @include border($radius: 1rem);
-        &:focus {
-          outline: none;
+        background-color: ghostwhite;
+
+        input {
+          @include box-model();
+          background-color: ghostwhite;
+          &:focus {
+            outline: none;
+          }
+        }
+
+        svg {
+          @include flex-container($justify: center, $align: center);
         }
       }
+
       button {
         @include button-element(
           $padding: 0.8rem 1rem,
