@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import Particles from "../../components/Particles/Particles";
 import Image from "../../utils/images/JapaneseTorii.png";
 import styles from "./index.module.scss";
 
@@ -12,7 +13,6 @@ export function Login() {
           <label>
             Username
             <input
-              classname={styles.input}
               type="text"
               name="username"
               autofocus=""
@@ -36,6 +36,7 @@ export function Login() {
         </form>
       </div>
       <div className={styles.right}>
+        <Particles />
         <img src={Image} alt="Japanese Torii" />
         <div className={styles.text}>
           <h2>{lang.toggle ? "Benvenutə!" : "Welcome!"}</h2>
