@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 import {
-  AiOutlineSearch,
   AiOutlineUser,
   AiOutlineShoppingCart,
   AiOutlineEuro,
@@ -8,6 +7,7 @@ import {
   AiOutlineMenu,
 } from "react-icons/ai";
 import Logo from "../../utils/images/logos/japventure-logo-32.svg";
+import SearchBar from "../SearchBar/index";
 import styles from "./index.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -70,7 +70,6 @@ export function Navbar() {
           </span>
           <span className={styles.tools}>
             <span className={styles.ui}>
-              <AiOutlineSearch />
               <AiOutlineUser />
               <AiOutlineShoppingCart />
             </span>
