@@ -1,0 +1,63 @@
+@import "../../styles/_mixins";
+@import "../../styles/_variables";
+
+.Main {
+  @include box-model($height: calc(100vh - 170px));
+  @include flex-container(
+    $direction: column,
+    $justify: center,
+    $align: center,
+    $gap: 2rem
+  );
+
+  .message {
+    @include flex-container(column, center, center, nowrap, 2rem);
+    h2 {
+      @include form-text(
+        $font-size: 3rem,
+        $font-weight: bold,
+        $letter-spacing: 0.3rem
+      );
+    }
+    .description {
+      p {
+        @include form-text(
+          $font-size: 0.8rem,
+          $font-weight: normal,
+          $line-height: 1.2rem
+        );
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 748px) {
+  .Main {
+    @include flex-container(column, center, center, nowrap, 3rem);
+    .icon {
+      svg {
+        @include box-model($width: 8rem);
+      }
+    }
+    .message {
+      @include box-model($padding: 1rem);
+
+      h2 {
+        @include form-text(
+          $font-size: 2rem,
+          $font-weight: bold,
+          $letter-spacing: 0.3rem
+        );
+      }
+      .description {
+        p {
+          @include form-text(
+            $font-size: 0.8rem,
+            $font-weight: normal,
+            $line-height: 2rem
+          );
+        }
+      }
+    }
+  }
+}
