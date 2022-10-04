@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./index.module.scss";
 
+
 const MainCard = ({ data }) => {
   const { lang, listsData } = useSelector((state) => state);
   const dispatch = useDispatch();

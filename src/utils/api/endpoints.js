@@ -14,5 +14,9 @@ export const ENDPOINTS = {
     },
     get NEW_ACTIVITIES() {
         return `${this.BASE}countries/84/activities?limit=100&offset=0`
-    }
+    },
+    get ACTIVITY_DETAILS() {
+        return `${this.BASE}activities/`;
+    },
+    
 }
