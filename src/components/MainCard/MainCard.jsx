@@ -1,11 +1,15 @@
 import { memo } from "react";
 import { FiMapPin } from "react-icons/fi";
 import { AiOutlineStar } from "react-icons/ai";
-
-import styles from "./index.module.scss";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import styles from "./index.module.scss";
+
 
 const MainCard = ({ data }) => {
+  const { lang, listsData } = useSelector((state) => state);
+  const dispatch = useDispatch();
+
   const dataPlaceholder = {
     city: { name: "" },
     cover_image_url: "",
@@ -13,12 +17,16 @@ const MainCard = ({ data }) => {
     title: "",
     retail_price: { formatted_value: "" },
   };
-  //   city.name
-  // cover_image_url
-  // title
-  // retail_price.formatted_value
   const { city, cover_image_url, reviews_avg, title, retail_price } =
     data ?? dataPlaceholder;
+
+  const handleBuyBtn = () => {
+    dispatch({ type: "SET_CART_LIST", payload: data });
+    localStorage.setItem(
+      "cart_list",
+      JSON.stringify([...listsData.cartList, data])
+    );
+  };
 
   return (
     <>
@@ -43,13 +51,19 @@ const MainCard = ({ data }) => {
         <p className={styles.text}>{title.toUpperCase()}</p>
         <p className={styles.price}>{retail_price.formatted_value}</p>
         <div className={styles.buttons}>
-          <button className={styles.mainButton}> book now </button>
+          <button
+            disabled={!localStorage.getItem("username") && true}
+            onClick={handleBuyBtn}
+            className={styles.mainButton}
+          >
+            {lang.toggle ? "Acquista" : "Buy now"}
+          </button>
           <Link
             to={`/details/${data.uuid}`}
             title="Navigate to Activity Tab"
             className={styles.viewDetails}
           >
-            view details 
+            {lang.toggle ? "Dettagli" : "View details"}
           </Link>
         </div>
       </div>
@@ -57,4 +71,4 @@ const MainCard = ({ data }) => {
   );
 };
 
-export default memo(MainCard);
+export default MainCard;

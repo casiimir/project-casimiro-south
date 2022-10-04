@@ -2,7 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 import { Home } from "./pages/home";
 import { Explore } from "./pages/explore";
 import { Details } from "./pages/details";
@@ -15,6 +19,7 @@ import { About } from "./pages/about";
 import { Info } from "./components/info";
 import { Map } from "./components/map";
 import { Login } from "./pages/login";
+import { Cart } from "./pages/cart";
 import { EmptyCart } from "./pages/emptycart";
 import { NoLoginCart } from "./pages/nologincart";
 import { ThankYou } from "./pages/thankyou/thankyou";
@@ -67,6 +72,10 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login />,
+      },
+      {
+        path: "cart",
+        element: <Cart />,
       },
       { path: "*", element: <Error status={404} /> },
 

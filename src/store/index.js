@@ -10,7 +10,7 @@ const init = {
     expFolk: [],
     expNew: [],
     cityAct: [],
-    // actDetails: [],
+    cartList: JSON.parse(localStorage.getItem("cart_list")) ?? [],
   },
   cityData: {
     id: 189,
@@ -22,22 +22,8 @@ const init = {
       "https://images.musement.com/cover/0097/13/adobestock-314643692-editorial-use-only-jpeg_header-9612533.jpeg",
   },
   activityData: {
-    objectData: {}
+    objectData: {},
   },
-  // activityData: {
-  //   uuid: "",
-  //   title: "",
-  //   about: "",
-  //   free_cancellation: true,
-  //   duration: "",
-  //   is_available_tomorrow: true,
-  //   languages: [],
-  //   service_fee: [],
-  //   cover_image_url: "",
-  //   description: "",
-  //   retail_price: [],
-  //   // giftable: true,
-  // },
 };
 
 function langReducer(state = {}, action) {
@@ -98,11 +84,18 @@ function listsReducer(state = {}, action) {
         ...state,
         cityAct: action.payload,
       };
-    // case "SET_ACTIVITIES_DETAILS":
-    //   return {
-    //     ...state,
-    //     actDetails: action.payload,
-    //   };
+    case "SET_CART_LIST":
+      return {
+        ...state,
+        cartList: [...new Set([...state.cartList, action.payload])],
+      };
+    case "DEL_CART_ITEM":
+      return {
+        ...state,
+        cartList: [
+          ...state.cartList.filter((el) => el.uuid !== action.payload),
+        ],
+      };
     default:
       return state;
   }
@@ -143,73 +136,13 @@ function activityDataReducer(state = {}, action) {
   switch (action.type) {
     case "SET_ACTIVITY_DATA":
       return {
-        ...state, objectData: action.payload,
+        ...state,
+        objectData: action.payload,
       };
-      default:
+    default:
       return state;
-    }
   }
-// function activityDataReducer(state = {}, action) {
-//   switch (action.type) {
-//     case "SET_ACTIVITY_ID":
-//       return {
-//         ...state,
-//         uuid: action.payload,
-//       };
-//     case "SET_ACTIVITY_TITLE":
-//       return {
-//         ...state,
-//         title: action.payload,
-//       };
-//     case "SET_ACTIVITY_ABOUT":
-//       return {
-//         ...state,
-//         about: action.payload,
-//       };
-//     case "SET_ACTIVITY_CANCELLATION":
-//       return {
-//         ...state,
-//         free_cancellation: action.payload,
-//       };
-//     case "SET_ACTIVITY_DURATION":
-//       return {
-//         ...state,
-//         duration: action.payload,
-//       };
-//     case "SET_ACTIVITY_AVAILABILITY":
-//       return {
-//         ...state,
-//         is_available_tomorrow: action.payload,
-//       };
-//     case "SET_ACTIVITY_LANGUAGE":
-//       return {
-//         ...state,
-//         languages: action.payload,
-//       };
-//     case "SET_ACTIVITY_SERVICE_FEE":
-//       return {
-//         ...state,
-//         service_fee: action.payload,
-//       };
-//     case "SET_ACTIVITY_IMAGE":
-//       return {
-//         ...state,
-//         cover_image_url: action.payload,
-//       };
-//     case "SET_ACTIVITY_DESCRIPTION":
-//       return {
-//         ...state,
-//         description: action.payload,
-//       };
-//     case "SET_ACTIVITY_PRICE":
-//       return {
-//         ...state,
-//         retail_price: action.payload,
-//       };
-//     default:
-//       return state;
-//   }
-// }
+}
 
 const rootReducers = combineReducers({
   lang: langReducer,
