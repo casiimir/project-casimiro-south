@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
+import Particles from "../../components/Particles/Particles";
 import Image from "../../utils/images/JapaneseTorii.png";
 import styles from "./index.module.scss";
 import { useNavigate } from "react-router-dom";
@@ -68,6 +69,7 @@ export function Login() {
         </form>
       </div>
       <div className={styles.right}>
+        <Particles />
         <img src={Image} alt="Japanese Torii" />
         <div className={styles.text}>
           <h2>{lang.toggle ? "Benvenutə!" : "Welcome!"}</h2>

@@ -8,6 +8,7 @@
   // border-top: 2px solid $secondary-color;
   box-shadow: 2px 0px 8px 0 rgba(0, 0, 0, 0.2);
   color: $secondary-text-color;
+  z-index: 999999;
 
   .text {
     @include box-model($width: 40%);
