@@ -4,11 +4,11 @@
 .Main {
   @include box-model($padding: 0 50px, $width: 100%, $height: 100px);
   @include flex-container($justify: space-between, $align: center, $gap: 10px);
+  @include element-position($z-index: 1);
   background-color: $tertiary-color;
   // border-top: 2px solid $secondary-color;
   box-shadow: 2px 0px 8px 0 rgba(0, 0, 0, 0.2);
   color: $secondary-text-color;
-  z-index: 999999;
 
   .text {
     @include box-model($width: 40%);
@@ -47,21 +47,21 @@
   }
 }
 
-@media only screen and (max-width: 680px){
-  .Main{
-    display:flex;
+@media only screen and (max-width: 748px) {
+  .Main {
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: auto;
     padding-bottom: 20px;
-    .social{
+    .social {
       margin-top: 30px;
       margin-bottom: 20px;
       display: flex;
       flex-direction: row;
     }
-    .links{
+    .links {
       padding-left: 0px;
     }
   }

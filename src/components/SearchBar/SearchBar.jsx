@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { ENDPOINTS }from "../../utils/api/endpoints";
+import { ENDPOINTS } from "../../utils/api/endpoints";
 import {
   AiOutlineClose,
   AiOutlineSearch,

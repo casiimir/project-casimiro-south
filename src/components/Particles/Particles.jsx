@@ -1,20 +1,15 @@
-import styles from './index.module.scss'
+import styles from "./index.module.scss";
 
-const Particles = () =>  {
-    
-       return (
-          <div className={styles.wrap}>
-             {Array.apply(null, Array(500)).map(function(item, i) {
-                return (
-                   <div className={styles.p}>
-                      <div className={styles.q}>
-                      </div>
-                   </div>
-                )
-             }, this)}
+export const Particles = () => {
+  return (
+    <div className={styles.wrap}>
+      {Array.apply(null, Array(250)).map(function (_, i) {
+        return (
+          <div key={i} className={styles.p}>
+            <div className={styles.q}></div>
           </div>
-       )
-    
- }
-
- export default Particles;
+        );
+      }, this)}
+    </div>
+  );
+};

@@ -1,41 +1,48 @@
 .p {
-    position:fixed;
-    // background-color:white;
-    transform-origin:100% 100%;
-    @for $i from 1 through 250 {
-       &:nth-child(#{$i}) {
-          height:random(25) + 5px;
-          left:random(100)+0%;
-          top:random(100)+0%;
-          animation:spin random(10000)+5000ms -999s linear infinite;
-          .q {
-             height:random(2)+px;
-             width:random(2)+px;
-             background-color:rgba(#942, random(10)*.1);
-          }
-       }
+  position: fixed;
+  // background-color:white;
+  transform-origin: 100% 100%;
+  @for $i from 1 through 125 {
+    &:nth-child(#{$i}) {
+      height: random(25) + 5px;
+      left: random(100) + 0%;
+      top: random(100) + 0%;
+      animation: spin random(10000) + 5000ms -999s linear infinite;
+      .q {
+        height: random(2) + 1px;
+        width: random(2) + 1px;
+        background-color: rgba(#f7a7a8, random(10) * 0.1);
+      }
     }
-    @for $i from 251 through 500 {
-       &:nth-child(#{$i}) {
-          height:random(25)+5px;
-          left:random(100)+0%;
-          top:random(100)+0%;
-          animation:spin random(30000)+5000ms -999s linear infinite reverse;
-          .q {
-             height:random(3)+px;
-             width:random(3)+px;
-             box-shadow:0 0 random(5)+px rgba(#942, random(10)*.2);
-             background-color:rgba(#942, random(10)*.2);
-          }
-       }
+  }
+  @for $i from 126 through 250 {
+    &:nth-child(#{$i}) {
+      height: random(25) + 5px;
+      left: random(100) + 0%;
+      top: random(100) + 0%;
+      animation: spin random(30000) + 5000ms -999s linear infinite reverse;
+      .q {
+        height: random(3) + px;
+        width: random(3) + px;
+        box-shadow: 0 0 random(5) + px rgba(#942, random(10) * 0.2);
+        background-color: rgba(#942, random(10) * 0.2);
+      }
     }
- }
- .q {
-    border-radius:50%;
- }
- $randomTranslate:random(200)+px;
- @keyframes spin {
-    0% {transform:rotate(0deg)translateX(0)translateY(0);}
-    50% {transform:rotate(180deg)translateX($randomTranslate)translateY($randomTranslate);}
-    100% {transform:rotate(360deg)translateX(0)translateY(0);}
- }
+  }
+}
+.q {
+  border-radius: 50%;
+}
+$randomTranslate: random(200) + px;
+@keyframes spin {
+  0% {
+    transform: rotate(0deg) translateX(0) translateY(0);
+  }
+  50% {
+    transform: rotate(180deg) translateX($randomTranslate)
+      translateY($randomTranslate);
+  }
+  100% {
+    transform: rotate(360deg) translateX(0) translateY(0);
+  }
+}

@@ -1,36 +1,69 @@
+import { useState } from "react";
 import { useSelector } from "react-redux";
-import Particles from "../../components/Particles/Particles";
+import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
+import { Particles } from "../../components/Particles";
 import Image from "../../utils/images/JapaneseTorii.png";
 import styles from "./index.module.scss";
+import { useNavigate } from "react-router-dom";
 
 export function Login() {
   const { lang } = useSelector((state) => state);
+  const [inputValue, setInputValue] = useState("");
+  const [pwValue, setPwValue] = useState("");
+  const [isPwVisible, setIsPwVisible] = useState(false);
+  const goBack = useNavigate();
+
+  const handleOnChange = (e, setter) => setter(e.target.value);
+
+  const handlePwVisibility = () => setIsPwVisible((prev) => !prev);
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    localStorage.setItem("username", inputValue);
+    setInputValue("");
+    setPwValue("");
+    goBack(-1);
+  };
+
   return (
     <div className={styles.Main}>
       <div className={styles.left}>
         <h2>{lang.toggle ? "Effettua il Login" : "Login to your account"} </h2>
-        <form>
+        <form type="submit" onSubmit={(e) => handleOnSubmit(e)}>
           <label>
             Username
-            <input
-              type="text"
-              name="username"
-              autofocus=""
-              autocapitalize="none"
-              autocomplete="username"
-              required=""
-              id="id_username"
-            />
+            <span className={styles.input_box}>
+              <input
+                className={styles.input}
+                type="text"
+                name="username"
+                required={true}
+                placeholder={
+                  lang.toggle ? "Inserisci username..." : "Insert username..."
+                }
+                value={inputValue}
+                onChange={(e) => handleOnChange(e, setInputValue)}
+              />
+            </span>
           </label>
           <label>
             Password
-            <input
-              type="text"
-              name="password"
-              autocomplete="current-password"
-              required=""
-              id="id_password"
-            />
+            <span className={styles.input_box}>
+              <input
+                className={styles.pw}
+                type={isPwVisible ? "text" : "password"}
+                name="password"
+                required={true}
+                placeholder={
+                  lang.toggle ? "Inserisci password..." : "Insert password..."
+                }
+                value={pwValue}
+                onChange={(e) => handleOnChange(e, setPwValue)}
+              />
+              <span onClick={handlePwVisibility}>
+                {isPwVisible ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
+              </span>
+            </span>
           </label>
           <button type="submit">{lang.toggle ? "Accedi" : "Sign In"}</button>
         </form>
