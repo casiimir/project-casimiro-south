@@ -3,6 +3,7 @@ import { FiMapPin } from "react-icons/fi";
 import { AiOutlineStar } from "react-icons/ai";
 
 import styles from "./index.module.scss";
+import { Link } from "react-router-dom";
 
 const MainCard = ({ data }) => {
   const dataPlaceholder = {
@@ -43,7 +44,13 @@ const MainCard = ({ data }) => {
         <p className={styles.price}>{retail_price.formatted_value}</p>
         <div className={styles.buttons}>
           <button className={styles.mainButton}> book now </button>
-          <p className={styles.viewDetails}> view details </p>
+          <Link
+            to={`/details/${data.uuid}`}
+            title="Navigate to Activity Tab"
+            className={styles.viewDetails}
+          >
+            view details 
+          </Link>
         </div>
       </div>
     </>

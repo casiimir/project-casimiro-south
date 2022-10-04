@@ -35,7 +35,7 @@ const router = createBrowserRouter([
         element: <Cities />,
       },
       {
-        path: "details",
+        path: "details/:activity_uuid",
         element: <Details />,
 
         children: [
