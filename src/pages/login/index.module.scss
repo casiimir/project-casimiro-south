@@ -30,6 +30,7 @@
       .input_box {
         @include flex-container($justify: space-between, $align: center);
         @include box-model($padding: 0.8rem 1rem, $width: 300px);
+        @include element-position($z-index: 1);
         @include border($radius: 1rem);
         background-color: ghostwhite;
 
@@ -59,8 +60,13 @@
   }
 
   .right {
-    @include flex-container($direction: column, $align: center, $gap: 2rem);
-    @include box-model($width: 40%, $padding: 3rem 5rem 3rem 3rem);
+    @include flex-container(
+      $direction: column,
+      $justify: center,
+      $align: center,
+      $gap: 2rem
+    );
+    @include box-model($width: 40%, $padding: 3rem 5% 3rem 2.5%);
 
     img {
       @include box-model($width: 90%);
@@ -74,6 +80,25 @@
         @include box-model($width: 60%);
 
         text-align: center;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 600px) {
+  .Main {
+    @include flex-container($direction: column-reverse, $align: center);
+
+    .left {
+      @include box-model($width: 100%, $padding: 2rem);
+    }
+
+    .right {
+      @include box-model($width: 80%, $padding: 3rem 5% 3rem 2.5%);
+
+      .text {
+        p {
+          @include box-model($width: 100%);
+        }
       }
     }
   }

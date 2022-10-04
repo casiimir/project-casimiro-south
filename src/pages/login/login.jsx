@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
-import Particles from "../../components/Particles/Particles";
+import { Particles } from "../../components/Particles";
 import Image from "../../utils/images/JapaneseTorii.png";
 import styles from "./index.module.scss";
 import { useNavigate } from "react-router-dom";
