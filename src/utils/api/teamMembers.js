@@ -70,7 +70,6 @@ const teamMembers = [
     descriptionEng:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, optio!",
     src: DalilaPic,
-    // src: "../images/team/dalila_i.jpg",
     linkedin: "https://www.linkedin.com/in/dalilaiapichino/",
   },
 ];
