@@ -14,6 +14,7 @@ import { Cities } from "./pages/cities";
 import { About } from "./pages/about";
 import { Info } from "./components/info";
 import { Map } from "./components/map";
+import { Login } from "./pages/login";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -60,8 +61,8 @@ const router = createBrowserRouter([
         element: <About />,
       },
       {
-        path: "about",
-        element: <About />,
+        path: "login",
+        element: <Login />,
       },
       { path: "*", element: <Error status={404} /> },
     ],
