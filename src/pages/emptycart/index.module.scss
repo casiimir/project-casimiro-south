@@ -1,0 +1,95 @@
+@import "../../styles/_mixins";
+@import "../../styles/_variables";
+
+.Main {
+  @include box-model($height: calc(100vh - 170px));
+  @include flex-container(column, center, center, nowrap, 3rem);
+
+  .icon {
+    svg {
+      @include box-model($width: 15rem);
+    }
+  }
+
+  .message {
+    @include flex-container(column, center, center, nowrap, 1.5rem);
+    h2 {
+      @include form-text(
+        $font-size: 1.3rem,
+        $font-weight: bold,
+        $letter-spacing: 0.5rem,
+        $line-height: 2rem
+      );
+    }
+
+    .description {
+      @include flex-container($direction: column, $align: center, $gap: 1.2rem);
+      p {
+        @include form-text(
+          $font-size: 1rem,
+          $font-weight: normal,
+          $line-height: 1rem
+        );
+      }
+    }
+  }
+
+  .explore_btn {
+    @include button-element($height: 52px, $width: 160px, $border-radius: 10px);
+    @include form-text(
+      $font-size: 0.8rem,
+      $font-weight: 600,
+      $text-transform: uppercase
+    );
+    @include element-position($position: relative);
+
+    background-color: #b32124;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    a {
+      @include box-model($padding: 28px);
+      @include element-position(
+        $position: absolute,
+        $top: 0,
+        $right: 0,
+        $bottom: 0,
+        $left: 0
+      );
+      text-decoration: none;
+      color: $quinary-text-color;
+    }
+  }
+}
+
+@media only screen and (max-width: 748px) {
+  .Main {
+    @include flex-container(column, center, center, nowrap, 3rem);
+    .icon {
+      svg {
+        @include box-model($width: 8rem);
+      }
+    }
+    .message {
+      h2 {
+        @include form-text(
+          $font-size: 1rem,
+          $font-weight: bold,
+          $letter-spacing: 0.3rem
+        );
+      }
+      .description {
+        p {
+          @include box-model($padding: 0 2rem);
+          @include form-text(
+            $font-size: 0.8rem,
+            $font-weight: normal,
+            $line-height: 1rem
+          );
+        }
+      }
+    }
+  }
+}

@@ -15,6 +15,8 @@ import { About } from "./pages/about";
 import { Info } from "./components/info";
 import { Map } from "./components/map";
 import { Login } from "./pages/login";
+import { EmptyCart } from "./pages/emptycart";
+import { NoLoginCart } from "./pages/nologincart";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -65,6 +67,9 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       { path: "*", element: <Error status={404} /> },
+
+      { path: 'emptycart', element: <EmptyCart /> },
+      { path: 'nologincart', element: <NoLoginCart /> },
     ],
   },
 ]);
