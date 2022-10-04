@@ -6,13 +6,12 @@ import { ENDPOINTS } from "../../utils/api/endpoints";
 import { useDispatch, useSelector } from "react-redux";
 
 
-
 export function Details() {
   const { activity_uuid } = useParams();
   const dispatch = useDispatch();
   const { lang, currency, activityData } = useSelector((state) => state);
   const {
-    uuid,
+    // uuid,
     title,
     // about,
     // free_cancellation,
@@ -41,7 +40,7 @@ export function Details() {
       .then((json) =>
         dispatch({ type: "SET_ACTIVITY_DATA", payload: json })
       );
-  }, []);
+  }, [lang.value, currency.value]);
 
 
   
@@ -58,16 +57,6 @@ export function Details() {
     setInfoVisible(!isInfoVisible);
   };
   
-  
-
-
-
-
-  console.log(activityData);
-  console.log(title);
-
-
-
   return (
     <div className={styles.Main}>
       <div className={styles.content}>
@@ -81,13 +70,13 @@ export function Details() {
             </div>
           </div>
 
-          <button onClick={() => console.log(activityData.objectData)}>
+          {/* <button onClick={() => console.log(activityData.objectData)}>
             Console
-          </button>
+          </button> */}
 
           <div className={styles.tabs}>
             <Link
-              to="/details/activity-uuid/info"
+              to={`/details/${activity_uuid}/info`}
               title="Navigate to Info Tab"
               onClick={() => infoOnClick()}
               className={`${isInfoVisible ? styles.active : styles.inactive}`}
@@ -96,7 +85,7 @@ export function Details() {
             </Link>
 
             <Link
-              to="/details/activity-uuid/map"
+              to={`/details/${activity_uuid}/map`}
               title="Navigate to Map Tab"
               onClick={() => mapOnClick()}
               className={`${isMapVisible ? styles.active : styles.inactive}`}
