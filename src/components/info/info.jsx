@@ -45,8 +45,8 @@ export const Info = () => {
                   ? "Cancellazione gratuita"
                   : "Non è disponibile la cancellazione gratuita"
                 : free_cancellation === true
-                ? "Free cancellation"
-                : "Free cancellation is not available"}
+                  ? "Free cancellation"
+                  : "Free cancellation is not available"}
             </span>
             <p className={styles.duration}>
               {lang.toggle ? "Durata" : "Duration"}:
