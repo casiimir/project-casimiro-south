@@ -6,13 +6,14 @@
     $direction: column,
     $justify: center,
     $align: center,
-    $gap: 50px
+    $gap: 4rem
   );
-  @include box-model($width: 100%, $padding: 50px);
+  @include box-model($width: 100%, $padding: 3rem);
 
   .description {
+    @include box-model($width: 80%, $padding: 3rem);
     .rectangle {
-      @include box-model($width: 85px, $height: 7px);
+      @include box-model($width: 7.6rem, $height: 0.4rem);
       background-color: $secondary-color;
     }
 
@@ -20,23 +21,71 @@
       @include flex-container();
 
       .title {
-        width: 30%;
+        @include box-model($width: 30%);
         @include form-text($font-size: 1.8rem, $font-weight: bold);
       }
+    }
 
-      .description {
-        width: 70%;
-      }
+    .weAreSection {
+      @include box-model($padding: 0 2rem, $width: 100%);
+      @include flex-container(
+        $direction: column,
+        $justify: center,
+        $align: center,
+        $gap: 1rem
+      );
+      @include form-text($text-align: justify);
 
-      span {
-        color: $secondary-text-color;
+      .section {
+        @include flex-container($direction: column, $gap: 0.4rem);
       }
+    }
+
+    span {
+      color: $secondary-text-color;
     }
   }
 
   .teamMembers {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 90px;
+    @include box-model($padding: 0 2rem 3.5rem 0, $width: 60%);
+    @include flex-container(
+      $direction: row,
+      $justify: space-between,
+      $wrap: wrap,
+      $gap: 7rem
+    );
+  }
+}
+
+@media only screen and (max-width: 930px) {
+  .Main {
+    @include flex-container(
+      $direction: column,
+      $justify: space-around,
+      $align: center,
+      $wrap: wrap,
+      $gap: 2.8rem
+    );
+
+    .description {
+      @include box-model($padding: 0 2rem 0 0, $width: 100%);
+      .text {
+        @include flex-container($direction: column, $gap: 2rem);
+
+        .title {
+          @include flex-container($direction: row);
+        }
+      }
+    }
+
+    .teamMembers {
+      @include box-model($padding: 0 2rem 3.5rem 0, $width: 60%);
+      @include flex-container(
+        $direction: row,
+        $justify: space-between,
+        $wrap: wrap,
+        $gap: 3rem
+      );
+    }
   }
 }
