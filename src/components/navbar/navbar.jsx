@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import {
   AiOutlineUser,
+  AiOutlineSearch,
   AiOutlineShoppingCart,
   AiOutlineEuro,
   AiOutlineDollar,
@@ -69,8 +70,10 @@ export function Navbar() {
             </NavLink>
           </span>
           <span className={styles.tools}>
-            <span className={styles.ui}>
+            <span className={styles.user}>
               <AiOutlineUser />
+            </span>
+            <span className={styles.cart}>
               <AiOutlineShoppingCart />
             </span>
             <span className={styles.language} onClick={handleChangeLang}>
@@ -78,6 +81,10 @@ export function Navbar() {
             </span>
             <span className={styles.currency} onClick={handleChangeCurr}>
               {currency.toggle ? <AiOutlineEuro /> : <AiOutlineDollar />}
+            </span>
+            <span className={styles.search}>
+              {" "}
+              <SearchBar />
             </span>
           </span>
         </nav>

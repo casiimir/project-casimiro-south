@@ -12,7 +12,10 @@ export function EmptyCart() {
         <TbShoppingCartX />{" "}
       </div>
       <div className={styles.message}>
-        <h2> {lang.toggle ? "IL CARRELLO È VUOTO" : "YOUR CART IS EMPTY"} </h2>
+        <h2>
+          {" "}
+          {lang.toggle ? "IL CARRELLO È VUOTO." : "YOUR CART IS EMPTY."}{" "}
+        </h2>
         <div className={styles.description}>
           <p>
             {lang.toggle
@@ -26,11 +29,14 @@ export function EmptyCart() {
           </p>
         </div>
       </div>
-      <button className={styles.explore_btn}>
-        <Link to="/explore" title="Navigate to Explore tab">
-          {lang.toggle ? "Esplora Ora" : "Explore Now"}
-        </Link>
-      </button>
+
+      <Link
+        to="/explore"
+        title="Navigate to Explore tab"
+        className={styles.Link}
+      >
+        {lang.toggle ? "Esplora Adesso!" : "Explore Now!"}
+      </Link>
     </div>
   );
 }

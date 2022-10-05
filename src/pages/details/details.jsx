@@ -6,24 +6,15 @@ import { ENDPOINTS } from "../../utils/api/endpoints";
 import { useDispatch, useSelector } from "react-redux";
 
 
-
 export function Details() {
   const { activity_uuid } = useParams();
   const dispatch = useDispatch();
   const { lang, currency, activityData } = useSelector((state) => state);
   const {
-    uuid,
     title,
-    // about,
-    // free_cancellation,
-    // duration,
-    // is_available_tomorrow,
-    // languages,
-    // service_fee,
     cover_image_url,
     description,
     retail_price,
-    // giftable,
   } = activityData.objectData;
   
     useEffect(() => {
@@ -41,7 +32,7 @@ export function Details() {
       .then((json) =>
         dispatch({ type: "SET_ACTIVITY_DATA", payload: json })
       );
-  }, []);
+  }, [lang.value, currency.value]);
 
 
   
@@ -58,16 +49,6 @@ export function Details() {
     setInfoVisible(!isInfoVisible);
   };
   
-  
-
-
-
-
-  console.log(activityData);
-  console.log(title);
-
-
-
   return (
     <div className={styles.Main}>
       <div className={styles.content}>
@@ -76,18 +57,19 @@ export function Details() {
             <h1 className={styles.title}>{title}</h1>
             <div className={styles.priceInfo}>
               <p className={styles.price}>
-                from: <span> {retail_price?.formatted_value}</span>
+                {lang.toggle ? "da" : "from"}:
+                <span> {retail_price?.formatted_value}</span>
               </p>
             </div>
           </div>
 
-          <button onClick={() => console.log(activityData.objectData)}>
+          {/* <button onClick={() => console.log(activityData.objectData)}>
             Console
-          </button>
+          </button> */}
 
           <div className={styles.tabs}>
             <Link
-              to="/details/activity-uuid/info"
+              to={`/details/${activity_uuid}/info`}
               title="Navigate to Info Tab"
               onClick={() => infoOnClick()}
               className={`${isInfoVisible ? styles.active : styles.inactive}`}
@@ -96,12 +78,12 @@ export function Details() {
             </Link>
 
             <Link
-              to="/details/activity-uuid/map"
+              to={`/details/${activity_uuid}/map`}
               title="Navigate to Map Tab"
               onClick={() => mapOnClick()}
               className={`${isMapVisible ? styles.active : styles.inactive}`}
             >
-              Map
+              {lang.toggle ? "Mappa" : "Map"}
             </Link>
             {/* {console.log(isInfoVisible)}
             {console.log(isMapVisible)} */}
@@ -113,23 +95,34 @@ export function Details() {
         <section className={styles.right}>
           <img src={cover_image_url} alt={title} />
           <div className={styles.included}>
-            <h3>What's included</h3>
+            <h3>{lang.toggle ? "Cosa è incluso" : "What's included"}</h3>
             <p>{description}</p>
           </div>
         </section>
       </div>
 
-      <div className={styles.date}>
-        <h3>Availability and prices</h3>
-        <p>Select a date to see the tickets available</p>
-        <div className={styles.datePicker}>
-          <input type="date" name="date"></input>
-          <button>Check availability</button>
+      {lang.toggle ? (
+        <div className={styles.date}>
+          <h3>Disponibilità e prezzi</h3>
+          <p>Seleziona una data per vedere i biglietti disponibili</p>
+          <div className={styles.datePicker}>
+            <input type="date" name="date"></input>
+            <button>Verifica disponibilità</button>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className={styles.date}>
+          <h3>Availability and prices</h3>
+          <p>Select a date to see the tickets available</p>
+          <div className={styles.datePicker}>
+            <input type="date" name="date"></input>
+            <button>Check availability</button>
+          </div>
+        </div>
+      )}
 
       <div className={styles.suggestions}>
-        <h3>You might also like</h3>
+        <h3>{lang.toggle ? "Potrebbe piacerti anche" : "You might also like"}:</h3>
         <CardList />
       </div>
     </div>
