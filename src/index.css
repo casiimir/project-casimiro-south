@@ -29,10 +29,14 @@
 }
 
 .swiper-pagination-bullet:hover {
-  opacity: 1 !important;
+  opacity: 0.88 !important;
 }
 
 .swiper-pagination-bullet-active {
+  opacity: 1 !important;
+}
+
+.swiper-pagination-bullet-active:hover {
   opacity: 1 !important;
 }
 

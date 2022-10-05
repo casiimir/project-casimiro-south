@@ -64,6 +64,18 @@
         width: 650px;
       }
 
+      span {
+        font-weight: bold;
+        font-size: 1.5rem;
+        font-style: italic;
+        padding-top: 10px;
+
+        .city_name {
+          color: $secondary-text-color;
+          text-transform: uppercase;
+        }
+      }
+
       .explore_btn {
         @include button-element(
           $height: 72px,
@@ -76,8 +88,8 @@
           $text-transform: uppercase
         );
         @include element-position($position: relative);
-
         background-color: #b32124;
+        margin-top: 30px;
 
         &:hover {
           transform: scale(1.1);
@@ -122,7 +134,7 @@
     display: flex;
     flex-direction: column;
     width: 100vw;
-    gap: 70px;
+    gap: 50px;
 
     .left {
       width: 90%;
@@ -184,6 +196,11 @@
     font-size: 1.24rem !important;
     width: 500px !important;
   }
+
+  span {
+    font-size: 1.4rem !important;      
+  }
+
   .explore_btn {
     @include button-element(
           $height: 57px !important,
@@ -213,6 +230,10 @@
   .description {
     font-size: 1rem !important;
     width: 420px !important;
+  }
+
+  span {
+    font-size: 1.3rem !important;      
   }
 
   .right {
@@ -245,9 +266,15 @@
         
       }
     }
+
     .description {
       font-size: 1rem !important;
       width: 330px !important;
+      margin-bottom: 30px !important;
+    }
+
+    span {
+      font-size: 1.2rem !important;      
     }
   
     .right {

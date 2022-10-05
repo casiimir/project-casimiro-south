@@ -64,9 +64,14 @@ export function Home() {
           <p className={styles.description}>
             {/* {listsData.home[descrIndex]?.meta_description} */}
             {lang.toggle
-              ? "Presentazione genrica in Italiano. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores magnam non totam odio unde ipsum dolore deleniti fugit, tenetur voluptates? Sed alias vitae abaccusamus autem, laborum cum quibusdam."
-              : "Presentazione genrica in Inglese. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores magnam non totam odio unde ipsum dolore deleniti fugit, tenetur voluptates? Sed alias vitae abaccusamus autem, laborum cum quibusdam."}
+              ? `Il Giappone è una delle destinazioni turistiche più sorprendenti e offre molte esperienze uniche che non puoi trovare in nessun'altra parte del mondo. L'arcipelago, con i suoi luoghi incantevoli e panorami mozzafiato, offre tante esperienze diverse che attirano turisti da ogni angolo del mondo. Scopri ${listsData.home[descrIndex].name} con noi!` 
+              : "Japan is one of the most amazing tourist destination and it offers many unique experiences that you cannot find in any other part of the world. The archipelago, with its enchanting places and breathtaking views, offers so many different experiences that attract tourists from all corners of the world."
+            }
           </p>
+          {lang.toggle
+          ? <span>Scopri {<span className={styles.city_name}>{listsData.home[descrIndex]?.name}</span>}  con noi!</span>
+          : <span>Discover {<span className={styles.city_name}>{listsData.home[descrIndex]?.name}</span>}  with us!</span>
+          }
           <button className={styles.explore_btn}>
             <Link to="/explore" title="Navigate to Explore tab">
               {lang.toggle ? "Esplora ora" : "explore now"}
