@@ -1,13 +1,30 @@
 import { AiFillStar } from "react-icons/ai";
+import swal from "sweetalert";
 import { MdWatchLater } from "react-icons/md";
 import { FaHandHoldingUsd } from "react-icons/fa";
 import { SiVisa, SiMastercard, SiPaypal, SiRevolut } from "react-icons/si";
 import styles from "./index.module.scss";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export function Cart() {
-  const { listsData } = useSelector((state) => state);
+  const { lang, listsData, currency } = useSelector((state) => state);
+  // const [total, setTotal] = useState(0);
+  // const [formatTotal, setFormatTotal] = useState("");
+  // const getTotal = (counter) => {
+    
+  // };
+  // let counter = 0;
+  // useEffect(() => {
+  //   // getTotal(count);
+  //   listsData.cartList.forEach((el) => (counter += el.retail_price.value));
+  //   setTotal(counter);
+  //   setFormatTotal(
+  //     currency.toggle ? "€ " + total.toString() : "$ " + total.toString()
+  //   );
+  // }, [listsData, currency]);
+
   const dispatch = useDispatch();
 
   const handleDelBtn = (uuid) => {
@@ -20,13 +37,15 @@ export function Cart() {
 
   return listsData.cartList ? (
     <div className={styles.Main}>
-      <button onClick={() => console.log(listsData.cartList)}>console</button>
+      {/* <button onClick={() => console.log(listsData.cartList)}>console</button> */}
       <div className={styles.left}>
         <span className={styles.top_row}>
-          <p>Activity</p>
-          <p>Price</p>
-          <p>Quantity</p>
-          <p>Total</p>
+          <p>{lang.toggle ? "Attività" : "Activity"}</p>
+          <span className={styles.pqt}>
+            <p>{lang.toggle ? "Prezzo" : "Price"}</p>
+            <p>{lang.toggle ? "Quantità" : "Quantity"}</p>
+            <p>{lang.toggle ? "Totale" : "Total"}</p>
+          </span>
         </span>
         <ul className={styles.cart_list}>
           {listsData.cartList.map((el, i) => (
@@ -43,40 +62,73 @@ export function Cart() {
               />
               <h4 className={styles.item_title}>{el.title}</h4>
               <p className={styles.item_price}>
-                {el.retail_price.formatted_value}
+              {currency.toggle ? `€ ${el.retail_price.value}` : `$ ${el.retail_price.value}`}
               </p>
               <p className={styles.quantity}>1</p>
-              <p className={styles.total}>{el.retail_price.formatted_value}</p>
+              <p className={styles.total}>
+              {currency.toggle ? `€ ${el.retail_price.value}` : `$ ${el.retail_price.value}`}
+              </p>
             </li>
           ))}
         </ul>
         <span className={styles.bot_row}>
-          <input className={styles.fake_coupon} />
-          <button className={styles.alert_btn}>Apply coupon</button>
+          <input
+            className={styles.fake_coupon}
+            placeholder={lang.toggle ? "Codice Coupon" : "Coupon Code"}
+          />
+          <button
+            className={styles.alert_btn}
+            onClick={() => {
+              swal(
+                "Oops",
+                lang.toggle ? "Coupon non valido" : "Expired Coupon",
+                "error"
+              );
+            }}
+          >
+            {lang.toggle ? "Applica il coupon" : "Apply coupon"}
+          </button>
         </span>
-        <span className={styles.logos}>
-          <span>
+        <div className={styles.logos}>
+          <span className={styles.single_logo}>
             <AiFillStar />
-            100% Secure Check
+            <span>
+              {lang.toggle ? "Garantito al 100%" : "100% Secure check"}
+            </span>
           </span>
-          <span>
+          <span className={styles.single_logo}>
             <MdWatchLater />
-            24/7 Customer support
+            <span>
+              {lang.toggle ? "Supporto clienti 24/7" : "24/7 Customer support"}
+            </span>
           </span>
-          <span>
+          <span className={styles.single_logo}>
             <FaHandHoldingUsd />
-            Easy Exchanges & Refunds
+            <span>
+              {lang.toggle
+                ? "Rimborsi facili e veloci"
+                : "Easy exchanges & refunds"}
+            </span>
           </span>
-        </span>
+        </div>
       </div>
 
       <div className={styles.right}>
-        <span className={styles.top_total}>Cart totals</span>
-        <span className={styles.total}>
-          <p className={styles.sub}>Subtotal </p>
-          <p className={styles.tot}>Total </p>
+        <span className={styles.top_total}>
+          {lang.toggle ? "Totale del carrello" : "cart total"}
         </span>
-        <button>Proceed to checkout</button>
+        <span className={styles.total}>
+          <p className={styles.sub}>{lang.toggle ? "Subtotale" : "Subtotal"}</p>
+          <p className={styles.tot}>
+            {" "}
+            {lang.toggle
+              ? `Totale: `
+              : `Total: `}{" "}
+          </p>
+        </span>
+        <Link to="/thankyou">
+          {lang.toggle ? "Procedi al checkout" : "Proceed to checkout"}
+        </Link>
         <span className={styles.bank_circuits}>
           <span>
             <SiVisa />
@@ -93,7 +145,9 @@ export function Cart() {
         </span>
       </div>
     </div>
-  ) : (
+  ) : lang.toggle ? (
     "Carrello vuoto"
+  ) : (
+    "Your cart is empty"
   );
 }

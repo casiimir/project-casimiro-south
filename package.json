@@ -16,6 +16,7 @@
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
     "sass": "^1.55.0",
+    "sweetalert": "^2.1.2",
     "swiper": "^8.4.2",
     "web-vitals": "^2.1.4"
   },
@@ -42,5 +43,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint-plugin-react-hooks": "^4.6.0"
   }
 }

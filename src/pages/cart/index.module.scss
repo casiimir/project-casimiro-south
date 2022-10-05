@@ -1,0 +1,187 @@
+@import "../../styles/_variables.scss";
+@import "../../styles/_mixins.scss";
+
+.Main {
+  display: flex;
+  gap: 50px;
+  margin: 70px;
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+    .top_row {
+      margin-right: -20px;
+      border-radius: 3px;
+      color: rgba(33, 33, 33, 0.912);
+      background-color: #f3eeee;
+      padding: 15px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      font-weight: bold;
+      text-transform: uppercase;
+      &:first-child {
+        padding-left: 45px;
+      }
+      .pqt {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 300px;
+        padding-right: 35px;
+        padding-left: 15px;
+      }
+    }
+
+    .cart_list {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      list-style-type: none;
+      max-height: 314px;
+      overflow-y: auto;
+      .item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 30px;
+      }
+      .del {
+        width: 26px;
+        height: 26px;
+        padding: 5px;
+        border-radius: 100%;
+        border: 0.8px solid rgba(21, 20, 20, 0.896);
+        background-color: transparent;
+      }
+      img {
+        width: 63px;
+        height: 65px;
+        border-radius: 3px;
+      }
+      .item_title {
+        width: 260px;
+        font-weight: 350;
+        color: black;
+      }
+      .item_price {
+        width: 80px;
+        text-align: center;
+      }
+      .quantity {
+        width: 70px;
+        text-align: center;
+      }
+      .total {
+        width: 90px;
+      }
+    }
+
+    .bot_row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+
+      .fake_coupon {
+        width: 171px;
+        height: 28px;
+        background-color: transparent;
+        border: 1px solid #d9d9d9;
+        outline: none;
+        border-radius: 3px;
+
+        &::placeholder {
+          color: #b6b5b5;
+        }
+      }
+      .alert_btn {
+        border: none;
+        background-color: transparent;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: $secondary-color;
+      }
+    }
+
+    .logos {
+      display: flex;
+      flex-direction: row;
+      gap: 50px;
+
+      .single_logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: $secondary-color;
+        margin-top: 20px;
+        svg {
+          transform: scale(2.1);
+        }
+
+        span {
+          padding: 20px;
+          text-align: center;
+          width: 200px;
+        }
+      }
+    }
+  }
+
+  .right {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: auto;
+
+    .top_total {
+      border-radius: 3px;
+      color: rgba(33, 33, 33, 0.912);
+      background-color: #f3eeee;
+      padding: 15px;
+      display: flex;
+      width: auto;
+      font-weight: bold;
+      justify-content: center;
+      text-transform: uppercase;
+    }
+    .total {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      margin-top: 10px;
+      border: 0.9px solid#7e7c7c;
+      height: 56px;
+      padding-left: 5px;
+      font-weight: 400;
+      font-size: small;
+      border-radius: 3px;
+    }
+    a {
+      @include button-element(auto, auto, 10px 20px, 0, 8px);
+      color: $quaternary-color;
+      text-decoration: none;
+      background-color: $secondary-color;
+      font-size: 0.6rem;
+      font-family: "Montserrat", sans-serif;
+
+      &:hover {
+        background-color: $quaternary-color;
+        color: $secondary-color;
+      }
+    }
+    .bank_circuits {
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+      align-items: center;
+      color: $secondary-color;
+      svg {
+        transform: scale(1.3);
+      }
+    }
+  }
+}

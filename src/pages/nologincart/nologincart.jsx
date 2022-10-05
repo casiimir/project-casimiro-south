@@ -11,7 +11,7 @@ export function NoLoginCart() {
         <TbUserExclamation />
       </div>
       <div className={styles.message}>
-        <h2> {lang.toggle ? "IL CARRELLO È VUOTO" : "YOUR CART IS EMPTY"} </h2>
+        <h2> {lang.toggle ? "IL CARRELLO È VUOTO." : "YOUR CART IS EMPTY."} </h2>
         <div className={styles.description}>
           <p>
             {lang.toggle

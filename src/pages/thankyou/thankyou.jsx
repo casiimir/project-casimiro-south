@@ -28,7 +28,7 @@ export function ThankYou() {
       <img src={Basket} alt="basket icon" />
       <div className={styles.message}>
         <h2> {lang.toggle ? "Grazie!" : "Thank You!"} </h2>
-        <p> item q, price</p>
+
         <h3>
           {lang.toggle
             ? "Hai completatoto il tuo ordine con successo!"
