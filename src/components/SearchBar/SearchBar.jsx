@@ -8,54 +8,60 @@ import {
 import styles from "./index.module.scss";
 
 export default function SearchBar() {
-  const [searchValue, setSearchValue] = useState("");
+  //const [searchValue, setSearchValue] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [isInputActive, setIsInputActive] = useState(false);
-  const [resultsList, setResultsList] = useState([]);
+  const [result, setResult] = useState("");
   const inputRef = useRef(null);
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
     if (isInputActive) {
-      setSearchValue(resultsList[0].id);
+      //setSearchValue(resultsList[0].id);
       setInputValue("");
-      setIsInputActive(false);
-    } else setIsInputActive(true);
+      //setIsInputActive(false);
+    }
   };
 
   const handelOnClick = () => isInputActive && setInputValue("");
 
   const handleClose = () => {
+    setIsInputActive((prev) => !prev);
     setInputValue("");
-    setIsInputActive(false);
   };
 
   const handleTitleOnClick = (id) => {
-    setSearchValue(id);
+    //setSearchValue(id);
     setInputValue("");
     setIsInputActive(false);
   };
 
-  useEffect(() => {
-    inputRef.current.focus();
-  }, [isInputActive, inputValue]);
+  //const handleInputRef = () => {
+  //inputRef.current.focus();
+  //}, [isInputActive, inputValue];
 
   useEffect(() => {
-    inputValue &&
-      ENDPOINTS(
-        "search",
-        "cities",
-        `&language=en-US&query=${inputValue}&page=1`
-      ).then((data) => {
-        console.log(data);
-        setResultsList(data.results);
-      });
+    if (inputValue.length >= 3) {
+      fetch(ENDPOINTS.SEARCH_CITIES + inputValue, {
+        method: "GET",
+        headers: {
+          "X-Musement-Application": "string",
+          "X-Musement-Version": "3.4.0",
+        },
+      })
+        .then(
+          (data) => data.json()
+          //console.log(data);
+          //setResultsList(data.results);
+        )
+        .then((json) => setResult(json[0]?.items[0]?.title));
+    }
   }, [inputValue]);
-
   const handleOnChange = (e) => setInputValue(e.target.value);
 
   return (
     <>
+      {" "}
       <form className={styles.Main} onSubmit={(e) => handleOnSubmit(e)}>
         <input
           ref={inputRef}
@@ -63,33 +69,16 @@ export default function SearchBar() {
           value={inputValue}
           onChange={(e) => handleOnChange(e)}
         />
-        <button className={styles.button} onClick={handelOnClick}>
-          {isInputActive ? <AiOutlineCloseCircle /> : <AiOutlineSearch />}
-        </button>
         {isInputActive && (
-          <span className={styles.close_input} onClick={handleClose}>
-            <AiOutlineClose />
+          <span className={styles.button} onClick={handelOnClick}>
+            <AiOutlineCloseCircle />
           </span>
         )}
+        <span className={styles.close_input} onClick={handleClose}>
+          {isInputActive ? <AiOutlineClose /> : <AiOutlineSearch />}
+        </span>
       </form>
-      {inputValue && (
-        <ul className={styles.list}>
-          {resultsList &&
-            resultsList.map((el, i) => (
-              <li
-                className={styles.result}
-                onClick={() => handleTitleOnClick(el.id)}
-                key={i}
-              >
-                {el.title} (
-                {el.release_date
-                  ? el.release_date.split("-").reverse().join("/")
-                  : ""}
-                )
-              </li>
-            ))}
-        </ul>
-      )}
+      {inputValue && <ul className={styles.list}>{result ?? "no result"}</ul>}
     </>
   );
 }

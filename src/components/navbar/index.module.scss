@@ -204,7 +204,7 @@
         }
 
         .tools {
-          @include box-model($padding: 30px);
+          @include box-model($padding: 50px);
           @include flex-container($justify: space-evenly, $gap: 50px);
 
           .language {
@@ -220,6 +220,7 @@
             @include flex-container($align: center);
             cursor: pointer;
             transform: scale(1.3);
+
             &:hover {
               color: $secondary-color;
             }

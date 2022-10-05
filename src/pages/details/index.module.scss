@@ -3,7 +3,7 @@
 
 .Main {
   @include flex-container(column);
-  @include box-model($padding: 45px);
+  @include box-model($padding: 3rem);
   
   .content {
     @include flex-container($justify: space-between, $gap: 20px);
@@ -16,6 +16,7 @@
       
       .titlePrice {
         @include flex-container($justify: space-between);
+        width: 100%;
      
       .title {
         @include form-text(
@@ -24,10 +25,13 @@
           $letter-spacing: 1px,$line-height: 4rem
         );
         color: $secondary-text-color;
+        width: 80%;
         
       }
       .priceInfo {
-        
+        // width: 20%;
+        // text-align: right;
+
         .price {
           @include flex-container($justify: center,
             $align: center, $gap: 8px);
@@ -37,6 +41,8 @@
 
           span {
             @include form-text($font-size: 1.2rem, $font-weight: 700);
+            @include flex-container();
+            // width: 95px;
           }
         }
         }
