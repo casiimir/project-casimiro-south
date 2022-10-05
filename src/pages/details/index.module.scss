@@ -1,12 +1,16 @@
 @import "../../styles/_mixins.scss";
 @import "../../styles/_variables.scss";
 
+body {
+overflow-x: hidden;
+}
+
 .Main {
   @include flex-container(column);
-  @include box-model($padding: 3rem);
+  @include box-model($padding: 3rem 4rem);
   
   .content {
-    @include flex-container($justify: space-between, $gap: 20px);
+    @include flex-container($justify: space-between, $gap: 5rem);
     border-bottom: 1px solid $quaternary-color;
     
     .left {
@@ -20,12 +24,13 @@
      
       .title {
         @include form-text(
-          $font-size: 4rem,
+          $font-size: 3.8rem,
           $font-weight: 800,
           $letter-spacing: 1px,$line-height: 4rem
         );
         color: $secondary-text-color;
         width: 80%;
+        // height: 30vh;
         
       }
       .priceInfo {
@@ -42,7 +47,7 @@
           span {
             @include form-text($font-size: 1.2rem, $font-weight: 700);
             @include flex-container();
-            // width: 95px;
+            width: 100%;
           }
         }
         }
@@ -94,47 +99,52 @@
     }
   }
 
-  .date {
-    @include box-model($padding: 25px 0);
-    @include flex-container($direction: column, $gap: 20px);
-    text-align: start;
-    border-bottom: 1px solid $quaternary-color;
+  // .date {
+  //   @include box-model($padding: 25px 0);
+  //   @include flex-container($direction: column, $gap: 20px);
+  //   text-align: start;
+  //   border-bottom: 1px solid $quaternary-color;
 
-    .datePicker {
-      @include flex-container($gap: 35px);
-      @include box-model($padding: 10px 0 0 10px);
+  //   .datePicker {
+  //     @include flex-container($gap: 35px);
+  //     @include box-model($padding: 10px 0 0 10px);
       
 
-      input {
-        @include form-text($font-size: 1.1rem);
-        @include box-model($width: 220px);
-        @include border($border: none,
-        $radius: 6px);
-        color: $primary-text-color;
-        box-shadow: $box-shadow;
-      }
+  //     input {
+  //       @include form-text($font-size: 1.1rem);
+  //       @include box-model($width: 220px);
+  //       @include border($border: none,
+  //       $radius: 6px);
+  //       color: $primary-text-color;
+  //       box-shadow: $box-shadow;
+  //     }
 
-      button {
-        @include button-element(
-          $height: 50px,
-          $width: 220px,
-          $border-radius: 10px
-        );
-        @include form-text(
-          $font-weight: 600
-        );
-        background-color: $secondary-color;
-        color: $quinary-color;
+  //     button {
+  //       @include button-element(
+  //         $height: 50px,
+  //         $width: 220px,
+  //         $border-radius: 10px
+  //       );
+  //       @include form-text(
+  //         $font-weight: 600
+  //       );
+  //       background-color: $secondary-color;
+  //       color: $quinary-color;
 
-        &:hover {
-          transform: scale(1.1);
-        }
-      }
-    }
-  }
+  //       &:hover {
+  //         transform: scale(1.1);
+  //       }
+  //     }
+  //   }
+  // }
 
   .suggestions {
     @include box-model($padding: 20px 0);
     text-align: start;
+
+    .suggestedActivities {
+      @include flex-container($justify: center, $align: center, $gap: 20px);
+      padding-top: 20px;
+    }
   }
 }
