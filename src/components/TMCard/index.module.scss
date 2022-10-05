@@ -9,26 +9,36 @@
     $gap: 15px
   );
 
-  img {
-    @include box-model($width: 50%);
-    border-radius: 100%;
+  .profilepic {
+    @include flex-container($direction: row, $justify: center, $align: center);
+    img {
+      @include box-model($width: 12rem);
+      border-radius: 100%;
 
-    &:hover {
-      cursor: pointer;
+      &:hover {
+        cursor: pointer;
+        box-shadow: $box-shadow;
+      }
     }
   }
+  .member {
+    @include flex-container(
+      $direction: column,
+      $justify: center,
+      $align: center,
+      $gap: 0.5rem
+    );
+    h3 {
+      @include form-text($font-size: 1rem, $font-weight: 500);
+      .firstName {
+        @include form-text($font-weight: 600);
+        color: $secondary-text-color;
+      }
+    }
 
-  h3 {
-    @include form-text($font-size: 1rem, $font-weight: 500);
-    .firstName {
-      @include form-text($font-weight: 600);
+    .position {
+      @include form-text($font-size: 0.7rem);
       color: $secondary-text-color;
     }
-  }
-
-  .description {
-    @include box-model($width: 50%);
-    @include form-text($font-size: 0.8rem);
-    text-align: center;
   }
 }

@@ -3,16 +3,26 @@
 
 .Main {
   @include box-model($height: calc(100vh - 170px));
-  @include flex-container(column, center, center, nowrap, 3rem);
+  @include flex-container(
+    $direction: column,
+    $justify: center,
+    $align: center,
+    $gap: 3rem
+  );
 
   .icon {
     svg {
-      @include box-model($width: 15rem);
+      @include box-model($width: 14rem);
     }
   }
 
   .message {
-    @include flex-container(column, center, center, nowrap, 1.5rem);
+    @include flex-container(
+      $direction: column,
+      $justify: center,
+      $align: center,
+      $gap: 1.5rem
+    );
     h2 {
       @include form-text(
         $font-size: 1.3rem,
@@ -37,13 +47,20 @@
 
 @media only screen and (max-width: 748px) {
   .Main {
-    @include flex-container(column, center, center, nowrap, 3rem);
+    @include flex-container(
+      $direction: column,
+      $justify: center,
+      $align: center,
+      $gap: 2rem
+    );
     .icon {
       svg {
         @include box-model($width: 8rem);
       }
     }
     .message {
+      @include box-model($padding: 0 3rem);
+
       h2 {
         @include form-text(
           $font-size: 1rem,
