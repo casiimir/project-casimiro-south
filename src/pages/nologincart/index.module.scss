@@ -1,0 +1,65 @@
+@import "../../styles/_mixins";
+@import "../../styles/_variables";
+
+.Main {
+  @include box-model($height: calc(100vh - 170px));
+  @include flex-container(column, center, center, nowrap, 3rem);
+
+  .icon {
+    svg {
+      @include box-model($width: 15rem);
+    }
+  }
+
+  .message {
+    @include flex-container(column, center, center, nowrap, 1.5rem);
+    h2 {
+      @include form-text(
+        $font-size: 1.3rem,
+        $font-weight: bold,
+        $letter-spacing: 0.5rem,
+        $line-height: 2rem
+      );
+    }
+
+    .description {
+      @include flex-container($direction: column, $align: center, $gap: 1.2rem);
+      p {
+        @include form-text(
+          $font-size: 1rem,
+          $font-weight: normal,
+          $line-height: 1rem
+        );
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 748px) {
+  .Main {
+    @include flex-container(column, center, center, nowrap, 3rem);
+    .icon {
+      svg {
+        @include box-model($width: 8rem);
+      }
+    }
+    .message {
+      h2 {
+        @include form-text(
+          $font-size: 1rem,
+          $font-weight: bold,
+          $letter-spacing: 0.3rem
+        );
+      }
+      .description {
+        p {
+          @include form-text(
+            $font-size: 0.8rem,
+            $font-weight: normal,
+            $line-height: 1rem
+          );
+        }
+      }
+    }
+  }
+}

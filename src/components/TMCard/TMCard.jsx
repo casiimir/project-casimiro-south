@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 
+
 import styles from "./index.module.scss";
 
 const TMCard = ({ data }) => {
@@ -12,11 +13,11 @@ const TMCard = ({ data }) => {
         alt={data.name}
         onClick={() => window.open(data.linkedin, "_blank")}
       />
+      
       <h3>
         <span className={styles.firstName}>{data.name}</span> {data.surname}
       </h3>
-      <p className={styles.description}>{data.descriptionIta}</p>
-      {/* <p className={styles.description}>{lang.toggle ? {data.descriptionIta} : {data.descriptionEng}</p> */}
+      <p className={styles.description}>{lang.toggle ? data.descriptionIta : data.descriptionEng}</p> 
     </div>
   );
 };

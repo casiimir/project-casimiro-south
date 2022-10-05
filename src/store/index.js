@@ -10,6 +10,7 @@ const init = {
     expFolk: [],
     expNew: [],
     cityAct: [],
+    cartList: JSON.parse(localStorage.getItem("cart_list")) ?? [],
   },
   cityData: {
     id: 189,
@@ -19,6 +20,9 @@ const init = {
     headline: "Welcome to Tokyo",
     cover_img:
       "https://images.musement.com/cover/0097/13/adobestock-314643692-editorial-use-only-jpeg_header-9612533.jpeg",
+  },
+  activityData: {
+    objectData: {},
   },
 };
 
@@ -80,6 +84,18 @@ function listsReducer(state = {}, action) {
         ...state,
         cityAct: action.payload,
       };
+    case "SET_CART_LIST":
+      return {
+        ...state,
+        cartList: [...new Set([...state.cartList, action.payload])],
+      };
+    case "DEL_CART_ITEM":
+      return {
+        ...state,
+        cartList: [
+          ...state.cartList.filter((el) => el.uuid !== action.payload),
+        ],
+      };
     default:
       return state;
   }
@@ -116,12 +132,24 @@ function cityDataReducer(state = {}, action) {
       return state;
   }
 }
+function activityDataReducer(state = {}, action) {
+  switch (action.type) {
+    case "SET_ACTIVITY_DATA":
+      return {
+        ...state,
+        objectData: action.payload,
+      };
+    default:
+      return state;
+  }
+}
 
 const rootReducers = combineReducers({
   lang: langReducer,
   currency: currencyReducer,
   listsData: listsReducer,
   cityData: cityDataReducer,
+  activityData: activityDataReducer,
 });
 
 const store = createStore(rootReducers, init);

@@ -2,7 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 import { Home } from "./pages/home";
 import { Explore } from "./pages/explore";
 import { Details } from "./pages/details";
@@ -14,6 +18,12 @@ import { Cities } from "./pages/cities";
 import { About } from "./pages/about";
 import { Info } from "./components/info";
 import { Map } from "./components/map";
+import { Login } from "./pages/login";
+import { Cart } from "./pages/cart";
+import { EmptyCart } from "./pages/emptycart";
+import { NoLoginCart } from "./pages/nologincart";
+import { ThankYou } from "./pages/thankyou/thankyou";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -35,7 +45,7 @@ const router = createBrowserRouter([
         element: <Cities />,
       },
       {
-        path: "details",
+        path: "details/:activity_uuid",
         element: <Details />,
 
         children: [
@@ -60,10 +70,18 @@ const router = createBrowserRouter([
         element: <About />,
       },
       {
-        path: "about",
-        element: <About />,
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "cart",
+        element: <Cart />,
       },
       { path: "*", element: <Error status={404} /> },
+
+      { path: 'emptycart', element: <EmptyCart /> },
+      { path: 'nologincart', element: <NoLoginCart /> },
+      { path: 'thankyou', element: <ThankYou /> },
     ],
   },
 ]);
