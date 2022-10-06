@@ -23,7 +23,7 @@ export default function SearchBar() {
     }
   };
 
-  const handelOnClick = () => isInputActive && setInputValue("");
+  const handleOnClear = () => setInputValue("");
 
   const handleClose = () => {
     setIsInputActive((prev) => !prev);
@@ -57,11 +57,13 @@ export default function SearchBar() {
         .then((json) => setResult(json[0]?.items[0]?.title));
     }
   }, [inputValue]);
+
+  useEffect(() => {}, []);
+
   const handleOnChange = (e) => setInputValue(e.target.value);
 
   return (
     <>
-      {" "}
       <form className={styles.Main} onSubmit={(e) => handleOnSubmit(e)}>
         <input
           ref={inputRef}
@@ -70,7 +72,7 @@ export default function SearchBar() {
           onChange={(e) => handleOnChange(e)}
         />
         {isInputActive && (
-          <span className={styles.button} onClick={handelOnClick}>
+          <span className={styles.button} onClick={handleOnClear}>
             <AiOutlineCloseCircle />
           </span>
         )}

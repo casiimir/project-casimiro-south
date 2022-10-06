@@ -2,8 +2,8 @@
 @import "../../styles/_variables";
 .desktop {
   .Main {
-    @include box-model($padding: 0 50px, $width: 100%, $height: 70px);
-    @include element-position($position: fixed, $top: 0px, $z-index: 1);
+    @include box-model($padding: 0 70px 0 50px, $width: 100%, $height: 70px);
+    @include element-position($position: fixed, $top: 0px, $z-index: 2);
     @include flex-container(
       $justify: space-between,
       $align: center,
@@ -42,22 +42,19 @@
 
     .tools {
       @include box-model();
-      @include flex-container($align: center, $gap: 15px);
+      @include flex-container($align: center, $gap: 25px);
 
       & svg {
         transform: scale(1.5);
+        cursor: pointer;
+
+        &:hover {
+          color: $secondary-color;
+        }
       }
 
-      .ui {
-        @include flex-container($align: center, $gap: 30px);
-
-        svg {
-          cursor: pointer;
-
-          &:hover {
-            color: $secondary-color;
-          }
-        }
+      .cart {
+        color: $primary-text-color;
       }
 
       .language {
@@ -72,10 +69,6 @@
       .currency {
         @include flex-container($align: center);
         transform: scale(0.75);
-        cursor: pointer;
-        &:hover {
-          color: $secondary-color;
-        }
       }
     }
   }
@@ -91,7 +84,7 @@
   }
 
   .mobile {
-    @include element-position($position: fixed, $top: 0px, $z-index: 1);
+    @include element-position($position: fixed, $top: 0px, $z-index: 2);
     @include box-model($padding: 0 50px, $width: 100%, $height: 70px);
     @include flex-container($justify: flex-end, $align: center, $gap: 20px);
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
@@ -100,7 +93,24 @@
     .link {
       .logo {
         @include box-model($width: 200px, $height: 70px);
-        padding-right: 30px;
+      }
+    }
+
+    .ui {
+      @include box-model();
+      @include flex-container($align: center, $gap: 25px);
+
+      & svg {
+        transform: scale(1.5);
+        cursor: pointer;
+
+        &:hover {
+          color: $secondary-color;
+        }
+      }
+
+      .cart {
+        color: $primary-text-color;
       }
     }
 
@@ -126,24 +136,13 @@
         list-style: none;
       }
 
-      // a {
-      //   text-decoration: none;
-      //   color: $secondary-color;
-      //   font-weight: 500;
-      //   font-size: 1.2rem;
-      //   padding: 0.7rem;
-      //   &:hover {
-      //     font-weight: bolder;
-      //   }
-      // }
-
       .hamburger_lines {
         @include box-model($height: 26px, $width: 32px);
         @include element-position(
           $position: absolute,
           $top: 17px,
           $left: 20px,
-          $z-index: 3
+          $z-index: 4
         );
         @include flex-container($direction: column, $justify: space-between);
 
@@ -177,7 +176,7 @@
           $position: fixed,
           $top: 0,
           $left: 0,
-          $z-index: 2
+          $z-index: 3
         );
         @include box-model($width: 65vw, $height: 425px);
         padding-top: 50px;
@@ -203,7 +202,7 @@
           }
         }
 
-        .tools {
+        .utils {
           @include box-model($padding: 50px);
           @include flex-container($justify: space-evenly, $gap: 50px);
 
