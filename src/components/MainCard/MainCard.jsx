@@ -38,6 +38,7 @@ const MainCard = ({ data }) => {
             alt="cityPic"
           />
         </div>
+      <hr/>
         <div className={styles.mapRating}>
           <div className={styles.map}>
             <FiMapPin />
