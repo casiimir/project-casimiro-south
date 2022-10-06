@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 import { ENDPOINTS } from "../../utils/api/endpoints";
 import {
   AiOutlineClose,
@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function SearchBar() {
   const { lang, currency } = useSelector((state) => state);
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState("");
   const [isInputActive, setIsInputActive] = useState(false);
   const [searchValue, setSearchValue] = useState(0);
@@ -21,7 +21,7 @@ export default function SearchBar() {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     if (isInputActive) {
-      setSearchValue(result.id);
+      result && setSearchValue(result.id);
     }
   };
 
@@ -33,7 +33,7 @@ export default function SearchBar() {
   };
 
   const handleCityOnClick = () => {
-    setSearchValue(result.id);
+    result && setSearchValue(result.id);
   };
 
   useLayoutEffect(() => {
@@ -41,23 +41,26 @@ export default function SearchBar() {
       fetch(ENDPOINTS.SEARCH_CITIES + inputValue, {
         method: "GET",
         headers: {
+          "Accept-Language": "en-US",
           "X-Musement-Application": "string",
           "X-Musement-Version": "3.4.0",
         },
       })
         .then((data) => data.json())
         .then((json) => {
-          setResult({
-            title: json[0]?.items[0]?.title,
-            id: json[0]?.items[0]?.id,
-          });
+          json[0].items[0].hint === "Japan"
+            ? setResult({
+                title: json[0].items[0].title,
+                id: json[0].items[0].id,
+              })
+            : setResult("");
         });
     } else {
       setResult("");
     }
   }, [inputValue]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (searchValue !== 0) {
       fetch(`${ENDPOINTS.CITY_DATA}${searchValue}`, {
         method: "GET",
@@ -80,7 +83,6 @@ export default function SearchBar() {
               cover_img: json.cover_image_url,
             },
           });
-          console.log(json);
           navigate("/cities");
           setInputValue("");
           setIsInputActive(false);
