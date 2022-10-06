@@ -2,68 +2,57 @@
 @import "../../styles/_variables.scss";
 
 .Main {
-  @include flex-container();
+  @include flex-container($align: center);
   @include element-position($position: absolute, $right: 20px, $z-index: 1);
-  @include box-model($height: 30px);
-  @include border($radius: 80px);
-  background-color: $quinary-color;
 
-  .input {
-    @include box-model($width: 0px, $height: 100%);
+  .input_container {
+    @include flex-container();
     @include border($radius: 80px);
+    background-color: ghostwhite;
 
-    outline: none;
-    color: $primary-color;
-    transition: all 0.4s;
-
-    &.active {
-      @include box-model($padding: 10px, $width: 150px, $height: 100%);
+    .input {
+      @include box-model($width: 0px, $height: 100%);
+      @include border($radius: 80px);
+      outline: none;
       color: $primary-color;
+      transition: all 0.4s;
+      background-color: ghostwhite;
+
+      &.active {
+        @include box-model($padding: 10px, $width: 260px, $height: 100%);
+      }
+    }
+
+    .clear {
+      @include flex-container($justify: center, $align: center);
+      @include box-model($padding: 0 15px);
     }
   }
+
+  .close_input {
+    @include flex-container($justify: center, $align: center);
+    @include box-model($width: 30px, $height: 100%);
+    @include border($radius: 80px);
+    color: $primary-color;
+  }
 }
 
-.close_input {
-  @include flex-container($justify: center, $align: center);
-  @include box-model($width: 30px, $height: 100%);
-  @include border($radius: 80px);
-  color: $secondary-color;
-  background-color: $quinary-color;
-}
-
-.button {
-  @include flex-container($justify: center, $align: center);
-  @include box-model($padding: 0 5px);
-  background-color: $quinary-color;
-}
-
-.list {
+.modal_res {
   @include element-position(
     $position: absolute,
-    $right: 70px,
-    $top: 58px,
+    $right: 50px,
+    $top: 70px,
     $z-index: 1
   );
-
-  @include box-model($padding: 10px);
+  @include box-model($padding: 10px, $width: 300px);
   max-height: 200px;
-  background-color: $quinary-color;
+  background-color: $tertiary-color;
   list-style-type: none;
-  overflow: scroll;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.5);
 
-  &::-webkit-scrollbar {
-    overflow: hidden;
-    display: inline;
-    width: 15px;
-  }
-
-  &::-webkit-scrollbar-corner {
-    background: $quinary-color;
-  }
-
-  .result {
+  .res {
     @include box-model($padding: 2.5px 0);
-    font-size: 1.5vmax;
+    font-size: 1.5rem;
 
     &:hover {
       cursor: pointer;

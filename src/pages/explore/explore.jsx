@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation, Scrollbar, FreeMode } from "swiper";
 import "swiper/scss";
 import "swiper/scss/navigation";
+import "swiper/scss/scrollbar";
 import MainCard from "../../components/MainCard";
 
 export function Explore() {
@@ -73,14 +74,11 @@ export function Explore() {
       <div className={styles.CategoryList}>
         <Swiper
           className={styles.mySwiper}
-          style={{
-            "--swiper-navigation-color": "#b32124",
-          }}
           slidesPerView={"auto"}
           spaceBetween={20}
           grabCursor={true}
           modules={[Scrollbar, FreeMode]}
-          scrollbar={true}
+          scrollbar={{draggable: true}}
           freeMode={true}
         >
           {expCity?.map((el, i) => (
@@ -95,14 +93,11 @@ export function Explore() {
       <div className={styles.CategoryList}>
         <Swiper
           className={styles.mySwiper}
-          style={{
-            "--swiper-navigation-color": "#b32124",
-          }}
           slidesPerView={"auto"}
           spaceBetween={20}
           grabCursor={true}
           modules={[Scrollbar, FreeMode]}
-          scrollbar={true}
+          scrollbar={{draggable: true}}
           freeMode={true}
         >
           {expFD?.map((el, i) => (
@@ -116,14 +111,11 @@ export function Explore() {
       <div className={styles.CategoryList}>
         <Swiper
           className={styles.mySwiper}
-          style={{
-            "--swiper-navigation-color": "#b32124",
-          }}
           slidesPerView={"auto"}
           spaceBetween={20}
           grabCursor={true}
           modules={[Scrollbar, FreeMode]}
-          scrollbar={true}
+          scrollbar={{draggable: true}}
           freeMode={true}
         >
           {expFolk?.map((el, i) => (
@@ -137,14 +129,11 @@ export function Explore() {
       <div className={styles.CategoryList}>
         <Swiper
           className={styles.mySwiper}
-          style={{
-            "--swiper-navigation-color": "#b32124",
-          }}
           slidesPerView={"auto"}
           spaceBetween={20}
           grabCursor={true}
           modules={[Scrollbar, FreeMode]}
-          scrollbar={true}
+          scrollbar={{draggable: true}}
           freeMode={true}
         >
           {expNew?.map((el, i) => (

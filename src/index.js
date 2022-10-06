@@ -12,7 +12,6 @@ import { Explore } from "./pages/explore";
 import { Details } from "./pages/details";
 import { Provider } from "react-redux";
 import store from "./store";
-
 import { Error } from "./pages/error";
 import { Cities } from "./pages/cities";
 import { About } from "./pages/about";
@@ -23,7 +22,6 @@ import { Cart } from "./pages/cart";
 import { EmptyCart } from "./pages/emptycart";
 import { NoLoginCart } from "./pages/nologincart";
 import { ThankYou } from "./pages/thankyou";
-
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -77,11 +75,22 @@ const router = createBrowserRouter([
         path: "cart",
         element: <Cart />,
       },
-      { path: "*", element: <Error status={404} /> },
-
-      { path: 'emptycart', element: <EmptyCart /> },
-      { path: 'nologincart', element: <NoLoginCart /> },
-      { path: 'thankyou', element: <ThankYou /> },
+      {
+        path: "emptycart",
+        element: <EmptyCart />,
+      },
+      {
+        path: "nologincart",
+        element: <NoLoginCart />,
+      },
+      {
+        path: "thankyou",
+        element: <ThankYou />,
+      },
+      {
+        path: "*",
+        element: <Error status={404} />,
+      },
     ],
   },
 ]);
