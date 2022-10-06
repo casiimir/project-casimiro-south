@@ -9,7 +9,7 @@
     text-align: left;
     font-size: 1rem;
     font-weight: bold;
-    border: 2px solid $quaternary-text-color ;
+    background-color: #f5f5f5;
     color:$secondary-text-color;
     padding: 1rem;
     
@@ -17,6 +17,8 @@
 
   .CategoryList {
     @include box-model($width: 100%);
+    background-color: #f2f1f0;
+    padding: 30px;
 
     .mySwiper {
       height: auto;
