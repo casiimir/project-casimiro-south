@@ -1,7 +1,7 @@
 import styles from "./index.module.scss";
 import { ENDPOINTS } from "../../utils/api/endpoints";
 import { CardList } from "../../components/CardList";
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation, Scrollbar, FreeMode } from "swiper";
@@ -14,7 +14,7 @@ export function Explore() {
   const { expCity, expFD, expFolk, expNew } = listsData;
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     fetch(ENDPOINTS.CITY_ACTIVITIES, {
       method: "GET",
       headers: {
@@ -69,7 +69,7 @@ export function Explore() {
 
   return (
     <div className={styles.Main}>
-      <span>CITY EXPERIENCES</span>
+      <span className={styles.titles}> CITY EXPERIENCES </span>
       <div className={styles.CategoryList}>
         <Swiper
           className={styles.mySwiper}
@@ -90,8 +90,8 @@ export function Explore() {
           ))}
         </Swiper>
       </div>
-      <button onClick={() => console.log(expCity)}>Console City</button>
-      <span>FOOD&DRINKS</span>
+      <span className={styles.titles}> 
+      FOOD&DRINKS</span>
       <div className={styles.CategoryList}>
         <Swiper
           className={styles.mySwiper}
@@ -112,8 +112,7 @@ export function Explore() {
           ))}
         </Swiper>
       </div>
-      <button onClick={() => console.log(expFD)}>Console Food&Drinks</button>
-      <span>FOLKLORE</span>
+      <span className={styles.titles}> FOLKLORE </span>
       <div className={styles.CategoryList}>
         <Swiper
           className={styles.mySwiper}
@@ -134,8 +133,7 @@ export function Explore() {
           ))}
         </Swiper>
       </div>
-      <button onClick={() => console.log(expFolk)}>Console Folklore</button>
-      <span>MUST DO</span>
+      <span className={styles.titles}> MUST DO </span>
       <div className={styles.CategoryList}>
         <Swiper
           className={styles.mySwiper}
@@ -156,7 +154,6 @@ export function Explore() {
           ))}
         </Swiper>
       </div>
-      <button onClick={() => console.log(expNew)}>Console New</button>
     </div>
   );
 }
