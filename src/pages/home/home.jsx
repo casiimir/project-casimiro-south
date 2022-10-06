@@ -34,7 +34,7 @@ export function Home() {
       return (
         '<span style="background-image: url(' +
         listsData.home[index]?.cover_image_url +
-        ') !important " class="' +
+        '?h=120) !important " class="' +
         className +
         '"></span>'
       );
@@ -106,10 +106,7 @@ export function Home() {
           {listsData.home?.map((el, i) => (
             <SwiperSlide key={i}>
               <div className={styles.carousel}>
-                <img
-                  src={el.cover_image_url}
-                  alt={el.title}
-                />
+                <img src={el.cover_image_url + "?h=800"} alt={el.title} />
               </div>
             </SwiperSlide>
           ))}
