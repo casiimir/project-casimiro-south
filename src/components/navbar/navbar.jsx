@@ -13,7 +13,7 @@ import styles from "./index.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 
 export function Navbar() {
-  const { lang, currency } = useSelector((state) => state);
+  const { lang, currency, listsData } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const handleChangeLang = () => {
@@ -85,6 +85,11 @@ export function Navbar() {
               className={styles.cart}
             >
               <AiOutlineShoppingCart />
+              {listsData.cartList.length ? (
+                <span className={styles.cart_length}>
+                  {listsData.cartList.length}
+                </span>
+              ) : null}
             </Link>
             <span className={styles.language} onClick={handleChangeLang}>
               {lang.toggle ? "ITA" : "ENG"}
@@ -108,22 +113,6 @@ export function Navbar() {
           <span className={styles.tools}></span>
         </NavLink>
         <span className={styles.ui}>
-          <span className={styles.user}>
-            <AiOutlineUser />
-          </span>
-          <Link
-            to={
-              !localStorage.getItem("username")
-                ? "/nologincart"
-                : !localStorage.getItem("cart_list") ||
-                  !JSON.parse(localStorage.getItem("cart_list")).length
-                ? "/emptycart"
-                : "/cart"
-            }
-            className={styles.cart}
-          >
-            <AiOutlineShoppingCart />
-          </Link>
           <SearchBar />
         </span>
         <div className={styles.container}>
@@ -134,44 +123,64 @@ export function Navbar() {
             <span className={styles.line3}></span>
           </div>
           <div className={styles.menu_items}>
-            <NavLink
-              to="/"
-              title="Navigate to Home tab"
-              className={styles.link}
-              end
-            >
-              Home
-            </NavLink>
-            <NavLink
-              to="/explore"
-              title="Navigate to Explore tab"
-              className={({ isActive }) =>
-                isActive ? `${styles.link} ${styles.active}` : styles.link
-              }
-              end
-            >
-              <span>{lang.toggle ? "Esplora" : "Explore"}</span>
-            </NavLink>
-            <NavLink
-              to="/cities"
-              title="Navigate to Cities tab"
-              className={({ isActive }) =>
-                isActive ? `${styles.link} ${styles.active}` : styles.link
-              }
-              end
-            >
-              {lang.toggle ? "Città" : "Cities"}
-            </NavLink>
-            <NavLink
-              to="/about"
-              title="Navigate to About Us tab"
-              className={({ isActive }) =>
-                isActive ? `${styles.link} ${styles.active}` : styles.link
-              }
-              end
-            >
-              {lang.toggle ? "Chi Siamo" : "About Us"}
-            </NavLink>
+            <span className={styles.links}>
+              <NavLink
+                to="/"
+                title="Navigate to Home tab"
+                className={styles.link}
+                end
+              >
+                Home
+              </NavLink>
+              <NavLink
+                to="/explore"
+                title="Navigate to Explore tab"
+                className={({ isActive }) =>
+                  isActive ? `${styles.link} ${styles.active}` : styles.link
+                }
+                end
+              >
+                <span>{lang.toggle ? "Esplora" : "Explore"}</span>
+              </NavLink>
+              <NavLink
+                to="/cities"
+                title="Navigate to Cities tab"
+                className={({ isActive }) =>
+                  isActive ? `${styles.link} ${styles.active}` : styles.link
+                }
+                end
+              >
+                {lang.toggle ? "Città" : "Cities"}
+              </NavLink>
+              <NavLink
+                to="/about"
+                title="Navigate to About Us tab"
+                className={({ isActive }) =>
+                  isActive ? `${styles.link} ${styles.active}` : styles.link
+                }
+                end
+              >
+                {lang.toggle ? "Chi Siamo" : "About Us"}
+              </NavLink>
+            </span>
+            <span className={styles.ui}>
+              <NavLink
+                to={
+                  !localStorage.getItem("username")
+                    ? "/nologincart"
+                    : !localStorage.getItem("cart_list") ||
+                      !JSON.parse(localStorage.getItem("cart_list")).length
+                    ? "/emptycart"
+                    : "/cart"
+                }
+                className={styles.cart}
+              >
+                <AiOutlineShoppingCart />
+                <span className={styles.cart_length}>
+                  {listsData.cartList.length}
+                </span>
+              </NavLink>
+            </span>
             <span className={styles.utils}>
               <span className={styles.language} onClick={handleChangeLang}>
                 {lang.toggle ? "ITA" : "ENG"}
