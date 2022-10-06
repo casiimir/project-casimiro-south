@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./index.module.scss";
 import { ENDPOINTS } from "../../utils/api/endpoints";
@@ -13,7 +13,7 @@ export function Home() {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     fetch(ENDPOINTS.CITIES, {
       method: "GET",
       headers: {
@@ -39,14 +39,6 @@ export function Home() {
         '"></span>'
       );
     },
-  };
-
-  const handleSetCityData = (el) => {
-    dispatch({ type: "SET_CITY_ID", payload: el.id });
-    dispatch({ type: "SET_CITY_NAME", payload: el.name });
-    dispatch({ type: "SET_CITY_CONTENT", payload: el.content });
-    dispatch({ type: "SET_CITY_HEADLINE", payload: el.headline });
-    dispatch({ type: "SET_CITY_COVER_IMG", payload: el.cover_image_url });
   };
 
   return (
@@ -102,7 +94,6 @@ export function Home() {
                 <img
                   src={el.cover_image_url}
                   alt={el.title}
-                  onClick={() => handleSetCityData(el)}
                 />
               </div>
             </SwiperSlide>
