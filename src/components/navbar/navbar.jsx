@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import {
   AiOutlineUser,
   AiOutlineSearch,
@@ -73,19 +73,26 @@ export function Navbar() {
             <span className={styles.user}>
               <AiOutlineUser />
             </span>
-            <span className={styles.cart}>
+            <Link
+              to={
+                !localStorage.getItem("username")
+                  ? "/nologincart"
+                  : !localStorage.getItem("cart_list") ||
+                    !JSON.parse(localStorage.getItem("cart_list")).length
+                  ? "/emptycart"
+                  : "/cart"
+              }
+              className={styles.cart}
+            >
               <AiOutlineShoppingCart />
-            </span>
+            </Link>
             <span className={styles.language} onClick={handleChangeLang}>
               {lang.toggle ? "ITA" : "ENG"}
             </span>
             <span className={styles.currency} onClick={handleChangeCurr}>
               {currency.toggle ? <AiOutlineEuro /> : <AiOutlineDollar />}
             </span>
-            <span className={styles.search}>
-              {" "}
-              <SearchBar />
-            </span>
+            <SearchBar />
           </span>
         </nav>
       </div>
@@ -98,7 +105,27 @@ export function Navbar() {
           end
         >
           <img src={Logo} className={styles.logo} />
+          <span className={styles.tools}></span>
         </NavLink>
+        <span className={styles.ui}>
+          <span className={styles.user}>
+            <AiOutlineUser />
+          </span>
+          <Link
+            to={
+              !localStorage.getItem("username")
+                ? "/nologincart"
+                : !localStorage.getItem("cart_list") ||
+                  !JSON.parse(localStorage.getItem("cart_list")).length
+                ? "/emptycart"
+                : "/cart"
+            }
+            className={styles.cart}
+          >
+            <AiOutlineShoppingCart />
+          </Link>
+          <SearchBar />
+        </span>
         <div className={styles.container}>
           <input className={styles.checkbox} type="checkbox" />
           <div className={styles.hamburger_lines}>
@@ -145,7 +172,7 @@ export function Navbar() {
             >
               {lang.toggle ? "Chi Siamo" : "About Us"}
             </NavLink>
-            <span className={styles.tools}>
+            <span className={styles.utils}>
               <span className={styles.language} onClick={handleChangeLang}>
                 {lang.toggle ? "ITA" : "ENG"}
               </span>
