@@ -10,20 +10,20 @@
   @include box-model(
     $margin: 0,
     $border: 0,
-    $padding: 10px,
+    $padding: 15px,
     $width: 220px,
     $height: 500px
   );
-  @include border(0, 0px);
+  @include border(0);
   font-family: "Montserrat", sans-serif;
-  border: 2px solid $quaternary-text-color;
-  background-color: rgb(235, 236, 237);
+  background-color: rgb(234, 236, 236);
 
   .image {
     @include flex-container(column, flex-start, center);
 
     .imagePic {
-      @include box-model($padding:20px, $width:200px, $height:200px);
+      @include box-model(0, 0, 0, 200px, 200px);
+      @include border(0, 15px);
       object-fit: cover;
       object-position: center;
     }
@@ -51,21 +51,19 @@
     @include flex-container(row, center, center, nowrap, 20px);
     .mainButton {
       @include button-element(auto, auto, 10px 20px, 0, 8px);
-      color: $quinary-color;
+      color: $quaternary-color;
       background-color: $secondary-color;
       font-size: 0.6rem;
       font-family: "Montserrat", sans-serif;
 
       &:hover {
-        background-color: $quinary-color;
+        background-color: $quaternary-color;
         color: $secondary-color;
       }
     }
 
     .viewDetails {
       font-size: 0.6rem;
-      text-decoration: none;
-      color:$primary-text-color;
 
       &:hover {
         font-weight: bold;
