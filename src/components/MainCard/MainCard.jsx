@@ -38,34 +38,32 @@ const MainCard = ({ data }) => {
             alt="cityPic"
           />
         </div>
-      <hr/>
-        <div className={styles.mapRating}>
-          <div className={styles.map}>
+      
+        <div className={styles.placePrice}>
+          <div className={styles.place}>
             <FiMapPin />
-            <p>{city.name}</p>
+            <p>{city.name.toUpperCase()}</p>
           </div>
-          <div className={styles.rating}>
-            {reviews_avg}
-            <AiOutlineStar />
+          <div className={styles.price}>
+          <p className={styles.price}>{retail_price.formatted_value}</p>
           </div>
         </div>
-        <p className={styles.text}>{title.toUpperCase()}</p>
-        <p className={styles.price}>{retail_price.formatted_value}</p>
-        <div className={styles.buttons}>
-          <button
-            disabled={!localStorage.getItem("username") && true}
-            onClick={handleBuyBtn}
-            className={styles.mainButton}
-          >
-            {lang.toggle ? "Acquista" : "Buy now"}
-          </button>
-          <Link
+        <p className={styles.expTitle}>{title.toUpperCase()}</p>
+        <Link
             to={`/details/${data.uuid}`}
             title="Navigate to Activity Tab"
             className={styles.viewDetails}
           >
             {lang.toggle ? "Dettagli" : "View details"}
           </Link>
+        <div className={styles.buttons}>
+          <button
+            disabled={!localStorage.getItem("username") && true}
+            onClick={handleBuyBtn}
+            className={styles.mainButton}
+          >
+            {lang.toggle ? "Aggiungi al carrello" : "Add to cart"}
+          </button>
         </div>
       </div>
     </>
