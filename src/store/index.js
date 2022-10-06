@@ -108,7 +108,7 @@ function cityDataReducer(state = {}, action) {
     case "SET_CITY_DATA":
       return {
         ...state,
-        objectData: { ...action.payload },
+        objectData: action.payload,
       };
 
     default:
