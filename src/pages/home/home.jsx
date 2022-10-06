@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import styles from "./index.module.scss";
 import { ENDPOINTS } from "../../utils/api/endpoints";
 import { useDispatch, useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper";
 import "swiper/scss";
 import "swiper/scss/pagination";
+import styles from "./index.module.scss";
 
 export function Home() {
   const { listsData, lang } = useSelector((state) => state);
@@ -62,16 +62,31 @@ export function Home() {
         </div>
         <div className={styles.desc_wrapper}>
           <p className={styles.description}>
-            {/* {listsData.home[descrIndex]?.meta_description} */}
             {lang.toggle
-              ? `Il Giappone è una delle destinazioni turistiche più sorprendenti e offre molte esperienze uniche che non puoi trovare in nessun'altra parte del mondo. L'arcipelago, con i suoi luoghi incantevoli e panorami mozzafiato, offre tante esperienze diverse che attirano turisti da ogni angolo del mondo. Scopri ${listsData.home[descrIndex].name} con noi!` 
-              : "Japan is one of the most amazing tourist destination and it offers many unique experiences that you cannot find in any other part of the world. The archipelago, with its enchanting places and breathtaking views, offers so many different experiences that attract tourists from all corners of the world."
-            }
+              ? "Il Giappone è una delle destinazioni turistiche più sorprendenti e offre molte esperienze uniche che non puoi trovare in nessun'altra parte del mondo. L'arcipelago, con i suoi luoghi incantevoli e panorami mozzafiato, offre tante esperienze diverse che attirano turisti da ogni angolo del mondo."
+              : "Japan is one of the most amazing tourist destinations and it offers many unique experiences that you cannot find in any other part of the world. The archipelago, with its enchanting places and breathtaking views, offers so many different experiences that attract tourists from all corners of the world."}
           </p>
-          {lang.toggle
-          ? <span>Scopri {<span className={styles.city_name}>{listsData.home[descrIndex]?.name}</span>}  con noi!</span>
-          : <span>Discover {<span className={styles.city_name}>{listsData.home[descrIndex]?.name}</span>}  with us!</span>
-          }
+          {lang.toggle ? (
+            <span>
+              Scopri
+              {
+                <span className={styles.city_name}>
+                  {listsData.home[descrIndex]?.name}
+                </span>
+              }
+              con noi!
+            </span>
+          ) : (
+            <span>
+              Discover
+              {
+                <span className={styles.city_name}>
+                  {listsData.home[descrIndex]?.name}
+                </span>
+              }
+              with us!
+            </span>
+          )}
           <button className={styles.explore_btn}>
             <Link to="/explore" title="Navigate to Explore tab">
               {lang.toggle ? "Esplora ora" : "explore now"}

@@ -26,7 +26,6 @@
         height: auto;
         width: 400px;
 
-
         &::before {
           @include form-text(
             $font-size: 4rem,
@@ -71,6 +70,7 @@
         padding-top: 10px;
 
         .city_name {
+          @include box-model($padding: 0 5px);
           color: $secondary-text-color;
           text-transform: uppercase;
         }
@@ -145,12 +145,10 @@
       width: 90%;
       min-height: 700px;
     }
-    
   }
 }
 
 @media only screen and (max-width: 710px) {
-
   .left {
     .title {
       font-size: 4.8rem !important;
@@ -171,7 +169,6 @@
   .right {
     min-height: 500px !important;
     .carousel {
-
       img {
         min-height: 500px !important;
       }
@@ -199,17 +196,14 @@
   }
 
   span {
-    font-size: 1.4rem !important;      
+    font-size: 1.4rem !important;
   }
 
   .explore_btn {
-    @include button-element(
-          $height: 57px !important,
-          $width: 200px !important,
-        );
-        a {
-          padding: 20px !important;
-        }
+    @include button-element($height: 57px !important, $width: 200px !important);
+    a {
+      padding: 20px !important;
+    }
   }
 }
 
@@ -225,7 +219,6 @@
     .experience {
       font-size: 2rem !important;
       width: 300px !important;
-      
     }
   }
   .description {
@@ -234,13 +227,12 @@
   }
 
   span {
-    font-size: 1.3rem !important;      
+    font-size: 1.3rem !important;
   }
 
   .right {
     min-height: 400px !important;
     .carousel {
-
       img {
         min-height: 400px !important;
       }
@@ -259,12 +251,11 @@
           font-size: 2.2rem !important;
         }
       }
-  
+
       .experience {
         font-size: 1.75rem !important;
         letter-spacing: 10px !important;
         width: 200px !important;
-        
       }
     }
 
@@ -275,13 +266,12 @@
     }
 
     span {
-      font-size: 1.2rem !important;      
+      font-size: 1.2rem !important;
     }
-  
+
     .right {
       min-height: 350px !important;
       .carousel {
-  
         img {
           min-height: 350px !important;
         }
