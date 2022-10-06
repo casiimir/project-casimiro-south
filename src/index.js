@@ -21,7 +21,7 @@ import { Login } from "./pages/login";
 import { Cart } from "./pages/cart";
 import { EmptyCart } from "./pages/emptycart";
 import { NoLoginCart } from "./pages/nologincart";
-import { ThankYou } from "./pages/thankyou/thankyou";
+import { ThankYou } from "./pages/thankyou";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

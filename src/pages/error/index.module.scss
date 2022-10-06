@@ -2,14 +2,29 @@
 @import "../../styles/_variables";
 
 .Main {
-  @include box-model($height: calc(100vh - 170px));
-  @include flex-container(column, center, center, nowrap, 3rem);
+  @include box-model($padding: 2rem, $height: calc(100vh - 170px));
+  @include flex-container(
+    $direction: column,
+    $justify: center,
+    $align: center,
+    $gap: 2rem
+  );
   @include form-text(0.7rem);
   background-color: #ffffff;
   color: $primary-text-color;
 
+  img {
+    @include box-model($width: 30%);
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
   .message {
-    
+    @include flex-container(
+      $direction: column,
+      $justify: center,
+      $align: center
+    );
     h2 {
       @include form-text(
         $font-size: 1.5rem,
@@ -31,17 +46,45 @@
 
   a {
     @include form-text(
-      $font-size: 0.7rem,
+      $font-size: 0.6rem,
       $font-weight: bold,
       $letter-spacing: 0.2rem
     );
     margin-bottom: 1rem;
     font-family: "Montserrat", sans-serif;
-    color: $primary-text-color;
+    color: $quaternary-text-color;
 
     &:hover,
     &.active {
       text-decoration: underline;
+    }
+  }
+}
+
+@media only screen and (max-width: 748px) {
+  .Main {
+    @include box-model($padding: 0 4rem, $height: calc(100vh - 170px));
+    @include flex-container(
+      $direction: column,
+      $justify: center,
+      $align: center,
+      $gap: 3rem
+    );
+
+    img {
+      @include box-model($width: 50%);
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .message {
+      @include flex-container(
+        $direction: column,
+        $justify: center,
+        $align: center,
+        $gap: 1rem
+      );
+      text-align: center;
     }
   }
 }

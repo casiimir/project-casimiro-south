@@ -45,13 +45,21 @@ export const Info = () => {
                   ? "Cancellazione gratuita"
                   : "Non è disponibile la cancellazione gratuita"
                 : free_cancellation === true
-                  ? "Free cancellation"
-                  : "Free cancellation is not available"}
+                ? "Free cancellation"
+                : "Free cancellation is not available"}
             </span>
-            <p className={styles.duration}>
-              {lang.toggle ? "Durata" : "Duration"}:
-              <span> {duration_range?.max.slice(2).toLowerCase()}</span>
+            
+              <p className={styles.duration}>
+                {lang.toggle ? "Durata" : "Duration"}:
+                <span> {duration_range?.max ? duration_range?.max.slice(2).toLowerCase()
+                : lang.toggle ? (
+              " Nessuna informazione da mostrare"
+            ) : (
+              " No information to show"
+            )}
+            </span>
             </p>
+
             <p className={styles.availability}>
               {lang.toggle ? "Disponibilità" : "Availability"}:
               <span>
@@ -66,10 +74,15 @@ export const Info = () => {
             </p>
             <p className={styles.lang}>
               {lang.toggle ? "Lingue" : "Languages"}:
-              {languages?.length 
-                ? languages?.map((language) => (<span> {language.name};</span>))
-                : <span>{lang.toggle ? " Nessuna lingua da mostrare" : " No languages to show"}</span>
-              }
+              {languages?.length ? (
+                languages?.map((language) => <span> {language.name};</span>)
+              ) : (
+                <span>
+                  {lang.toggle
+                    ? " Nessuna lingua da mostrare"
+                    : " No languages to show"}
+                </span>
+              )}
             </p>
           </div>
           <p className={styles.fee}>

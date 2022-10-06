@@ -10,10 +10,8 @@ const teamMembers = [
     id: 1,
     name: "Antonino",
     surname: "Di Stefano",
-    descriptionIta:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, optio!",
-    descriptionEng:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, optio!",
+    descriptionIta: "Frontend developer",
+    descriptionEng: "Frontend developer",
     src: AntoninoPic,
     linkedin: "https://www.linkedin.com/in/antonino-di-stefano/",
   },
@@ -21,10 +19,8 @@ const teamMembers = [
     id: 2,
     name: "Domenico",
     surname: "Seminara",
-    descriptionIta:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, optio!",
-    descriptionEng:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, optio!",
+    descriptionIta: "Frontend developer",
+    descriptionEng: "Frontend developer",
     src: DomenicoPic,
     linkedin: "https://www.linkedin.com/in/domenico-seminara-1a139a238/",
   },
@@ -32,10 +28,8 @@ const teamMembers = [
     id: 3,
     name: "Roberta",
     surname: "D'Agostino",
-    descriptionIta:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, optio!",
-    descriptionEng:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, optio!",
+    descriptionIta: "Frontend developer",
+    descriptionEng: "Frontend developer",
     src: RobertaPic,
     linkedin: "https://www.linkedin.com/in/roberta-d-agostino/",
   },
@@ -43,10 +37,8 @@ const teamMembers = [
     id: 4,
     name: "Lucia",
     surname: "Di Fede",
-    descriptionIta:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, optio!",
-    descriptionEng:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, optio!",
+    descriptionIta: "Frontend developer",
+    descriptionEng: "Frontend developer",
     src: LuciaPic,
     linkedin: "https://www.linkedin.com/in/luciadifede/",
   },
@@ -54,10 +46,8 @@ const teamMembers = [
     id: 5,
     name: "Ginevra",
     surname: "Vitrano",
-    descriptionIta:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, optio!",
-    descriptionEng:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, optio!",
+    descriptionIta: "Frontend developer",
+    descriptionEng: "Frontend developer",
     src: GinevraPic,
     linkedin: "https://www.linkedin.com/in/ginevravitrano/",
   },
@@ -65,10 +55,8 @@ const teamMembers = [
     id: 6,
     name: "Dalila",
     surname: "Iapichino",
-    descriptionIta:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, optio!",
-    descriptionEng:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, optio!",
+    descriptionIta: "Frontend developer",
+    descriptionEng: "Frontend developer",
     src: DalilaPic,
     linkedin: "https://www.linkedin.com/in/dalilaiapichino/",
   },
