@@ -138,7 +138,7 @@ export function Cart() {
         </div>
         <div className={styles.total_container}>
         <span className={styles.top_total}>
-          {lang.toggle ? "Totale del carrello" : "cart total"}
+          {lang.toggle ? "Totale del carrello" : "cart totals"}
         </span>
         <span className={styles.total}>
           <p className={styles.sub}>{lang.toggle ? "Subtotale" : "Subtotal"}</p>
