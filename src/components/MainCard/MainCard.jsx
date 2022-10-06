@@ -1,9 +1,9 @@
-import { memo } from "react";
 import { FiMapPin } from "react-icons/fi";
-import { AiOutlineStar } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./index.module.scss";
+
+import swal from "sweetalert";
 
 
 const MainCard = ({ data }) => {
@@ -17,14 +17,23 @@ const MainCard = ({ data }) => {
     title: "",
     retail_price: { formatted_value: "" },
   };
-  const { city, cover_image_url, reviews_avg, title, retail_price } =
+  const { city, cover_image_url, title, retail_price } =
     data ?? dataPlaceholder;
 
   const handleBuyBtn = () => {
-    dispatch({ type: "SET_CART_LIST", payload: data });
+    localStorage.getItem("username")  && dispatch({ type: "SET_CART_LIST", payload: data });
     localStorage.setItem(
       "cart_list",
       JSON.stringify([...listsData.cartList, data])
+    );
+    localStorage.getItem("username") ? swal(
+      "Well Done",
+      lang.toggle ? "Hai aggiunto un'attività al carrello" : "Activity Added to Cart",
+      "success"
+    ):swal(
+      "Oops",
+      lang.toggle ? "Sembra che tu non sia loggato!" : "Seems like you're not logged in",
+      "error"
     );
   };
 
@@ -58,7 +67,6 @@ const MainCard = ({ data }) => {
           </Link>
         <div className={styles.buttons}>
           <button
-            disabled={!localStorage.getItem("username") && true}
             onClick={handleBuyBtn}
             className={styles.mainButton}
           >
