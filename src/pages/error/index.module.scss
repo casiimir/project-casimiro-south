@@ -15,10 +15,7 @@
 
   img {
     @include box-model($width: 30%);
-    user-select: none;
-    -webkit-user-select: none;
   }
-
   .message {
     @include flex-container(
       $direction: column,

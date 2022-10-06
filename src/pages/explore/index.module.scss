@@ -5,18 +5,22 @@
   @include flex-container($direction: column, $gap: 25px);
   @include box-model($padding: 50px, $width: 100%);
 
+  .titles {
+    text-align: left;
+    font-size: 1rem;
+    font-weight: bold;
+    border: 2px solid $quaternary-text-color ;
+    color:$secondary-text-color;
+    padding: 1rem;
+    
+  }
+
   .CategoryList {
     @include box-model($width: 100%);
 
     .mySwiper {
       height: auto;
       width: 100%;
-      border-radius: 15px;
-
-      & > div:first-child {
-        // width: calc(100% - 10px);
-      }
-      
     }
   }
 }
