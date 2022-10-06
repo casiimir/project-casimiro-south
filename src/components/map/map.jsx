@@ -26,12 +26,14 @@ export function Map() {
 
   const renderMap = () => {
   return (
+    position.lat ? 
     <GoogleMap mapContainerStyle={mapContainerStyle} zoom={15} center={center}>
       <MarkerF
         key="marker_1"
         position={position}
       />
     </GoogleMap>
+     : <div>Non ci sono posizioni per questa attività</div>
   );
         
   }

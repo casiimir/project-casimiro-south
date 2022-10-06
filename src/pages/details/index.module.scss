@@ -143,7 +143,7 @@ overflow-x: hidden;
     text-align: start;
 
     .suggestedActivities {
-      @include flex-container($justify: center, $align: center, $gap: 20px);
+      @include flex-container($justify: center, $align: center, $gap: 30px, $wrap: wrap);
       padding-top: 20px;
     }
   }

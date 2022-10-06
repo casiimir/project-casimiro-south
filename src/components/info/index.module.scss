@@ -14,7 +14,6 @@
         .boxInfo {
           @include form-text($font-weight: 600);
           
-
           span {
             color: $secondary-text-color;
           }
