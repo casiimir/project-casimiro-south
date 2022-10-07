@@ -3,24 +3,91 @@
 
 .Main {
   @include box-model($width: 100vw, $padding: 3rem 3rem 3rem 3rem);
-  @include flex-container(
-    $direction: column,
-    $justify: space-between,
-    $align: center
-  );
+  @include flex-container($direction: column, $gap: 50px, $align: center);
+  flex-wrap: wrap;
   min-height: 100vh;
+  background-size: 100%;
 
   .hero {
     @include box-model($width: 100%);
     @include flex-container($justify: space-between);
     color: ghostwhite;
     text-shadow: $box-shadow;
-
-    .headline {
-      font-size: 5rem;
+    .hero_right {
+      .headline {
+        font-size: 5rem;
+      }
+      .name {
+        font-size: 8rem;
+      }
+      p {
+        padding: 8px;
+        display: flex;
+        text-shadow: $box-shadow;
+        font-weight: bolder;
+        backdrop-filter: blur(0.9px);
+      }
     }
-    .name {
-      font-size: 8rem;
+    .hero_left {
+      .select_dropdown {
+        background-color: #e6e6e6;
+        width: auto;
+        float: left;
+        max-width: 100%;
+        border-radius: 2px;
+        padding-right: 15px;
+        select {
+          @include form-text($font-size: 1rem, $font-weight: 200);
+          max-width: 100%;
+          padding: 8px 20px 8px 10px;
+          border: none;
+          background-color: transparent;
+          &:active,
+          &:focus {
+            outline: none;
+            box-shadow: none;
+          }
+        }
+        &:after {
+          content: " ";
+          @include element-position(
+            $position: absolute,
+            $top: 50%,
+            $right: 8px
+          );
+          @include box-model($width: 0, $height: 0);
+          margin-top: -2px;
+          border-left: 5px solid transparent;
+          border-right: 5px solid transparent;
+          border-top: 5px solid #aaa;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 737px) {
+  .Main {
+    background-size: auto;
+    .hero {
+      display: flex;
+      flex-direction: column;
+
+      .hero_right {
+        .headline {
+          font-size: 3rem;
+        }
+        .name {
+          font-size: 4rem;
+        }
+      }
+      .hero_left {
+        margin-bottom: 20px;
+        margin-top: 10px;
+        .select_dropdown {
+          appearance: none;
+        }
+      }
     }
   }
 }

@@ -82,9 +82,9 @@ export function Cities() {
     <div
       className={styles.Main}
       style={{
-        backgroundImage: `url(${cover_img}?w=1920)`,
+        backgroundImage: `url(${cover_img}?h=600)`,
         objectFit: "cover",
-        backgroundSize: "100%",
+         
         backgroundRepeat: "no-repeat",
       }}
     >
@@ -100,7 +100,8 @@ export function Cities() {
           <h1 className={styles.name}>{name}</h1>
           <p className={styles.meta}>{meta}</p>
         </div>
-        <div className={styles.hero.left}>
+        <div className={styles.hero_left}>
+          <div className={styles.select_dropdown}>
           <select value={selected} onChange={handleChange}>
             {options.map((option) => (
               <option key={option.value} value={option.value}>
@@ -108,6 +109,7 @@ export function Cities() {
               </option>
             ))}
           </select>
+          </div>
         </div>
       </div>
       <CardList>
