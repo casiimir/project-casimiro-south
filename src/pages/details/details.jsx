@@ -9,7 +9,7 @@ import { useLayoutEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ENDPOINTS } from "../../utils/api/endpoints";
 import { MainCard } from "../../components/MainCard";
-import {ScrollButton} from "../../components/scrollButton";
+import { ScrollButton } from "../../components/scrollButton";
 import { BsArrowLeftCircle } from "react-icons/bs";
 import swal from "sweetalert";
 import styles from "./index.module.scss";
@@ -29,6 +29,11 @@ export function Details() {
     latitude,
     longitude,
   } = activityData.objectData;
+  const [originPath, setOriginPath] = useState("");
+
+  useLayoutEffect(() => {
+    setOriginPath(routePath.state?.prev?.pathname);
+  }, []);
 
   useLayoutEffect(() => {
     fetch(ENDPOINTS.ACTIVITY_DETAILS + activity_uuid, {
@@ -93,7 +98,7 @@ export function Details() {
     <div className={styles.Main}>
       <div className={styles.content}>
         <section className={styles.left}>
-          <Link className={styles.back} to={routePath.state.prev.pathname}>
+          <Link className={styles.back} to={originPath}>
             <BsArrowLeftCircle />
           </Link>
           <div className={styles.titlePrice}>

@@ -15,7 +15,7 @@
   }
 
   .social {
-    @include flex-container($wrap: wrap, $gap: 60px);
+    @include flex-container($wrap: wrap, $gap: 50px);
 
     svg {
       transform: scale(2);

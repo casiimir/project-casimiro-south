@@ -19,7 +19,7 @@
       background-color: ghostwhite;
 
       &.active {
-        @include box-model($padding: 10px, $width: 250px, $height: 100%);
+        @include box-model($padding: 10px, $width: 190px, $height: 100%);
       }
     }
 
