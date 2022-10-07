@@ -44,7 +44,7 @@ export function Cart() {
           <span className={styles.pqt}>
             <p>{lang.toggle ? "Prezzo" : "Price"}</p>
             <p>{lang.toggle ? "Quantità" : "Quantity"}</p>
-            <p>{lang.toggle ? "Totale" : "Total"}</p>
+            <p className={styles.total}>{lang.toggle ? "Totale" : "Total"}</p>
           </span>
         </span>
         <ul className={styles.cart_list}>
@@ -114,8 +114,31 @@ export function Cart() {
       </div>
 
       <div className={styles.right}>
+      <div className={styles.logos}>
+          <span className={styles.single_logo}>
+            <AiFillStar />
+            <span>
+              {lang.toggle ? "Garantito al 100%" : "100% Secure check"}
+            </span>
+          </span>
+          <span className={styles.single_logo}>
+            <MdWatchLater />
+            <span>
+              {lang.toggle ? "Supporto clienti 24/7" : "24/7 Customer support"}
+            </span>
+          </span>
+          <span className={styles.single_logo}>
+            <FaHandHoldingUsd />
+            <span>
+              {lang.toggle
+                ? "Rimborsi facili e veloci"
+                : "Easy exchanges & refunds"}
+            </span>
+          </span>
+        </div>
+        <div className={styles.total_container}>
         <span className={styles.top_total}>
-          {lang.toggle ? "Totale del carrello" : "cart total"}
+          {lang.toggle ? "Totale del carrello" : "cart totals"}
         </span>
         <span className={styles.total}>
           <p className={styles.sub}>{lang.toggle ? "Subtotale" : "Subtotal"}</p>
@@ -143,6 +166,7 @@ export function Cart() {
             <SiRevolut />
           </span>
         </span>
+        </div>
       </div>
     </div>
   ) : lang.toggle ? (

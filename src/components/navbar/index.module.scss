@@ -2,8 +2,8 @@
 @import "../../styles/_variables";
 .desktop {
   .Main {
-    @include box-model($padding: 0 50px, $width: 100%, $height: 70px);
-    @include element-position($position: fixed, $top: 0px, $z-index: 1);
+    @include box-model($padding: 0 70px 0 50px, $width: 100%, $height: 70px);
+    @include element-position($position: fixed, $top: 0px, $z-index: 2);
     @include flex-container(
       $justify: space-between,
       $align: center,
@@ -42,26 +42,37 @@
 
     .tools {
       @include box-model();
-      @include flex-container($align: center, $gap: 15px);
+      @include flex-container($align: center, $gap: 25px);
 
       & svg {
         transform: scale(1.5);
+        cursor: pointer;
+
+        &:hover {
+          color: $secondary-color;
+        }
       }
 
-      .ui {
-        @include flex-container($align: center, $gap: 30px);
+      .cart {
+        @include element-position($position: relative);
+        @include flex-container($align: center, $gap: 10px);
+        color: $primary-text-color;
+        text-decoration: none;
 
-        svg {
-          cursor: pointer;
-
-          &:hover {
-            color: $secondary-color;
-          }
+        .cart_length {
+          @include flex-container($justify: center, $align: center);
+          @include element-position($position: absolute, $right: -28px);
+          @include box-model($width: 24px, $height: 24px);
+          @include border($radius: 12px);
+          color: $tertiary-text-color;
+          background-color: $secondary-color;
+          text-align: center;
+          font-size: medium !important;
         }
       }
 
       .language {
-        @include box-model($padding: 0 0 0 15px);
+        @include box-model($padding: 0 0 0 20px);
         cursor: pointer;
         font-weight: 500;
 
@@ -71,11 +82,7 @@
       }
       .currency {
         @include flex-container($align: center);
-        transform: scale(0.75);
-        cursor: pointer;
-        &:hover {
-          color: $secondary-color;
-        }
+        transform: scale(0.9);
       }
     }
   }
@@ -91,7 +98,7 @@
   }
 
   .mobile {
-    @include element-position($position: fixed, $top: 0px, $z-index: 1);
+    @include element-position($position: fixed, $top: 0px, $z-index: 2);
     @include box-model($padding: 0 50px, $width: 100%, $height: 70px);
     @include flex-container($justify: flex-end, $align: center, $gap: 20px);
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
@@ -99,14 +106,48 @@
 
     .link {
       .logo {
+        @include flex-container($align: center);
         @include box-model($width: 200px, $height: 70px);
-        padding-right: 30px;
+      }
+    }
+
+    .ui {
+      @include box-model();
+      @include flex-container($align: center, $gap: 25px);
+
+      & svg {
+        transform: scale(1.5);
+        cursor: pointer;
+
+        &:hover {
+          color: $secondary-color;
+        }
+      }
+
+      .cart {
+        @include element-position($position: relative);
+        @include flex-container($align: center, $gap: 10px);
+        color: $primary-text-color;
+        text-decoration: none;
+
+        .cart_length {
+          @include element-position(
+            $position: absolute,
+            $top: -15px,
+            $right: -20px
+          );
+          @include box-model($width: 19px, $height: 19px);
+          @include border($radius: 9.5px);
+          color: $tertiary-text-color;
+          background-color: $secondary-color;
+          text-align: center;
+          font-size: medium !important;
+        }
       }
     }
 
     .container {
       @include flex-container($justify: space-between, $align: center);
-      height: 62px;
 
       .checkbox {
         @include element-position(
@@ -126,24 +167,13 @@
         list-style: none;
       }
 
-      // a {
-      //   text-decoration: none;
-      //   color: $secondary-color;
-      //   font-weight: 500;
-      //   font-size: 1.2rem;
-      //   padding: 0.7rem;
-      //   &:hover {
-      //     font-weight: bolder;
-      //   }
-      // }
-
       .hamburger_lines {
         @include box-model($height: 26px, $width: 32px);
         @include element-position(
           $position: absolute,
-          $top: 17px,
+          $top: 20px,
           $left: 20px,
-          $z-index: 3
+          $z-index: 4
         );
         @include flex-container($direction: column, $justify: space-between);
 
@@ -172,14 +202,20 @@
       }
 
       .menu_items {
-        @include flex-container($direction: column, $gap: 15px);
+        @include flex-container(
+          $direction: column,
+          $justify: space-between,
+          $align: center,
+          $gap: 25px
+        );
         @include element-position(
           $position: fixed,
           $top: 0,
           $left: 0,
-          $z-index: 2
+          $bottom: 0,
+          $z-index: 3
         );
-        @include box-model($width: 65vw, $height: 425px);
+        @include box-model($width: 65vw);
         padding-top: 50px;
         padding-bottom: 25px;
         background-color: rgba($tertiary-color, 0.9);
@@ -189,21 +225,39 @@
         transition: transform 0.5s ease-in-out;
         text-align: center;
 
-        .link {
-          @include box-model($padding: 0.7rem);
-          text-decoration: none;
-          color: $secondary-text-color;
-          font-weight: 600;
+        .links {
+          @include flex-container($direction: column, $align: center);
 
-          &:hover,
-          &.active {
-            color: $secondary-color;
-            text-decoration: underline;
-            font-weight: 800;
+          .link {
+            @include box-model($padding: 0.7rem);
+            text-decoration: none;
+            color: $secondary-text-color;
+            font-weight: 600;
+
+            &:hover,
+            &.active {
+              color: $secondary-color;
+              text-decoration: underline;
+              font-weight: 800;
+            }
           }
         }
 
-        .tools {
+        .ui {
+          @include box-model();
+          @include flex-container($align: center, $gap: 25px);
+
+          & svg {
+            transform: scale(1.5);
+            cursor: pointer;
+
+            &:hover {
+              color: $secondary-color;
+            }
+          }
+        }
+
+        .utils {
           @include box-model($padding: 50px);
           @include flex-container($justify: space-evenly, $gap: 50px);
 

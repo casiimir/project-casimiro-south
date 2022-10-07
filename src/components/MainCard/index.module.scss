@@ -6,67 +6,90 @@
 }
 
 .MainCard {
-  @include flex-container(column, space-between, center, nowrap, 15px);
+  @include flex-container(
+    $direction: column,
+    $justify: space-between,
+    $align: center,
+    $gap: 10px
+  );
   @include box-model(
     $margin: 0,
     $border: 0,
     $padding: 15px,
     $width: 220px,
-    $height: 500px
+    $height: 400px
   );
-  @include border(0, 15px);
+  @include border($border: 1px solid $quaternary-text-color);
+  margin-bottom: 30px;
   font-family: "Montserrat", sans-serif;
-  background-color: rgb(234, 236, 236);
+  background-color: $quinary-color;
+  &:hover {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
 
   .image {
-    @include flex-container(column, flex-start, center);
+    @include flex-container($direction: column, $align: center);
 
     .imagePic {
-      @include box-model(0, 0, 0, 200px, 200px);
-      @include border(0, 15px);
+      @include box-model($width: 200px, $height: 180px);
       object-fit: cover;
       object-position: center;
     }
   }
 
-  .mapRating {
-    @include flex-container(row, center, center, nowrap, 50px);
+  .expTitle {
+    @include box-model($padding: 8px, $width: 100%);
+    @include form-text($font-size: 0.7rem, $font-weight: 700);
+    min-height: 70px;
+  }
 
-    .map {
-      @include flex-container(row, center, center, nowrap, 2px);
+  .placePrice {
+    @include flex-container(
+      $justify: space-between,
+      $align: center,
+      $gap: 2.3rem
+    );
+    @include form-text($font-size: 0.7rem, $font-weight: 600);
+    color: $secondary-text-color;
+
+    .place {
+      @include flex-container($justify: center, $align: center, $gap: 0.2rem);
     }
 
-    .rating {
+    .price {
       @include flex-container($align: center);
+      @include box-model($padding: 0.35rem);
+      @include border($radius: 0.65rem);
+      background-color: $tertiary-color;
     }
   }
 
-  .text {
-    height: 20%;
-    padding: 10px;
-    font-size: 0.75rem;
+  .viewDetails {
+    @include form-text($font-size: 0.6rem, $text-decoration: none);
+    color: $primary-text-color;
+
+    &:hover {
+      @include form-text($font-size: 0.6rem, $font-weight: bold);
+    }
   }
 
   .buttons {
-    @include flex-container(row, center, center, nowrap, 20px);
+    @include flex-container($justify: center, $align: center, $gap: 1.2rem);
     .mainButton {
-      @include button-element(auto, auto, 10px 20px, 0, 8px);
-      color: $quaternary-color;
-      background-color: $secondary-color;
+      @include button-element(
+        $width: 200px,
+        $padding: 10px 20px,
+        $border-radius: 0.5rem
+      );
       font-size: 0.6rem;
       font-family: "Montserrat", sans-serif;
+      border: 1px solid $secondary-color;
+      color: $secondary-color;
+      background-color: $tertiary-color;
 
       &:hover {
-        background-color: $quaternary-color;
-        color: $secondary-color;
-      }
-    }
-
-    .viewDetails {
-      font-size: 0.6rem;
-
-      &:hover {
-        font-weight: bold;
+        background-color: $secondary-color;
+        color: $tertiary-color;
       }
     }
   }

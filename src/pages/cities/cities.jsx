@@ -7,7 +7,7 @@ import { useEffect } from "react";
 
 export function Cities() {
   const { listsData, lang, currency, cityData } = useSelector((state) => state);
-  const { id, name, content, headline, cover_img } = cityData;
+  const { id, name, content, headline, cover_img } = cityData.objectData;
 
   const dispatch = useDispatch();
   useEffect(() => {

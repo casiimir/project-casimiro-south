@@ -5,18 +5,19 @@
   @include flex-container($direction: column, $gap: 25px);
   @include box-model($padding: 50px, $width: 100%);
 
+  .titles {
+    @include box-model($padding: 1rem 2.3rem);
+    @include form-text($font-size: 1rem, $font-weight: bold, $text-align: left);
+    background-color: $tertiary-color;
+    color: $secondary-text-color;
+  }
+
   .CategoryList {
-    @include box-model($width: 100%);
+    @include box-model($padding: 2rem, $width: 100%);
+    background-color: $tertiary-color;
 
     .mySwiper {
-      height: auto;
-      width: 100%;
-      border-radius: 15px;
-
-      & > div:first-child {
-        // width: calc(100% - 10px);
-      }
-      
+      @include box-model($width: 100%, $height: auto);
     }
   }
 }

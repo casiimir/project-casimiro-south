@@ -1,9 +1,9 @@
-import { memo } from "react";
 import { FiMapPin } from "react-icons/fi";
-import { AiOutlineStar } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./index.module.scss";
+
+import swal from "sweetalert";
 
 
 const MainCard = ({ data }) => {
@@ -17,14 +17,23 @@ const MainCard = ({ data }) => {
     title: "",
     retail_price: { formatted_value: "" },
   };
-  const { city, cover_image_url, reviews_avg, title, retail_price } =
+  const { city, cover_image_url, title, retail_price } =
     data ?? dataPlaceholder;
 
   const handleBuyBtn = () => {
-    dispatch({ type: "SET_CART_LIST", payload: data });
+    localStorage.getItem("username")  && dispatch({ type: "SET_CART_LIST", payload: data });
     localStorage.setItem(
       "cart_list",
       JSON.stringify([...listsData.cartList, data])
+    );
+    localStorage.getItem("username") ? swal(
+      "Well Done",
+      lang.toggle ? "Hai aggiunto un'attività al carrello" : "Activity Added to Cart",
+      "success"
+    ):swal(
+      "Oops",
+      lang.toggle ? "Sembra che tu non sia loggato!" : "Seems like you're not logged in",
+      "error"
     );
   };
 
@@ -38,33 +47,31 @@ const MainCard = ({ data }) => {
             alt="cityPic"
           />
         </div>
-        <div className={styles.mapRating}>
-          <div className={styles.map}>
+      
+        <div className={styles.placePrice}>
+          <div className={styles.place}>
             <FiMapPin />
-            <p>{city.name}</p>
+            <p>{city.name.toUpperCase()}</p>
           </div>
-          <div className={styles.rating}>
-            {reviews_avg}
-            <AiOutlineStar />
+          <div className={styles.price}>
+          <p className={styles.price}>{retail_price.formatted_value}</p>
           </div>
         </div>
-        <p className={styles.text}>{title.toUpperCase()}</p>
-        <p className={styles.price}>{retail_price.formatted_value}</p>
-        <div className={styles.buttons}>
-          <button
-            disabled={!localStorage.getItem("username") && true}
-            onClick={handleBuyBtn}
-            className={styles.mainButton}
-          >
-            {lang.toggle ? "Acquista" : "Buy now"}
-          </button>
-          <Link
+        <p className={styles.expTitle}>{title.toUpperCase()}</p>
+        <Link
             to={`/details/${data.uuid}`}
             title="Navigate to Activity Tab"
             className={styles.viewDetails}
           >
             {lang.toggle ? "Dettagli" : "View details"}
           </Link>
+        <div className={styles.buttons}>
+          <button
+            onClick={handleBuyBtn}
+            className={styles.mainButton}
+          >
+            {lang.toggle ? "Aggiungi al carrello" : "Add to cart"}
+          </button>
         </div>
       </div>
     </>
