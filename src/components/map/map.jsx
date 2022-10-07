@@ -4,9 +4,11 @@ import { GoogleMap } from "@react-google-maps/api";
 import { useLoadScript } from "@react-google-maps/api";
 import { MarkerF } from "@react-google-maps/api";
 import { useOutletContext } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 
 export function Map() {
+  const { lang } = useSelector((state) => state);
   const [latitude, longitude] = useOutletContext();
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyCpiE2_dlGNKj2Q7IKCwXSOYCPVz2UPcfk",
@@ -33,16 +35,22 @@ export function Map() {
         position={position}
       />
     </GoogleMap>
-     : <div>Non ci sono posizioni per questa attività</div>
+     : <div>{lang.toggle ? "Non ci sono posizioni per questa attività" : "There are no positions for this activity"}</div>
   );
         
   }
 
   if (loadError) {
-    return <div>Map cannot be loaded right now, sorry.</div>;
+    return (
+      <div>
+        {lang.toggle
+          ? "Ci dispiace, la mappa non può essere caricata in questo momento..."
+          : "Map cannot be loaded right now, sorry..."}
+      </div>
+    );
   }
 
-  return isLoaded ? renderMap() : "Loading Maps..." ;
+  return isLoaded ? renderMap() : lang.toggle ? "Caricamento Maps..." : "Loading Maps..." ;
 }
   
 
