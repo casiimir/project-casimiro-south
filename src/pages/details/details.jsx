@@ -9,6 +9,7 @@ import { useLayoutEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ENDPOINTS } from "../../utils/api/endpoints";
 import { MainCard } from "../../components/MainCard";
+import {ScrollButton} from "../../components/scrollButton";
 import { BsArrowLeftCircle } from "react-icons/bs";
 import swal from "sweetalert";
 import styles from "./index.module.scss";
@@ -161,6 +162,7 @@ export function Details() {
           })}
         </div>
       </div>
+      <ScrollButton />
     </div>
   );
 }
