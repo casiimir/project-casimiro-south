@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import TMCard from "../../components/TMCard";
+import { TMCard } from "../../components/TMCard";
 import teamMembers from "./../../utils/api/teamMembers";
 
 import styles from "./index.module.scss";

@@ -1,27 +1,27 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
-import App from "./App";
 import {
   createBrowserRouter,
   Navigate,
   RouterProvider,
 } from "react-router-dom";
-import { Home } from "./pages/home";
-import { Explore } from "./pages/explore";
-import { Details } from "./pages/details";
 import { Provider } from "react-redux";
 import store from "./store";
-import { Error } from "./pages/error";
+import App from "./App";
+import { Home } from "./pages/home";
+import { Explore } from "./pages/explore";
 import { Cities } from "./pages/cities";
-import { About } from "./pages/about";
+import { Details } from "./pages/details";
 import { Info } from "./components/info";
 import { Map } from "./components/map";
+import { About } from "./pages/about";
 import { Login } from "./pages/login";
 import { Cart } from "./pages/cart";
 import { EmptyCart } from "./pages/emptycart";
 import { NoLoginCart } from "./pages/nologincart";
 import { ThankYou } from "./pages/thankyou";
+import { Error } from "./pages/error";
+import "./index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

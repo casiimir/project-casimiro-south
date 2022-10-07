@@ -1,9 +1,8 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { ENDPOINTS } from '../../utils/api/endpoints';
-import styles from './index.module.scss';
-
+import { useLayoutEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { ENDPOINTS } from "../../utils/api/endpoints";
+import styles from "./index.module.scss";
 
 export const Info = () => {
   const { activity_uuid } = useParams();
@@ -16,10 +15,10 @@ export const Info = () => {
     daily,
     languages,
     service_fee,
-    description
+    description,
   } = activityData.objectData;
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     fetch(ENDPOINTS.ACTIVITY_DETAILS + activity_uuid, {
       method: "GET",
       headers: {
@@ -32,7 +31,7 @@ export const Info = () => {
     })
       .then((response) => response.json())
       .then((json) => dispatch({ type: "SET_ACTIVITY_DATA", payload: json }));
-  }, [lang.value, currency.value]);
+  }, [lang.value, currency.value, currency.toggle, activity_uuid]);
 
   return (
     <div className={styles.Main}>
@@ -77,7 +76,9 @@ export const Info = () => {
             <p className={styles.lang}>
               {lang.toggle ? "Lingue" : "Languages"}:
               {languages?.length ? (
-                languages?.map((language) => <span> {language.name};</span>)
+                languages?.map((language, i) => (
+                  <span key={i}> {language.name};</span>
+                ))
               ) : (
                 <span>
                   {lang.toggle
@@ -113,4 +114,4 @@ export const Info = () => {
       </div>
     </div>
   );
-}
+};

@@ -1,7 +1,7 @@
-import { ENDPOINTS } from "../../utils/api/endpoints";
 import { useLayoutEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import MainCard from "../../components/MainCard";
+import { ENDPOINTS } from "../../utils/api/endpoints";
+import { MainCard } from "../../components/MainCard";
 import { CardList } from "../../components/CardList";
 import styles from "./index.module.scss";
 
@@ -9,6 +9,13 @@ export function Cities() {
   const { listsData, lang, currency, cityData } = useSelector((state) => state);
   const { id, name, meta, headline, cover_img } = cityData.objectData;
   const dispatch = useDispatch();
+
+  useLayoutEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
 
   useLayoutEffect(() => {
     fetch(ENDPOINTS.CITIES, {
@@ -57,7 +64,7 @@ export function Cities() {
           },
         });
       });
-  }, [selected, lang.value, currency.value]);
+  }, [selected, lang.value, currency.toggle]);
 
   useLayoutEffect(() => {
     fetch(
@@ -84,7 +91,7 @@ export function Cities() {
       style={{
         backgroundImage: `url(${cover_img}?h=600)`,
         objectFit: "cover",
-         
+
         backgroundRepeat: "no-repeat",
       }}
     >
@@ -102,13 +109,13 @@ export function Cities() {
         </div>
         <div className={styles.hero_left}>
           <div className={styles.select_dropdown}>
-          <select value={selected} onChange={handleChange}>
-            {options.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.text}
-              </option>
-            ))}
-          </select>
+            <select value={selected} onChange={handleChange}>
+              {options.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.text}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
       </div>

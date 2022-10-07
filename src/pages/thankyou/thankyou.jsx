@@ -37,8 +37,8 @@ export function ThankYou() {
         <div className={styles.description}>
           <p>
             {lang.toggle
-              ? "Il tuo ordine: " + Math.random()
-              : "Your order: " + Math.random()}
+              ? "Il tuo ordine: " + getRandomInt(1000000)
+              : "Your order: " + getRandomInt(1000000)}
           </p>
           <p>
             {lang.toggle

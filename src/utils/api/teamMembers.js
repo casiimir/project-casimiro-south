@@ -1,9 +1,9 @@
+import DalilaPic from "../images/team/dalila_i.jpg";
 import AntoninoPic from "../images/team/antonino_d.jfif";
 import DomenicoPic from "../images/team/domenico_s.jfif";
 import RobertaPic from "../images/team/roberta_d.jfif";
 import LuciaPic from "../images/team/lucia_d.jfif";
 import GinevraPic from "../images/team/ginevra_v.jfif";
-import DalilaPic from "../images/team/dalila_i.jpg";
 
 const teamMembers = [
   {

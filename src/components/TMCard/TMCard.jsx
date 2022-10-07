@@ -1,9 +1,6 @@
-import { useSelector } from "react-redux";
-
 import styles from "./index.module.scss";
 
-const TMCard = ({ data }) => {
-  const { lang } = useSelector((state) => state);
+export const TMCard = ({ data }) => {
   return (
     <div className={styles.Main}>
       <div className={styles.profilepic}>

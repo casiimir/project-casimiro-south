@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { Particles } from "../../components/Particles";
 import Image from "../../utils/images/JapaneseTorii.png";
 import styles from "./index.module.scss";
-import { useNavigate } from "react-router-dom";
 
 export function Login() {
   const { lang } = useSelector((state) => state);
@@ -12,6 +12,7 @@ export function Login() {
   const [pwValue, setPwValue] = useState("");
   const [isPwVisible, setIsPwVisible] = useState(false);
   const goBack = useNavigate();
+  const location = useLocation();
 
   const handleOnChange = (e, setter) => setter(e.target.value);
 
@@ -22,7 +23,7 @@ export function Login() {
     localStorage.setItem("username", inputValue);
     setInputValue("");
     setPwValue("");
-    goBack(-1);
+    location.state.prev === "/emptycart" ? goBack("/cart") : goBack(-1);
   };
 
   return (

@@ -1,9 +1,19 @@
-import { TbUserExclamation } from "react-icons/tb";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { TbUserExclamation } from "react-icons/tb";
 import styles from "./index.module.scss";
 
 export function NoLoginCart() {
   const { lang } = useSelector((state) => state);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("username")) {
+      if (localStorage.getItem("cart_list")) navigate("/cart");
+      else navigate("/emptycart");
+    }
+  }, []);
 
   return (
     <div className={styles.Main}>
@@ -11,7 +21,7 @@ export function NoLoginCart() {
         <TbUserExclamation />
       </div>
       <div className={styles.message}>
-        <h2> {lang.toggle ? "IL CARRELLO È VUOTO." : "YOUR CART IS EMPTY."} </h2>
+        <h2>{lang.toggle ? "NON SEI REGISTRATO!" : "YOU'RE NOT LOGGED IN!"}</h2>
         <div className={styles.description}>
           <p>
             {lang.toggle

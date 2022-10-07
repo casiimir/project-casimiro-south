@@ -31,7 +31,6 @@
       .input_box {
         @include flex-container($justify: space-between, $align: center);
         @include box-model($padding: 0.8rem 1rem, $width: 300px);
-        // @include element-position($z-index: 1);
         @include border($radius: 1rem);
         background-color: ghostwhite;
 
