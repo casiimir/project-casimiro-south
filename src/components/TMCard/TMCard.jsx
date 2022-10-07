@@ -18,9 +18,6 @@ const TMCard = ({ data }) => {
         <h3>
           <span className={styles.firstName}>{data.name}</span> {data.surname}
         </h3>
-        <p className={styles.position}>
-          {lang.toggle ? data.descriptionIta : data.descriptionEng}
-        </p>
       </div>
     </div>
   );
