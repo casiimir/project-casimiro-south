@@ -38,7 +38,7 @@
   }
 
   .expTitle {
-    @include box-model($padding: 8px, $width: 100%);
+    @include box-model($padding: 1rem 0.5rem, $width: 100%);
     @include form-text($font-size: 0.7rem, $font-weight: 700);
     min-height: 70px;
   }
@@ -49,7 +49,8 @@
       $align: center,
       $gap: 2.3rem
     );
-    @include form-text($font-size: 0.7rem, $font-weight: 600);
+    @include form-text($font-size: 0.65rem, $font-weight: 600);
+    padding-top: 15px;
     color: $secondary-text-color;
 
     .place {
@@ -61,15 +62,6 @@
       @include box-model($padding: 0.35rem);
       @include border($radius: 0.65rem);
       background-color: $tertiary-color;
-    }
-  }
-
-  .viewDetails {
-    @include form-text($font-size: 0.6rem, $text-decoration: none);
-    color: $primary-text-color;
-
-    &:hover {
-      @include form-text($font-size: 0.6rem, $font-weight: bold);
     }
   }
 
@@ -92,5 +84,10 @@
         color: $tertiary-color;
       }
     }
+  }
+
+  a:-webkit-any-link {
+    text-decoration: none;
+    color: inherit;
   }
 }
