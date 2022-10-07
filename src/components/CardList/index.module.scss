@@ -3,7 +3,7 @@
 
 .Main {
   @include box-model($padding: 2rem);
-  background-color: ghostwhite;
+  background-color: #f3eeee;
   .wrapper {
     @include flex-container(
       $wrap: wrap,
@@ -11,8 +11,7 @@
       $align: center,
       $gap: 2rem
     );
-    background-color: ghostwhite;
+    background-color: #f3eeee;
     padding-top: 1rem;
   }
-  // @include border($radius: 20px);
 }

@@ -3,7 +3,6 @@
 
 .Main {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   gap: 50px;
   margin: 70px;
@@ -20,7 +19,6 @@
       background-color: #f3eeee;
       padding: 15px;
       display: flex;
-      flex-wrap: wrap;
       flex-direction: row;
       justify-content: space-between;
       font-weight: bold;
@@ -30,7 +28,6 @@
       }
       .pqt {
         display: flex;
-        flex-direction: row;
         justify-content: space-between;
         width: 300px;
         padding-right: 35px;
@@ -48,9 +45,9 @@
 
       .item {
         display: flex;
-        flex-direction: row;
         align-items: center;
-        gap: 30px;
+        // gap: 30px;
+        justify-content: space-between;
       }
 
       .del {
@@ -114,12 +111,12 @@
         text-transform: uppercase;
         letter-spacing: 2px;
         color: $secondary-color;
+        cursor: pointer;
       }
     }
 
     .logos {
       display: flex;
-      flex-direction: row;
       gap: 50px;
 
       .single_logo {
@@ -143,14 +140,35 @@
   }
 
   .right {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: auto;
+
     .logos {
       display: none;
+
+      .single_logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: $secondary-color;
+        margin-top: 20px;
+
+        svg {
+          transform: scale(2.1);
+        }
+
+        span {
+          padding: 20px;
+          text-align: center;
+          width: 200px;
+        }
+      }
     }
+
     .total_container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 180px;
+
       .top_total {
         border-radius: 3px;
         color: rgba(33, 33, 33, 0.912);
@@ -160,8 +178,10 @@
         width: auto;
         font-weight: bold;
         justify-content: center;
+        align-items: center;
         text-transform: uppercase;
       }
+
       .total {
         display: flex;
         flex-direction: column;
@@ -169,12 +189,13 @@
         gap: 5px;
         margin-top: 10px;
         border: 0.9px solid#7e7c7c;
-        height: 56px;
+        height: 80px;
         padding-left: 5px;
         font-weight: 400;
         font-size: small;
         border-radius: 3px;
       }
+
       a {
         @include button-element(auto, auto, 10px 20px, 0, 8px);
         color: $quaternary-color;
@@ -182,12 +203,15 @@
         background-color: $secondary-color;
         font-size: 0.6rem;
         font-family: "Montserrat", sans-serif;
+        padding: 20px;
+        text-align: center;
 
         &:hover {
           background-color: $quaternary-color;
           color: $secondary-color;
         }
       }
+
       .bank_circuits {
         display: flex;
         flex-direction: row;
@@ -203,86 +227,264 @@
   }
 }
 
-@media only screen and (max-width: 935px) {
+@media only screen and (max-width: 1055px) {
   .Main {
-    margin: 0;
-    margin-top: 55px;
-    width: 100%;
-    .left {
-      .top_row {
-        margin-right: 0px;
-        width: 100% !important;
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding: 8px;
-        &:first-child {
-          padding-left: 20px;
-        }
+    .right {
+      a {
+        text-align: center;
       }
+    }
+  }
+}
+
+@media only screen and (max-width: 920px) {
+  .Main {
+    flex-direction: column;
+
+    .top_row {
       .pqt {
-        display: flex;
-        gap: 20px;
-        border: 2px solid red;
-        width: auto !important;
         padding-right: 0 !important;
-        padding-left: 0 !important;
-        .total {
-          display: none;
-        }
       }
-      .cart_list {
-        display: flex;
-        justify-content: space-between;
-        gap: 0px;
+    }
 
-        .item_title {
-          width: 150px;
-        }
+    .left {
 
-        .total {
-          display: none !important;
-        }
-      }
       .logos {
         display: none;
       }
     }
-     .right {
-       display: flex;
-       flex-direction: row;
 
-       .logos {
-         display: inline;
-         .single_logo {
-           display: flex;
-           flex-direction: column;
-           align-items: center;
-           color: $secondary-color;
-           margin-top: 20px;
+    .right {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
 
-           svg {
-             transform: scale(1.5);
-           }
+      .logos {
+        display: block;
+        flex-direction: column;
+        gap: 20px;
+      }
+      
+      .total_container {
+        flex: 0 0 auto;
+        width: 60%;
+        gap: 0;
 
-           span {
-             padding: 20px;
-             text-align: center;
-             width: 200px;
-           }
-         }
-       }
-     }
-  }
-}
+        .top_total {
+          color: $secondary-text-color;
+          text-transform: capitalize;
+          height: 60px;
+        }
 
-@media only screen and (max-width: 710px) {
-  .left {
-    // transform: scale(0.8);
-    .cart_list {
-      transform: scale(0.8);
+        .total {
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+          margin-top: 0;
+          padding: 50px;
+          gap: 20px;
+          font-weight: bold;
+          margin-bottom: 20px;
+        }
+
+        a {
+          display: flex;
+          height: 60px;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.1rem;
+          background-color: transparent;
+          border: 1px solid $secondary-color;
+          color: $secondary-text-color;
+          margin-bottom: 20px;
+        }
+
+        .bank_circuits {
+          justify-content: center;
+          font-size: 1.5rem;
+        }
+      }
     }
   }
 }
+
+@media only screen and (max-width: 910px) {
+  .Main {
+    .left {
+      .top_row {
+        width: 97%;
+
+        .pqt {
+          width: 250px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 830px) {
+  .Main {
+    .left {
+      .top_row {
+        font-size: 14px !important;
+
+        .pqt {
+          width: 100px;
+          font-size: 14px !important;
+
+          p:nth-child(1), p:nth-child(2) {
+            display: none;
+          }
+        }
+      }
+
+      .item {
+        justify-content: space-around !important;
+      }
+
+        .item_title {
+          font-size: 14px;
+          width: 200px !important;
+        }
+
+        .item_price, .quantity {
+          display: none;
+        }
+
+        .total {
+          font-size: 14px;
+        }
+      
+    }
+  }
+}
+
+@media only screen and (max-width: 655px) {
+  .Main {
+    .left{
+      .top_row{
+        .pqt {
+          width: 80px;
+        }
+      }
+    }
+
+    .right {
+      .logos {
+        .single_logo {
+          transform: scale(0.7);
+          margin-top: 0px;
+        }
+      }
+
+      .top_total {
+        font-size: 14px !important;
+      }
+
+      .total {
+        font-size: 14px !important;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 590px) {
+  .Main {
+    .left{
+      .item {
+        img, .del {
+          transform: scale(0.9);
+        }
+      }
+      
+      .item_title {
+        font-size: 13px;
+        width: 100px !important;
+        text-align: center;
+      }
+
+      .total {
+        font-size: 13px;
+      }
+    }
+
+    .right {
+      .total {
+        padding: 40px 10px 40px 10px !important;
+        align-items: flex-start;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  .Main {
+    .left {
+      .cart_list {
+        padding: 0;
+      }
+
+      .top_row {
+        font-size: 11px !important;
+        align-items: center;
+  
+        .pqt {
+          p {
+            font-size: 11px;
+            margin-right: 10px;
+          }
+        }
+      }
+
+      .alert_btn {
+        font-size: 13px;
+      }
+    }
+
+    .right {
+      .logos {
+        transform: scale(0.9);
+        width: 45%;
+      }
+      
+      .total_container {
+        .top_total {
+          font-size: 13px !important;
+        }
+
+        .total {
+          font-size: 13px !important;
+        }
+
+        a {
+          font-size: 0.85rem;
+        }
+
+        .bank_circuits {
+          justify-content: center;
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 440px) {
+  .Main {
+    .left {
+      img {
+        display: none;
+      }
+
+      .item {
+        // border: 1px solid gold;
+        justify-content: center !important;
+        gap: 12px;
+      }
+
+      .item_title {
+        font-size: 12px;
+        font-weight: 400 !important;
+      }
+    }
+  }
+} 

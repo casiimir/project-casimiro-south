@@ -106,7 +106,7 @@ export function Home() {
           {listsData.home?.map((el, i) => (
             <SwiperSlide key={i}>
               <div className={styles.carousel}>
-                <img src={el.cover_image_url + "?h=800"} alt={el.title} />
+                <img src={el.cover_image_url + "?h=800"} alt={el.name} />
               </div>
             </SwiperSlide>
           ))}
