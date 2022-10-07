@@ -307,13 +307,64 @@
   }
 }
 
+@media only screen and (max-width: 910px) {
+  .Main {
+    .left {
+      .top_row {
+        width: 97%;
+
+        .pqt {
+          width: 250px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 830px) {
+  .Main {
+    .left {
+      .top_row {
+        font-size: 14px !important;
+
+        .pqt {
+          width: 100px;
+          font-size: 14px !important;
+
+          p:nth-child(1), p:nth-child(2) {
+            display: none;
+          }
+        }
+      }
+
+      .item {
+        justify-content: space-around !important;
+      }
+
+        .item_title {
+          font-size: 14px;
+          width: 200px !important;
+        }
+
+        .item_price, .quantity {
+          display: none;
+        }
+
+        .total {
+          font-size: 14px;
+        }
+      
+    }
+  }
+}
+
 @media only screen and (max-width: 655px) {
   .Main {
-    .top_row {
-      font-size: 14px !important;
-
-      .pqt {
-        font-size: 14px !important;
+    .left{
+      .top_row{
+        .pqt {
+          width: 80px;
+        }
       }
     }
 
@@ -338,6 +389,24 @@
 
 @media only screen and (max-width: 590px) {
   .Main {
+    .left{
+      .item {
+        img, .del {
+          transform: scale(0.9);
+        }
+      }
+      
+      .item_title {
+        font-size: 13px;
+        width: 100px !important;
+        text-align: center;
+      }
+
+      .total {
+        font-size: 13px;
+      }
+    }
+
     .right {
       .total {
         padding: 40px 10px 40px 10px !important;
@@ -349,25 +418,23 @@
 
 @media only screen and (max-width: 540px) {
   .Main {
-    .top_row {
-      margin-right: 10px;
-      padding: 10px !important;
-      font-size: 11px !important;
-      align-items: center;
+    .left {
+      .cart_list {
+        padding: 0;
+      }
 
-      .pqt {
-        p {
-          font-size: 11px;
-          margin-right: 10px;
+      .top_row {
+        font-size: 11px !important;
+        align-items: center;
+  
+        .pqt {
+          p {
+            font-size: 11px;
+            margin-right: 10px;
+          }
         }
       }
-    }
-  }
-}
 
-@media only screen and (max-width: 540px) {
-  .Main {
-    .left {
       .alert_btn {
         font-size: 13px;
       }
@@ -399,5 +466,25 @@
       }
     }
   }
-
 }
+
+@media only screen and (max-width: 440px) {
+  .Main {
+    .left {
+      img {
+        display: none;
+      }
+
+      .item {
+        // border: 1px solid gold;
+        justify-content: center !important;
+        gap: 12px;
+      }
+
+      .item_title {
+        font-size: 12px;
+        font-weight: 400 !important;
+      }
+    }
+  }
+} 
