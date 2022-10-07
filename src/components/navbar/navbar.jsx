@@ -1,19 +1,16 @@
 import { Link, NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
 import {
   AiOutlineUser,
-  AiOutlineSearch,
   AiOutlineShoppingCart,
   AiOutlineEuro,
   AiOutlineDollar,
-  AiOutlineMenu,
 } from "react-icons/ai";
+import { UserModal } from "../UserModal";
+import { SearchBar } from "../SearchBar";
 import Logo from "../../utils/images/logos/japventure-logo-32.svg";
-import SearchBar from "../SearchBar/index";
 import styles from "./index.module.scss";
-import { useDispatch, useSelector } from "react-redux";
-
-import { useState, useEffect } from "react";
-import UserModal from "../UserModal";
 
 export function Navbar() {
   const { lang, currency, listsData } = useSelector((state) => state);
@@ -37,7 +34,7 @@ export function Navbar() {
   useEffect(() => {
     localStorage.getItem("username") &&
       setUserLoggedIn(localStorage.getItem("username"));
-  }, [localStorage.getItem("username")]);
+  }, []);
 
   return (
     <>
@@ -49,7 +46,7 @@ export function Navbar() {
             className={styles.link}
             end
           >
-            <img src={Logo} className={styles.logo} />
+            <img src={Logo} className={styles.logo} alt="logo" />
           </NavLink>
 
           <span className={styles.links}>
@@ -124,7 +121,7 @@ export function Navbar() {
           className={styles.link}
           end
         >
-          <img src={Logo} className={styles.logo} />
+          <img src={Logo} className={styles.logo} alt="logo" />
           <span className={styles.tools}></span>
         </NavLink>
         <span className={styles.ui}>

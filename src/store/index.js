@@ -97,6 +97,11 @@ function listsReducer(state = {}, action) {
           ...state.cartList.filter((el) => el.uuid !== action.payload),
         ],
       };
+    case "CLEAR_CART_LIST":
+      return {
+        ...state,
+        cartList: [],
+      };
     default:
       return state;
   }

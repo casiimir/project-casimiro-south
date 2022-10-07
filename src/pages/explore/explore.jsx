@@ -1,14 +1,13 @@
-import styles from "./index.module.scss";
-import { ENDPOINTS } from "../../utils/api/endpoints";
-import { CardList } from "../../components/CardList";
 import { useLayoutEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, Navigation, Scrollbar, FreeMode } from "swiper";
+import { Scrollbar, FreeMode } from "swiper";
+import { ENDPOINTS } from "../../utils/api/endpoints";
+import { MainCard } from "../../components/MainCard";
 import "swiper/scss";
 import "swiper/scss/navigation";
 import "swiper/scss/scrollbar";
-import MainCard from "../../components/MainCard";
+import styles from "./index.module.scss";
 
 export function Explore() {
   const { listsData, lang, currency } = useSelector((state) => state);
@@ -78,7 +77,7 @@ export function Explore() {
           spaceBetween={20}
           grabCursor={true}
           modules={[Scrollbar, FreeMode]}
-          scrollbar={{draggable: true}}
+          scrollbar={{ draggable: true }}
           freeMode={true}
         >
           {expCity?.map((el, i) => (
@@ -88,8 +87,7 @@ export function Explore() {
           ))}
         </Swiper>
       </div>
-      <span className={styles.titles}> 
-      FOOD&DRINKS</span>
+      <span className={styles.titles}>FOOD&DRINKS</span>
       <div className={styles.CategoryList}>
         <Swiper
           className={styles.mySwiper}
@@ -97,7 +95,7 @@ export function Explore() {
           spaceBetween={20}
           grabCursor={true}
           modules={[Scrollbar, FreeMode]}
-          scrollbar={{draggable: true}}
+          scrollbar={{ draggable: true }}
           freeMode={true}
         >
           {expFD?.map((el, i) => (
@@ -115,7 +113,7 @@ export function Explore() {
           spaceBetween={20}
           grabCursor={true}
           modules={[Scrollbar, FreeMode]}
-          scrollbar={{draggable: true}}
+          scrollbar={{ draggable: true }}
           freeMode={true}
         >
           {expFolk?.map((el, i) => (
@@ -133,7 +131,7 @@ export function Explore() {
           spaceBetween={20}
           grabCursor={true}
           modules={[Scrollbar, FreeMode]}
-          scrollbar={{draggable: true}}
+          scrollbar={{ draggable: true }}
           freeMode={true}
         >
           {expNew?.map((el, i) => (

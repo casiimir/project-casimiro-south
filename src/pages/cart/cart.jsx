@@ -1,38 +1,39 @@
+import { useEffect, useLayoutEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import { AiFillStar } from "react-icons/ai";
-import swal from "sweetalert";
 import { MdWatchLater } from "react-icons/md";
 import { FaHandHoldingUsd } from "react-icons/fa";
 import { SiVisa, SiMastercard, SiPaypal, SiRevolut } from "react-icons/si";
+import swal from "sweetalert";
 import styles from "./index.module.scss";
-import { useLayoutEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
 
 export function Cart() {
   const { lang, listsData, currency } = useSelector((state) => state);
-  const navigate = useNavigate()
-  // const [total, setTotal] = useState(0);
-  // const [formatTotal, setFormatTotal] = useState("");
-  // const getTotal = (counter) => {
-    
-  // };
-  // let counter = 0;
-  // useEffect(() => {
-  //   // getTotal(count);
-  //   listsData.cartList.forEach((el) => (counter += el.retail_price.value));
-  //   setTotal(counter);
-  //   setFormatTotal(
-  //     currency.toggle ? "€ " + total.toString() : "$ " + total.toString()
-  //   );
-  // }, [listsData, currency]);
+  const [total, setTotal] = useState(0);
+  const [formatTotal, setFormatTotal] = useState("");
+  const navigate = useNavigate();
+
+  useLayoutEffect(() => {
+    let counter = 0;
+    listsData.cartList.forEach((el) =>
+      setTotal((counter += el.retail_price.value).toFixed(2))
+    );
+  }, [listsData.cartList]);
+
+  useLayoutEffect(() => {
+    setFormatTotal(
+      currency.toggle ? "€ " + total.toString() : "$ " + total.toString()
+    );
+  }, [currency.toggle, total]);
 
   const dispatch = useDispatch();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (listsData.cartList.length < 1) {
-      navigate("/emptycart")
+      navigate("/emptycart");
     }
-  },[listsData.cartList.length]);
+  }, [listsData.cartList.length]);
 
   const handleDelBtn = (uuid) => {
     dispatch({ type: "DEL_CART_ITEM", payload: uuid });
@@ -42,9 +43,13 @@ export function Cart() {
     );
   };
 
+  const handleOnCheckOut = () => {
+    dispatch({ type: "CLEAR_CART_LIST" });
+    localStorage.removeItem("cart_list");
+  };
+
   return listsData.cartList ? (
     <div className={styles.Main}>
-      {/* <button onClick={() => console.log(listsData.cartList)}>console</button> */}
       <div className={styles.left}>
         <span className={styles.top_row}>
           <p>{lang.toggle ? "Attività" : "Activity"}</p>
@@ -69,11 +74,15 @@ export function Cart() {
               />
               <h4 className={styles.item_title}>{el.title}</h4>
               <p className={styles.item_price}>
-              {currency.toggle ? `€ ${el.retail_price.value}` : `$ ${el.retail_price.value}`}
+                {currency.toggle
+                  ? `€ ${el.retail_price.value}`
+                  : `$ ${el.retail_price.value}`}
               </p>
               <p className={styles.quantity}>1</p>
               <p className={styles.total}>
-              {currency.toggle ? `€ ${el.retail_price.value}` : `$ ${el.retail_price.value}`}
+                {currency.toggle
+                  ? `€ ${el.retail_price.value}`
+                  : `$ ${el.retail_price.value}`}
               </p>
             </li>
           ))}
@@ -121,7 +130,7 @@ export function Cart() {
       </div>
 
       <div className={styles.right}>
-      <div className={styles.logos}>
+        <div className={styles.logos}>
           <span className={styles.single_logo}>
             <AiFillStar />
             <span>
@@ -144,35 +153,36 @@ export function Cart() {
           </span>
         </div>
         <div className={styles.total_container}>
-        <span className={styles.top_total}>
-          {lang.toggle ? "Totale del carrello" : "cart totals"}
-        </span>
-        <span className={styles.total}>
-          <p className={styles.sub}>{lang.toggle ? "Subtotale" : "Subtotal"}</p>
-          <p className={styles.tot}>
-            {" "}
-            {lang.toggle
-              ? `Totale: `
-              : `Total: `}{" "}
-          </p>
-        </span>
-        <Link to="/thankyou">
-          {lang.toggle ? "Procedi al checkout" : "Proceed to checkout"}
-        </Link>
-        <span className={styles.bank_circuits}>
-          <span>
-            <SiVisa />
+          <span className={styles.top_total}>
+            {lang.toggle ? "Totale del carrello" : "Cart's total"}
           </span>
-          <span>
-            <SiMastercard />
+          <span className={styles.total}>
+            <p className={styles.sub}>
+              {lang.toggle
+                ? "Subtotale: " + formatTotal
+                : "Subtotal: " + formatTotal}
+            </p>
+            <p className={styles.tot}>
+              {lang.toggle ? "Totale: " + formatTotal : "Total: " + formatTotal}
+            </p>
           </span>
-          <span>
-            <SiPaypal />
+          <Link to="/thankyou" onClick={handleOnCheckOut}>
+            {lang.toggle ? "Procedi al checkout" : "Proceed to checkout"}
+          </Link>
+          <span className={styles.bank_circuits}>
+            <span>
+              <SiVisa />
+            </span>
+            <span>
+              <SiMastercard />
+            </span>
+            <span>
+              <SiPaypal />
+            </span>
+            <span>
+              <SiRevolut />
+            </span>
           </span>
-          <span>
-            <SiRevolut />
-          </span>
-        </span>
         </div>
       </div>
     </div>
