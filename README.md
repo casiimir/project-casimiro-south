@@ -1,7 +1,7 @@
 <p align="center">
   <img src="./public/JAPVENTURE.png" alt="japventure" width=250/>
 </p>
-<p align="center">"Exploring Japan Unforgettable experiences"</p>
+<p align="center">"Exploring Japan - Unforgettable experiences"</p>
 <p align="center">
 <img src="./public/home.png" alt="japventure" width=auto/>
 </p>
@@ -23,4 +23,4 @@
 <p align="center">
 <img src="./public/cities_s_m.png" alt="japventure" width=auto/>
 </p>
-<p align="center"> <a href="project-south.vercel.app">Japventure</a> </p>
+<p align="center"> <a href="https://project-south.vercel.app/">Japventure</a> </p>
