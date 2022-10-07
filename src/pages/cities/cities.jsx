@@ -84,7 +84,7 @@ export function Cities() {
       style={{
         backgroundImage: `url(${cover_img}?h=600)`,
         objectFit: "cover",
-         
+
         backgroundRepeat: "no-repeat",
       }}
     >
@@ -102,13 +102,13 @@ export function Cities() {
         </div>
         <div className={styles.hero_left}>
           <div className={styles.select_dropdown}>
-          <select value={selected} onChange={handleChange}>
-            {options.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.text}
-              </option>
-            ))}
-          </select>
+            <select value={selected} onChange={handleChange}>
+              {options.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.text}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
       </div>

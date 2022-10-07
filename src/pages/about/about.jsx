@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import ScrollButton from "../../components/scrollButton/scrollButton";
 import TMCard from "../../components/TMCard";
 import teamMembers from "./../../utils/api/teamMembers";
 
@@ -53,6 +54,7 @@ export function About() {
         ))}
       </div>
       <p className={styles.thanks}>Made with ❤️&🐟</p>
+      <ScrollButton />
     </div>
   );
 }

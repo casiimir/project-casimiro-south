@@ -9,6 +9,7 @@ import "swiper/scss";
 import "swiper/scss/navigation";
 import "swiper/scss/scrollbar";
 import MainCard from "../../components/MainCard";
+import ScrollButton from "../../components/scrollButton/scrollButton";
 
 export function Explore() {
   const { listsData, lang, currency } = useSelector((state) => state);
@@ -143,6 +144,7 @@ export function Explore() {
           ))}
         </Swiper>
       </div>
+      <ScrollButton />
     </div>
   );
 }

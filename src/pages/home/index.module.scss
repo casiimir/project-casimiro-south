@@ -6,6 +6,8 @@
   @include box-model($height: calc(100vh - 170px));
   padding: 20px;
   height: 100%;
+
+
   .left {
     @include flex-container($direction: column, $gap: 50px);
     @include box-model($height: 100%);
@@ -278,4 +280,5 @@
       }
     }
   }
+
 }

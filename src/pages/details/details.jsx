@@ -5,6 +5,7 @@ import { ENDPOINTS } from "../../utils/api/endpoints";
 import { useDispatch, useSelector } from "react-redux";
 import MainCard from "../../components/MainCard";
 import swal from "sweetalert";
+import ScrollButton from "../../components/scrollButton/scrollButton";
 
 
 
@@ -185,6 +186,7 @@ export function Details() {
           })}
         </div>
       </div>
+      <ScrollButton />
     </div>
   );
 }
