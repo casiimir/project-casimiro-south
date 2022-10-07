@@ -1,0 +1,73 @@
+@import "../../styles/_variables.scss";
+@import "../../styles/_mixins.scss";
+
+.Main {
+  @include flex-container($justify: center, $align: center);
+  @include element-position(
+    $position: fixed,
+    $right: 7.5rem,
+    $top: 70px,
+    $z-index: 3
+  );
+  @include box-model($padding: 0.7rem, $width: 15rem);
+  max-height: 200px;
+  background-color: $tertiary-color;
+  list-style-type: none;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.5);
+
+  button {
+    @include button-element(
+      $padding: 0.7rem 1rem,
+      $border: 0.1rem solid $secondary-color,
+      $border-radius: 0.8rem,
+      $font-weight: bold,
+      $text-transform: none
+    );
+    background-color: $tertiary-color;
+    color: $secondary-color;
+    margin-bottom: 1rem;
+
+    &:hover {
+      background-color: $secondary-color;
+      color: $tertiary-color;
+    }
+  }
+
+  a:-webkit-any-link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .signout {
+    @include flex-container(
+      $direction: column,
+      $justify: center,
+      $align: center,
+      $gap: 1rem
+    );
+    margin-bottom: 1rem;
+  }
+
+  .close {
+    position: fixed;
+    top: 4.2rem;
+    right: 8.5rem;
+    cursor: pointer;
+  }
+}
+
+@media only screen and (max-width: 903px) {
+  .Main {
+    @include flex-container($justify: center, $align: center);
+    @include element-position();
+    @include box-model($padding: 0.7rem, $width: 15rem);
+    max-height: 200px;
+    background-color: transparent;
+    list-style-type: none;
+    box-shadow: none;
+
+    .close {
+      display: none;
+    }
+  }
+}
