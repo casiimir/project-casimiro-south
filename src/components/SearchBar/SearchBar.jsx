@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 export default function SearchBar() {
   const { lang, currency } = useSelector((state) => state);
   const dispatch = useDispatch();
+
   const [inputValue, setInputValue] = useState("");
   const [isInputActive, setIsInputActive] = useState(false);
   const [searchValue, setSearchValue] = useState(0);
@@ -48,7 +49,7 @@ export default function SearchBar() {
       })
         .then((data) => data.json())
         .then((json) => {
-          json[0].items[0].hint === "Japan"
+          json[0]?.items[0].hint === "Japan"
             ? setResult({
                 title: json[0].items[0].title,
                 id: json[0].items[0].id,
@@ -78,7 +79,7 @@ export default function SearchBar() {
             payload: {
               id: json.id,
               name: json.name,
-              content: json.content,
+              meta: json.meta_description,
               headline: json.headline,
               cover_img: json.cover_image_url,
             },
@@ -88,7 +89,7 @@ export default function SearchBar() {
           setIsInputActive(false);
         });
     }
-  }, [searchValue]);
+  }, [searchValue, lang.value, currency.value]);
 
   const handleOnChange = (e) => setInputValue(e.target.value);
 
