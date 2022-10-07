@@ -16,6 +16,7 @@ export const Info = () => {
     daily,
     languages,
     service_fee,
+    description
   } = activityData.objectData;
 
   useEffect(() => {
@@ -48,16 +49,17 @@ export const Info = () => {
                 ? "Free cancellation"
                 : "Free cancellation is not available"}
             </span>
-            
-              <p className={styles.duration}>
-                {lang.toggle ? "Durata" : "Duration"}:
-                <span> {duration_range?.max ? duration_range?.max.slice(2).toLowerCase()
-                : lang.toggle ? (
-              " Nessuna informazione da mostrare"
-            ) : (
-              " No information to show"
-            )}
-            </span>
+
+            <p className={styles.duration}>
+              {lang.toggle ? "Durata" : "Duration"}:
+              <span>
+                {" "}
+                {duration_range?.max
+                  ? duration_range?.max.slice(2).toLowerCase()
+                  : lang.toggle
+                  ? " Nessuna informazione da mostrare"
+                  : " No information to show"}
+              </span>
             </p>
 
             <p className={styles.availability}>
@@ -96,6 +98,17 @@ export const Info = () => {
                 : service_fee?.formatted_value}
             </span>
           </p>
+
+          <div className={styles.included}>
+            <h3>{lang.toggle ? "Cosa è incluso" : "What's included"}</h3>
+            {description ? (
+              <p>{description}</p>
+            ) : lang.toggle ? (
+              "Nessuna informazione da mostrare"
+            ) : (
+              "No information to show"
+            )}
+          </div>
         </div>
       </div>
     </div>

@@ -1,9 +1,12 @@
 import styles from "./index.module.scss";
-import { Link, Outlet, useLocation, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { NavLink, Outlet, useLocation, useParams } from "react-router-dom";
+import { useEffect, useLayoutEffect } from "react";
 import { ENDPOINTS } from "../../utils/api/endpoints";
 import { useDispatch, useSelector } from "react-redux";
 import MainCard from "../../components/MainCard";
+import swal from "sweetalert";
+
+
 
 
 
@@ -13,7 +16,7 @@ export function Details() {
   const { listsData, lang, currency, activityData } = useSelector(
     (state) => state
   );
-  const { expNew } = listsData;
+  const { expNew, cartList } = listsData;
   const {
     title,
     cover_image_url,
@@ -23,7 +26,7 @@ export function Details() {
     longitude,
   } = activityData.objectData;
   
-    useEffect(() => {
+    useLayoutEffect(() => {
     fetch(ENDPOINTS.ACTIVITY_DETAILS + activity_uuid, {
       method: "GET",
       headers: {
@@ -60,19 +63,31 @@ export function Details() {
       onTop();
     }, [routePath]);
 
-  const [isInfoVisible, setInfoVisible] = useState(true);
-  const [isMapVisible, setMapVisible] = useState(false);
+    const handleBuyBtn = () => {
+      localStorage.getItem("username") &&
+        dispatch({ type: "SET_CART_LIST", payload: cartList });
+      localStorage.setItem(
+        "cart_list",
+        JSON.stringify([...listsData.cartList])
+      );
+      localStorage.getItem("username")
+        ? swal(
+            "Well Done",
+            lang.toggle
+              ? "Hai aggiunto un'attività al carrello"
+              : "Activity Added to Cart",
+            "success"
+          )
+        : swal(
+            "Oops",
+            lang.toggle
+              ? "Sembra che tu non sia loggato!"
+              : "Seems like you're not logged in",
+            "error"
+          );
+    };
 
-  const infoOnClick = () => {
-    setInfoVisible(!isInfoVisible);
-    setMapVisible(!isMapVisible);
-  };
-
-  const mapOnClick = () => {
-    setMapVisible(!isMapVisible);
-    setInfoVisible(!isInfoVisible);
-  };
-
+  
   return (
     <div className={styles.Main}>
       <div className={styles.content}>
@@ -84,47 +99,58 @@ export function Details() {
                 {lang.toggle ? "da" : "from"}:
                 <span> {retail_price?.formatted_value}</span>
               </p>
+              <div className={styles.buttons}>
+                <button onClick={handleBuyBtn} className={styles.mainButton}>
+                  {lang.toggle ? "Aggiungi al carrello" : "Add to cart"}
+                </button>
+              </div>
             </div>
           </div>
 
-          {/* <button onClick={() => console.log(activityData.objectData)}>
-            Console
-          </button> */}
-
           <div className={styles.tabs}>
-            <Link
+            <NavLink
               to={`/details/${activity_uuid}/info`}
               title="Navigate to Info Tab"
-              onClick={() => infoOnClick()}
-              className={`${isInfoVisible ? styles.active : styles.inactive}`}
+              className={({ isActive }) =>
+                isActive ? styles.active : styles.inactive
+              }
+              end
             >
               Info
-            </Link>
+            </NavLink>
 
-            <Link
+            <NavLink
               to={`/details/${activity_uuid}/map`}
               title="Navigate to Map Tab"
-              onClick={() => mapOnClick()}
-              className={`${isMapVisible ? styles.active : styles.inactive}`}
+              className={({ isActive }) =>
+                isActive ? styles.active : styles.inactive
+              }
+              end
             >
               {lang.toggle ? "Mappa" : "Map"}
-            </Link>
-            {/* {console.log(isInfoVisible)}
-            {console.log(isMapVisible)} */}
+            </NavLink>
           </div>
 
-          <Outlet context={[latitude, longitude]}/>
+          <Outlet context={[latitude, longitude]} />
+
+          
         </section>
 
         <section className={styles.right}>
-          <img src={cover_image_url} alt={title} />
+          <img
+            src={cover_image_url?.replace("?w=540", "?w=1080")}
+            alt={title}
+          />
+          
           <div className={styles.included}>
             <h3>{lang.toggle ? "Cosa è incluso" : "What's included"}</h3>
-            {description 
-              ? <p>{description}</p>
-              : lang.toggle ? "Nessuna informazione da mostrare" : "No information to show"
-            }
-            
+            {description ? (
+              <p>{description}</p>
+            ) : lang.toggle ? (
+              "Nessuna informazione da mostrare"
+            ) : (
+              "No information to show"
+            )}
           </div>
         </section>
       </div>
@@ -150,11 +176,13 @@ export function Details() {
       )} */}
 
       <div className={styles.suggestions}>
-        <h3>{lang.toggle ? "Potrebbe piacerti anche" : "You might also like"}:</h3>
+        <h3>
+          {lang.toggle ? "Potrebbe piacerti anche" : "You might also like"}:
+        </h3>
         <div className={styles.suggestedActivities}>
-        {expNew?.slice(0, 7).map(i => {
-          return <MainCard data={i} />
-        })}
+          {expNew?.slice(0, 6).map((i) => {
+            return <MainCard data={i} />;
+          })}
         </div>
       </div>
     </div>

@@ -3,18 +3,188 @@
 
 body {
 overflow-x: hidden;
+
 }
 
 .Main {
-  @include flex-container(column);
-  @include box-model($padding: 3rem 4rem);
-  
+  @include box-model($padding: 3rem);
+  // border: 2px solid;
+  font-size: 1rem;
+  line-height: 1.5rem;
+
   .content {
-    @include flex-container($justify: space-between, $gap: 5rem);
+     @include flex-container($direction: column-reverse, $gap: 3rem);
     border-bottom: 1px solid $quaternary-color;
-    
+    // border: 2px solid red;
+
     .left {
-      @include box-model($width: 60%, $height: 100%);
+      // @include flex-container($direction: column, $justify: center, $align: center);
+      // border: 2px solid blue;
+      
+
+      .titlePrice {
+        @include flex-container( $align: space-between, $justify: space-between);
+        // height: 35vh;
+      .title {
+        @include form-text(
+          $font-size: 1.6rem,
+          $font-weight: 800,$line-height: 2rem
+        );
+        color: $secondary-text-color;
+        width: 55%;
+        padding-bottom: 1.5rem;
+        // height: 300px;
+      }
+
+      .priceInfo {
+        @include flex-container($direction: column, $justify: center, $align: flex-end, $gap: 20px);
+        width: 40%;
+        padding-top: 3rem;
+        // border: 2px solid purple;
+
+        .price {
+          @include flex-container($direction: column, $align: flex-end);
+          @include form-text($font-weight: 600, $font-size: 0.9rem);
+          border-bottom: 1px solid $secondary-color;
+
+          span {
+            @include form-text($font-size: 1rem, $font-weight: 700);
+            width: 100%;
+          }
+          
+        }
+
+        .buttons {
+    .mainButton {
+      @include button-element(
+        // $width: 200px,
+        $padding: 10px 10px,
+        $border-radius: 0.5rem
+      );
+      font-size: 0.6rem;
+      font-family: "Montserrat", sans-serif;
+      border: 1px solid $secondary-color;
+      color: $secondary-color;
+      background-color: $tertiary-color;
+
+      &:hover {
+        background-color: $secondary-color;
+        color: $tertiary-color;
+      }
+    }
+  }
+
+      }
+      }
+      
+      .tabs {
+        @include box-model($padding: 20px 0 0 0, $width: 100%);
+        @include flex-container();
+        border-bottom: 1px solid $secondary-color;
+        
+        .inactive {
+          @include button-element($padding: 10px,
+          $border: 1px solid $secondary-color,
+          $border-radius: 8px 8px 0 0,
+          $font-weight: bold,
+          $text-transform: none);
+          font-size: 1rem;
+          background-color: $quinary-color;
+          color: $secondary-text-color;
+          text-decoration: none;
+        }
+
+        .active {
+          @include button-element($padding: 10px,
+          $border: 1px solid $secondary-color,
+          $border-radius: 8px 8px 0 0,
+          $font-weight: bold,
+          $text-transform: none);
+          font-size: 1rem;
+          background-color: $secondary-color;
+          color: $quinary-text-color;
+          text-decoration: none;
+          }
+      }
+    
+      
+
+    }
+
+    .right {
+      height: 40vh;
+      img {
+        @include box-model($height: 100%, $width: 100%);
+        object-fit: cover;
+      };
+      
+      .included {
+        display: none;
+        // @include flex-container($direction: column, $gap: 10px);
+        // @include box-model($padding: 10px 0);
+        // text-align: justify;
+        // padding-top: 3rem;
+      }
+    }
+}
+
+    .suggestions {
+    @include box-model($padding: 3rem 0);
+    text-align: start;
+    // border: 2px solid green;
+
+    .suggestedActivities {
+      @include flex-container($justify: center, $align: center, $gap: 30px, $wrap: wrap);
+      padding-top: 20px;
+    }
+  }
+
+  
+}
+
+
+@media only screen and (min-width: 600px) {
+  .Main {
+    font-size: 1.2rem;
+    .content {
+      .left {
+        .titlePrice {
+          .title {
+            font-size: 3rem;
+            line-height: 2.7rem;
+          }
+          .priceInfo{
+            .price {
+              font-size: 1rem;
+
+              span {
+                font-size: 1.2rem;
+              }
+            }
+            .buttons {
+              .mainButton {
+                font-size: 1rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media only screen and (min-width: 992px){
+
+.Main {
+  // @include flex-container(column);
+  .content {
+    @include flex-container($direction: row, $justify: space-between, $gap: 5rem);
+    border-bottom: 1px solid $quaternary-color;
+    // height: 100vh;
+
+    .left {
+      @include box-model($width: 70%, $height: 100%);
       @include flex-container($direction: column, $justify: center, $align: flex-start);
       text-align: start;
       
@@ -28,15 +198,16 @@ overflow-x: hidden;
           $font-weight: 800,
           $letter-spacing: 1px,$line-height: 4rem
         );
-        color: $secondary-text-color;
-        width: 80%;
-        // height: 30vh;
+        width: 70%;
+        // border: 2px solid red;
         
       }
       .priceInfo {
-        // width: 20%;
-        // text-align: right;
-
+        justify-content: flex-start;
+        gap: 85px;
+        width: 30%;
+        padding: 0;
+        // border: 2px solid;
         .price {
           @include flex-container($justify: center,
             $align: center, $gap: 8px);
@@ -53,98 +224,32 @@ overflow-x: hidden;
         }
       }
 
-      .tabs {
-        @include box-model($padding: 20px 0 0 0, $width: 100%);
-        @include flex-container();
-        border-bottom: 1px solid $secondary-color;
-        
-        .inactive {
-          @include button-element($padding: 10px,
-          $border: 1px solid $secondary-color,
-          $border-radius: 8px 8px 0 0,
-          $font-weight: bold,
-          $text-transform: none);
-          background-color: $quinary-color;
-          color: $secondary-text-color;
-          text-decoration: none;
-        }
+      // .included {
+      //   position: absolute;
+      //   top: 75%;
+      //   right: 3rem;
+      //   width: 25%;
+      // }
 
-        .active {
-          @include button-element($padding: 10px,
-          $border: 1px solid $secondary-color,
-          $border-radius: 8px 8px 0 0,
-          $font-weight: bold,
-          $text-transform: none);
-          background-color: $secondary-color;
-          color: $quinary-text-color;
-          text-decoration: none;
-          }
-      }
     }
 
     .right {
-      height: calc(100vh - 70px - 45px);
-      width: 40%;
+      height: calc(75vh);
+      width: 30%;
       img {
         @include box-model($height: 80%, $width: 100%);
         object-fit: cover;
       };
-
       .included {
-        @include flex-container($direction: column, $justify: center, $align: flex-start, $gap: 10px);
-        @include box-model($height: 20%,
-        $padding: 10px);
-        text-align: start;
+        @include flex-container($direction: column, $gap: 15px);
+        text-align: justify;
+        padding-top: 20px;
       }
     }
-  }
 
-  // .date {
-  //   @include box-model($padding: 25px 0);
-  //   @include flex-container($direction: column, $gap: 20px);
-  //   text-align: start;
-  //   border-bottom: 1px solid $quaternary-color;
-
-  //   .datePicker {
-  //     @include flex-container($gap: 35px);
-  //     @include box-model($padding: 10px 0 0 10px);
-      
-
-  //     input {
-  //       @include form-text($font-size: 1.1rem);
-  //       @include box-model($width: 220px);
-  //       @include border($border: none,
-  //       $radius: 6px);
-  //       color: $primary-text-color;
-  //       box-shadow: $box-shadow;
-  //     }
-
-  //     button {
-  //       @include button-element(
-  //         $height: 50px,
-  //         $width: 220px,
-  //         $border-radius: 10px
-  //       );
-  //       @include form-text(
-  //         $font-weight: 600
-  //       );
-  //       background-color: $secondary-color;
-  //       color: $quinary-color;
-
-  //       &:hover {
-  //         transform: scale(1.1);
-  //       }
-  //     }
-  //   }
-  // }
-
-  .suggestions {
-    @include box-model($padding: 20px 0);
-    text-align: start;
-
-    .suggestedActivities {
-      @include flex-container($justify: center, $align: center, $gap: 20px);
-      padding-top: 20px;
-    }
   }
 }
+}
+
+
+
