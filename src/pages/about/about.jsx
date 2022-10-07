@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import ScrollButton from "../../components/scrollButton/scrollButton";
-import TMCard from "../../components/TMCard";
+import {ScrollButton} from "../../components/scrollButton";
+import { TMCard } from "../../components/TMCard";
 import teamMembers from "./../../utils/api/teamMembers";
 
 import styles from "./index.module.scss";

@@ -1,15 +1,15 @@
 import { useState, useLayoutEffect } from "react";
-import { ENDPOINTS } from "../../utils/api/endpoints";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   AiOutlineClose,
   AiOutlineSearch,
   AiOutlineClear,
 } from "react-icons/ai";
+import { ENDPOINTS } from "../../utils/api/endpoints";
 import styles from "./index.module.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 
-export default function SearchBar() {
+export function SearchBar() {
   const { lang, currency } = useSelector((state) => state);
   const dispatch = useDispatch();
 

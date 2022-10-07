@@ -1,9 +1,9 @@
 import { useLayoutEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ENDPOINTS } from "../../utils/api/endpoints";
 import { useDispatch, useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper";
+import { ENDPOINTS } from "../../utils/api/endpoints";
 import "swiper/scss";
 import "swiper/scss/pagination";
 import styles from "./index.module.scss";

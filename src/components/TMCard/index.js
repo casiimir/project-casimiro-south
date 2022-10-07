@@ -1,3 +1,1 @@
-import TMCard from "./TMCard";
-
-export default TMCard;
+export * from "./TMCard";

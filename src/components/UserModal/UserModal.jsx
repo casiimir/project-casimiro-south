@@ -1,15 +1,20 @@
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { RiCloseCircleLine } from "react-icons/ri";
 import styles from "./index.module.scss";
 
-const UserModal = (props) => {
+export const UserModal = (props) => {
   const { lang } = useSelector((state) => state);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const removeUsername = () => {
     localStorage.removeItem("username");
     props.setUserLoggedIn("");
     props.setModalVisibility && props.setModalVisibility(false);
+    console.log(location);
+    if (location.pathname === "/cart" || location.pathname === "/emptycart")
+      navigate("/nologincart");
   };
 
   return (
@@ -22,15 +27,16 @@ const UserModal = (props) => {
           </button>
         </div>
       ) : (
-        <button
+        <Link
           onClick={() =>
             props.setModalVisibility && props.setModalVisibility(false)
           }
+          to="/login"
+          title="Navigate to Login page"
+          state={{ prev: location.pathname }}
         >
-          <Link to="/login" title="Navigate to Login page">
-            {lang.toggle ? "Accedi" : "Sign In"}
-          </Link>
-        </button>
+          {lang.toggle ? "Accedi" : "Sign In"}
+        </Link>
       )}
       <div className={styles.close}>
         <RiCloseCircleLine onClick={() => props.setModalVisibility(false)} />

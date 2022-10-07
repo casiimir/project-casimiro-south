@@ -1,7 +1,7 @@
 import { BsFillArrowUpCircleFill } from "react-icons/bs";
 import styles from "./index.module.scss";
 
-const ScrollButton = () => {
+ export const ScrollButton = () => {
   
   const scrollToTop = () => {
     window.scrollTo({
