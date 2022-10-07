@@ -1,10 +1,8 @@
 import { FiMapPin } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import styles from "./index.module.scss";
-
 import swal from "sweetalert";
-
+import styles from "./index.module.scss";
 
 const MainCard = ({ data }) => {
   const { lang, listsData } = useSelector((state) => state);
@@ -40,6 +38,11 @@ const MainCard = ({ data }) => {
   return (
     <>
       <div className={styles.MainCard}>
+        <Link
+            to={`/details/${data.uuid}`}
+            title="Navigate to Activity Tab"
+            className={styles.viewDetails}
+          >
         <div className={styles.image}>
           <img
             className={styles.imagePic}
@@ -47,7 +50,6 @@ const MainCard = ({ data }) => {
             alt="cityPic"
           />
         </div>
-      
         <div className={styles.placePrice}>
           <div className={styles.place}>
             <FiMapPin />
@@ -58,12 +60,6 @@ const MainCard = ({ data }) => {
           </div>
         </div>
         <p className={styles.expTitle}>{title.toUpperCase()}</p>
-        <Link
-            to={`/details/${data.uuid}`}
-            title="Navigate to Activity Tab"
-            className={styles.viewDetails}
-          >
-            {lang.toggle ? "Dettagli" : "View details"}
           </Link>
         <div className={styles.buttons}>
           <button

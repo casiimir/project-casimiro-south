@@ -40,7 +40,7 @@ export function About() {
               <p>
                 {lang.toggle
                   ? "Viviamo secondo i nostri valori fondamentali. Ecco perché crediamo nel lavorare insieme, nell'essere positivi e nell'ispirarci a vicenda. Perché abbiamo successo solo quando tutto il nostro team ha successo."
-                  : "We live by our core values. That’s why we believe in working together, bee-ing positive, and inspiring each other. Because we only succeed when our whole team does."}
+                  : "We live by our core values. That’s why we believe in working together, being positive, and inspiring each other. Because we only succeed when our whole team does."}
               </p>
             </div>
           </div>
@@ -52,6 +52,7 @@ export function About() {
           <TMCard key={name.id} data={name} />
         ))}
       </div>
+      <p className={styles.thanks}>Made with ❤️&🐟</p>
     </div>
   );
 }
