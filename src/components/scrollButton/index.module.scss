@@ -1,0 +1,11 @@
+@import "../../styles/_mixins";
+@import "../../styles/_variables";
+
+.Main {
+  @include flex-container($justify: flex-end);
+  font-size: 3.5rem;
+  color: $secondary-color;
+  cursor: pointer;
+  width: 100%;
+  padding-top: 40px;
+}

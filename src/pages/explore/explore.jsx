@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Scrollbar, FreeMode } from "swiper";
 import { ENDPOINTS } from "../../utils/api/endpoints";
 import { MainCard } from "../../components/MainCard";
+import {ScrollButton} from "../../components/scrollButton";
 import "swiper/scss";
 import "swiper/scss/navigation";
 import "swiper/scss/scrollbar";
@@ -141,6 +142,7 @@ export function Explore() {
           ))}
         </Swiper>
       </div>
+      <ScrollButton />
     </div>
   );
 }
