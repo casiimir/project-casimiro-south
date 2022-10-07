@@ -4,12 +4,13 @@ import { MdWatchLater } from "react-icons/md";
 import { FaHandHoldingUsd } from "react-icons/fa";
 import { SiVisa, SiMastercard, SiPaypal, SiRevolut } from "react-icons/si";
 import styles from "./index.module.scss";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export function Cart() {
   const { lang, listsData, currency } = useSelector((state) => state);
+  const navigate = useNavigate()
   // const [total, setTotal] = useState(0);
   // const [formatTotal, setFormatTotal] = useState("");
   // const getTotal = (counter) => {
@@ -26,6 +27,12 @@ export function Cart() {
   // }, [listsData, currency]);
 
   const dispatch = useDispatch();
+
+  useLayoutEffect(() => {
+    if (listsData.cartList.length < 1) {
+      navigate("/emptycart")
+    }
+  },[listsData.cartList.length]);
 
   const handleDelBtn = (uuid) => {
     dispatch({ type: "DEL_CART_ITEM", payload: uuid });
