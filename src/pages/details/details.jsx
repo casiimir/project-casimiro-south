@@ -133,6 +133,15 @@ export function Details() {
 
           <Outlet context={[latitude, longitude]} />
 
+          
+        </section>
+
+        <section className={styles.right}>
+          <img
+            src={cover_image_url?.replace("?w=540", "?w=1080")}
+            alt={title}
+          />
+          
           <div className={styles.included}>
             <h3>{lang.toggle ? "Cosa è incluso" : "What's included"}</h3>
             {description ? (
@@ -143,13 +152,6 @@ export function Details() {
               "No information to show"
             )}
           </div>
-        </section>
-
-        <section className={styles.right}>
-          <img
-            src={cover_image_url?.replace("?w=540", "?w=1080")}
-            alt={title}
-          />
         </section>
       </div>
 

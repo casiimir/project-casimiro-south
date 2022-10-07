@@ -21,6 +21,15 @@
             color: $secondary-text-color;
             font-size: 1rem !important;
           }
+
+          .included {
+            @include flex-container($direction: column, $gap: 10px);
+            @include box-model($padding: 10px 0);
+            text-align: justify;
+            padding-top: 3rem;
+            font-weight: 400;
+          }
+
           .boxInfoGrid {
             @include flex-container($direction: column, $justify: center, $align: center, $gap: 20px)  
           }
@@ -64,7 +73,16 @@
 }
 }
 
-// .boxInfoGrid {
-//           display: grid;
-//           grid: 50px 50px / repeat(2, 1fr);  
-//           }
+
+@media only screen and (min-width: 992px) {
+  .Main {
+    .info {
+      .boxInfo {
+        .included {
+          display: none;
+        }
+      }
+    }
+  }
+
+}

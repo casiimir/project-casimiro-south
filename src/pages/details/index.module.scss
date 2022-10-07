@@ -3,13 +3,14 @@
 
 body {
 overflow-x: hidden;
-font-size: 1rem;
-line-height: 1.5rem;
+
 }
 
 .Main {
   @include box-model($padding: 3rem);
   // border: 2px solid;
+  font-size: 1rem;
+  line-height: 1.5rem;
 
   .content {
      @include flex-container($direction: column-reverse, $gap: 3rem);
@@ -106,12 +107,7 @@ line-height: 1.5rem;
           }
       }
     
-      .included {
-        @include flex-container($direction: column, $gap: 10px);
-        @include box-model($padding: 10px 0);
-        text-align: justify;
-        padding-top: 3rem;
-      }
+      
 
     }
 
@@ -121,6 +117,14 @@ line-height: 1.5rem;
         @include box-model($height: 100%, $width: 100%);
         object-fit: cover;
       };
+      
+      .included {
+        display: none;
+        // @include flex-container($direction: column, $gap: 10px);
+        // @include box-model($padding: 10px 0);
+        // text-align: justify;
+        // padding-top: 3rem;
+      }
     }
 }
 
@@ -140,11 +144,8 @@ line-height: 1.5rem;
 
 
 @media only screen and (min-width: 600px) {
-  body {
-    font-size: 1.2rem;
-  }
-
   .Main {
+    font-size: 1.2rem;
     .content {
       .left {
         .titlePrice {
@@ -223,12 +224,12 @@ line-height: 1.5rem;
         }
       }
 
-      .included {
-        position: absolute;
-        top: calc(75vh );
-        right: 3rem;
-        width: 25%;
-      }
+      // .included {
+      //   position: absolute;
+      //   top: 75%;
+      //   right: 3rem;
+      //   width: 25%;
+      // }
 
     }
 
@@ -239,170 +240,16 @@ line-height: 1.5rem;
         @include box-model($height: 80%, $width: 100%);
         object-fit: cover;
       };
+      .included {
+        @include flex-container($direction: column, $gap: 15px);
+        text-align: justify;
+        padding-top: 20px;
+      }
     }
 
   }
 }
 }
 
-//   .titlePrice {
-//         @include flex-container( $align: space-between, $justify: space-between);
-//         height: 20vh;
-//       .title {
-//         @include form-text(
-//           $font-size: 2rem,
-//           $font-weight: 800,$line-height: 2.3rem
-//         );
-//         color: $secondary-text-color;
-//         width: 70%;
-//       }
 
-//       .priceInfo {
-//         @include flex-container($direction: column, $justify: center, $align: flex-end, $gap: 20px);
-//         width: 30%;
-//         border: 2px solid purple;
 
-//         .price {
-//           @include flex-container($direction: column, $align: flex-end);
-//           @include form-text($font-weight: 600, $font-size: 0.9rem);
-//           border-bottom: 1px solid $secondary-color;
-
-//           span {
-//             @include form-text($font-size: 1.2rem, $font-weight: 700);
-//             width: 100%;
-//           }
-          
-//         }
-
-//         .buttons {
-//     .mainButton {
-//       @include button-element(
-//         // $width: 200px,
-//         $padding: 10px 20px,
-//         $border-radius: 0.5rem
-//       );
-//       font-size: 0.6rem;
-//       font-family: "Montserrat", sans-serif;
-//       border: 1px solid $secondary-color;
-//       color: $secondary-color;
-//       background-color: $tertiary-color;
-
-//       &:hover {
-//         background-color: $secondary-color;
-//         color: $tertiary-color;
-//       }
-//     }
-//   }
-
-// .right {
-//       height: 60vh;
-//       img {
-//         @include box-model($height: 100%, $width: 100%);
-//         object-fit: cover;
-//       };
-//     }
-
-// }
-
-// .Main {
-//   @include flex-container(column);
-//   @include box-model($padding: 3rem 4rem);
-  
-//   .content {
-//     @include flex-container($justify: space-between, $gap: 5rem);
-//     border-bottom: 1px solid $quaternary-color;
-    
-//     .left {
-//       @include box-model($width: 60%, $height: 100%);
-//       @include flex-container($direction: column, $justify: center, $align: flex-start);
-//       text-align: start;
-      
-//       .titlePrice {
-//         @include flex-container($justify: space-between);
-//         width: 100%;
-     
-//       .title {
-//         @include form-text(
-//           $font-size: 3.8rem,
-//           $font-weight: 800,
-//           $letter-spacing: 1px,$line-height: 4rem
-//         );
-//         color: $secondary-text-color;
-//         width: 80%;
-        
-//       }
-//       .priceInfo {
-//         .price {
-//           @include flex-container($justify: center,
-//             $align: center, $gap: 8px);
-//           @include form-text($font-weight: 600, $font-size: 0.9rem);
-//           @include box-model($padding: 30px 0 0 0);
-//           border-bottom: 1px solid $secondary-color;
-
-//           span {
-//             @include form-text($font-size: 1.2rem, $font-weight: 700);
-//             @include flex-container();
-//             width: 100%;
-//           }
-//         }
-//         }
-//       }
-
-//       .tabs {
-//         @include box-model($padding: 20px 0 0 0, $width: 100%);
-//         @include flex-container();
-//         border-bottom: 1px solid $secondary-color;
-        
-//         .inactive {
-//           @include button-element($padding: 10px,
-//           $border: 1px solid $secondary-color,
-//           $border-radius: 8px 8px 0 0,
-//           $font-weight: bold,
-//           $text-transform: none);
-//           background-color: $quinary-color;
-//           color: $secondary-text-color;
-//           text-decoration: none;
-//         }
-
-//         .active {
-//           @include button-element($padding: 10px,
-//           $border: 1px solid $secondary-color,
-//           $border-radius: 8px 8px 0 0,
-//           $font-weight: bold,
-//           $text-transform: none);
-//           background-color: $secondary-color;
-//           color: $quinary-text-color;
-//           text-decoration: none;
-//           }
-//       }
-//     }
-
-//     .right {
-//       height: calc(100vh - 70px - 45px);
-//       width: 30%;
-//       img {
-//         @include box-model($height: 80%, $width: 100%);
-//         object-fit: cover;
-//       };
-
-//       .included {
-//         @include flex-container($direction: column, $justify: center, $align: flex-start, $gap: 10px);
-//         @include box-model($height: 20%,
-//         $padding: 10px);
-//         text-align: start;
-//       }
-//     }
-//   }
-
- 
-
-//   .suggestions {
-//     @include box-model($padding: 20px 0);
-//     text-align: start;
-
-//     .suggestedActivities {
-//       @include flex-container($justify: center, $align: center, $gap: 30px, $wrap: wrap);
-//       padding-top: 20px;
-//     }
-//   }
-// }
