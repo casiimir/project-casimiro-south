@@ -281,3 +281,37 @@
   }
 
 }
+
+@media only screen and (max-width: 400px) {
+  .Main {
+    .left {
+      .title {
+        font-size: 3.5rem !important;
+      }
+      .experience {
+        font-size: 1.4rem !important;
+      }
+      .description {
+        width: 280px !important;
+        font-size: 0.84rem !important;
+      }
+      span {
+        font-size: 1.15rem !important;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 340px) {
+.Main {
+  .left{
+    .experience {
+      font-size: 1.25rem !important;
+    }
+    .description {
+      width: 240px !important;
+      margin-bottom: 80px !important;
+    }
+  }
+}
+}

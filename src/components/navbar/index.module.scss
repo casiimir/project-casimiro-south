@@ -325,3 +325,13 @@
     }
   }
 }
+
+@media only screen and (max-width: 370px) {
+    .mobile {
+      .link {
+        .logo {
+          width: 155px;
+        }
+      }
+    }
+}
