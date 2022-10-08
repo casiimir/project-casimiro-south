@@ -24,6 +24,7 @@ const init = {
   },
   activityData: {
     objectData: {},
+    prevPath: {},
   },
 };
 
@@ -125,6 +126,11 @@ function activityDataReducer(state = {}, action) {
       return {
         ...state,
         objectData: action.payload,
+      };
+    case "SET_PREV_PATH":
+      return {
+        ...state,
+        prevPath: action.payload,
       };
     default:
       return state;

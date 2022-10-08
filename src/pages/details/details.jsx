@@ -29,10 +29,14 @@ export function Details() {
     latitude,
     longitude,
   } = activityData.objectData;
-  const [originPath, setOriginPath] = useState("");
 
   useLayoutEffect(() => {
-    setOriginPath(routePath.state?.prev?.pathname);
+    if (routePath.state?.prev) {
+      dispatch({
+        type: "SET_PREV_PATH",
+        payload: routePath.state.prev.pathname,
+      });
+    }
   }, []);
 
   useLayoutEffect(() => {
@@ -98,7 +102,7 @@ export function Details() {
     <div className={styles.Main}>
       <div className={styles.content}>
         <section className={styles.left}>
-          <Link className={styles.back} to={originPath}>
+          <Link className={styles.back} to={activityData.prevPath}>
             <BsArrowLeftCircle />
           </Link>
           <div className={styles.titlePrice}>
