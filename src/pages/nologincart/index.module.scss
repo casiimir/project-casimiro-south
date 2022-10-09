@@ -42,6 +42,29 @@
         );
       }
     }
+
+    .login_link {
+      @include button-element(
+        $padding: 0.7rem 1rem,
+        $border: 0.1rem solid $secondary-color,
+        $border-radius: 0.8rem,
+        $font-weight: bold,
+        $text-transform: none
+      );
+      @include element-position($position: relative);
+      background-color: $tertiary-color;
+      color: $secondary-color;
+      margin-bottom: 1rem;
+
+      &:-webkit-any-link {
+        text-decoration: none;
+      }
+
+      &:hover {
+        background-color: $secondary-color;
+        color: $tertiary-color;
+      }
+    }
   }
 }
 

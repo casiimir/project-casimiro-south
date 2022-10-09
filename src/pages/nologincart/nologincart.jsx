@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { TbUserExclamation } from "react-icons/tb";
 import styles from "./index.module.scss";
@@ -7,6 +7,7 @@ import styles from "./index.module.scss";
 export function NoLoginCart() {
   const { lang } = useSelector((state) => state);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     if (localStorage.getItem("username")) {
@@ -34,6 +35,14 @@ export function NoLoginCart() {
               : "Please, Login and try again."}
           </p>
         </div>
+        <Link
+          to="/login"
+          title="Navigate to Login page"
+          state={{ prev: location.pathname }}
+          className={styles.login_link}
+        >
+          {lang.toggle ? "Accedi" : "Sign In"}
+        </Link>
       </div>
     </div>
   );

@@ -59,3 +59,43 @@
     }
   }
 }
+
+@media only screen and (max-width: 349px) {
+  .Main {
+    .input_container {
+      .input {
+        &.active {
+          @include box-model($padding: 10px, $width: 135px, $height: 100%);
+        }
+      }
+
+      .clear {
+        @include box-model($padding: 0 15px 0 0, $width: 30px);
+      }
+    }
+  }
+
+  .modal_res {
+    @include element-position(
+      $position: absolute,
+      $right: 0,
+      $top: 70px,
+      $left: 0,
+      $z-index: 1
+    );
+    @include box-model($padding: 10px);
+    max-height: 200px;
+    background-color: $tertiary-color;
+    list-style-type: none;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.5);
+
+    .res {
+      @include box-model($padding: 2.5px 0);
+      font-size: 1.5rem;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

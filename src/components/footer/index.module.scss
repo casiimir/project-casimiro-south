@@ -32,6 +32,7 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
     color: $primary-text-color;
+    text-align: center;
 
     li {
       font-size: 0.8rem;
@@ -59,6 +60,8 @@
       margin-bottom: 20px;
       display: flex;
       flex-direction: row;
+      gap: 50px;
+      flex-wrap: nowrap;
     }
     .links {
       padding-left: 0px;

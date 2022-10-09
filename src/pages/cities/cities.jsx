@@ -47,7 +47,7 @@ export function Cities() {
       headers: {
         "Accept-Language": lang.value,
         "X-Musement-Application": "string",
-        "X-Musement-Market": currency.toggle ? "eu" : "us",
+        "X-Musement-Market": currency.toggle ? "it" : "us",
         "X-Musement-Version": "3.4.0",
       },
     })

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
@@ -25,6 +25,10 @@ export function Login() {
     setPwValue("");
     location.state.prev === "/emptycart" ? goBack("/cart") : goBack(-1);
   };
+
+  useLayoutEffect(() => {
+    localStorage.getItem("username") && goBack(-1);
+  }, []);
 
   return (
     <div className={styles.Main}>

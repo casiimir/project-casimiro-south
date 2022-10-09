@@ -7,7 +7,6 @@
   padding: 20px;
   height: 100%;
 
-
   .left {
     @include flex-container($direction: column, $gap: 50px);
     @include box-model($height: 100%);
@@ -76,6 +75,10 @@
           color: $secondary-text-color;
           text-transform: uppercase;
         }
+      }
+
+      .discover_container {
+        @include flex-container($wrap: wrap);
       }
 
       .explore_btn {
@@ -279,7 +282,6 @@
       }
     }
   }
-
 }
 
 @media only screen and (max-width: 400px) {
@@ -303,15 +305,15 @@
 }
 
 @media only screen and (max-width: 340px) {
-.Main {
-  .left{
-    .experience {
-      font-size: 1.25rem !important;
-    }
-    .description {
-      width: 240px !important;
-      margin-bottom: 80px !important;
+  .Main {
+    .left {
+      .experience {
+        font-size: 1rem !important;
+      }
+      .description {
+        width: 240px !important;
+        margin-bottom: 80px !important;
+      }
     }
   }
-}
 }
