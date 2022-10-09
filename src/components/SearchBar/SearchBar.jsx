@@ -21,8 +21,9 @@ export function SearchBar() {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    if (isInputActive) {
-      result && setSearchValue(result.id);
+    if (isInputActive && result) {
+      setSearchValue(result.id);
+      navigate("/cities");
     }
   };
 
@@ -34,7 +35,10 @@ export function SearchBar() {
   };
 
   const handleCityOnClick = () => {
-    result && setSearchValue(result.id);
+    if (result) {
+      setSearchValue(result.id);
+      navigate("/cities");
+    }
   };
 
   useLayoutEffect(() => {
@@ -68,7 +72,7 @@ export function SearchBar() {
         headers: {
           "Accept-Language": lang.value,
           "X-Musement-Application": "string",
-          "X-Musement-Market": currency.toggle ? "eu" : "us",
+          "X-Musement-Market": currency.toggle ? "it" : "us",
           "X-Musement-Version": "3.4.0",
         },
       })
@@ -84,8 +88,8 @@ export function SearchBar() {
               cover_img: json.cover_image_url,
             },
           });
-          navigate("/cities");
           setInputValue("");
+          setSearchValue(0);
           setIsInputActive(false);
         });
     }

@@ -1,6 +1,6 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import {
   AiOutlineUser,
   AiOutlineShoppingCart,
@@ -13,8 +13,19 @@ import Logo from "../../utils/images/logos/japventure-logo-32.svg";
 import styles from "./index.module.scss";
 
 export function Navbar() {
+  const [isModalVisible, setModalVisibility] = useState(false);
+  const [userLoggedIn, setUserLoggedIn] = useState(
+    localStorage.getItem("username") || ""
+  );
+  const [checked, setChecked] = useState(false);
   const { lang, currency, listsData } = useSelector((state) => state);
   const dispatch = useDispatch();
+  const location = useLocation();
+
+  useLayoutEffect(() => {
+    localStorage.getItem("username") &&
+      setUserLoggedIn(localStorage.getItem("username"));
+  }, [location]);
 
   const handleChangeLang = () => {
     dispatch({ type: "CHANGE_LANG" });
@@ -24,11 +35,6 @@ export function Navbar() {
     dispatch({ type: "CHANGE_CURRENCY" });
   };
 
-  const [isModalVisible, setModalVisibility] = useState(false);
-  const [userLoggedIn, setUserLoggedIn] = useState(
-    localStorage.getItem("username") || ""
-  );
-  const [checked, setChecked] = useState(false);
   const onHandleCheck = () => setChecked((prev) => !prev);
 
   useEffect(() => {
